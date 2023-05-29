@@ -1,0 +1,154 @@
+---
+title: "Introducción a R Project"
+subtitle: "Introducción al Lenguaje de Programación"
+---
+
+## R Project
+
+![](images/R_logo.png){fig-align="left" width="100"}
+
+
+
+
+{{< var engine.R >}} es un lenguaje programación multiparadigma (procedural, imperativo, orientado a objetos y funcional enfocado a aplicaciones estadísticas. Por estadísticas se debe entender también los campos de estudio que se basan o las utilizan como economía, finanzas, ciencia de datos, machine learning, etc.
+
+Para la instalación de seguir las instrucción indicadas en @sec-installR.
+
+### Ventajas de Utilizar R Project
+
+**1. R es un software libre**
+
+-   La libertad de ejecutar el programa como desee y con cualquier propósito
+-   Estudiar el funcionamiento del programa y adaptarlo a sus necesidades.
+-   Rescribir copias para ayudar a los demás.
+-   Manejar el programa y publicar las mejorar, de manera que toda comunidad se beneficie.
+
+**2. R es multiplataforma**
+
+-   R funciona en Mac, Windows y en numerosos sistemas UNIX. Esto significa que cualquier persona puede trabajar con tus datos, figuras, análisis y más importante aún usar tus instrucciones (también conocido como scripts o código) para generar las figuras y el análisis. Así que cualquier persona, y en cualquier lugar del mundo, con acceso a cualquier Sistema Operativo puede usar {{< var engine.R >}} sin ninguna licencia.
+
+**3. R es de código abierto**
+
+-   Existe una gran comunidad de voluntarios trabajando para mejorarlo, lo cual permite ser moldeado y dirigido a cuestiones específicas. Creando así programas y paquetes que funcionen en el entorno R. Programas tales como {{< var software.rstudio >}}, Java GUI for R, R-commander, RKWard, entre otros, y con más de 19.000 paquetes indexados en {{< var organization.cran >}}, {{< var organization.bioconductor >}}, {{< var organization.github >}} y {{< var organization.rforge >}}.
+
+**4. Todo dentro de un mismo entorno**
+
+-   R remplaza la combinación de varios programas para el proceso de análisis de datos, por ejemplo Excel, ArcGis, QGis, SigmaPlot, entre otros. Esto no solo resulta en el alto costo de las licencias de múltiples programas, si no también, en la gran cantidad de archivos con diferentes formatos que no podrían leer otros programas. En cambio con solo utilizar R, puedes realizar todo el análisis de datos e inclusive leer archivos de diferentes formatos.
+
+![Rstudio Ejecutándose](images/r_project.png){fig-align="center" width="800"}
+
+## Rstudio
+
+
+![](images/Logo-RStudio.png){fig-align="left" width="100"}
+
+{{< var software.rstudio >}} es un entorno de desarrollo integrado (IDE) para {{< var engine.R >}} y {{< var engine.python >}}. Incluye una consola, un editor que resalta la sintaxis y admite la ejecución directa del código, y herramientas para graficar, el historial, la depuración y la gestión del espacio de trabajo. RStudio está disponible en ediciones comerciales y de código abierto y se ejecuta en el escritorio (Windows, Mac y Linux).
+
+Para instalar {{< var software.rstudio >}} se debe seguir las instrucciones señaladas en el apéndice @sec-installRStudio
+
+
+<center>![](images/rstudio-editor.svg){width=90%}</center>
+
+
+### Librerías en R
+
+En R, una librería es un conjunto de funciones, datos y recursos adicionales que se agrupan para facilitar tareas específicas de programación, análisis de datos o visualización. Estas librerías son paquetes de software que amplían las funcionalidades básicas de R y permiten a los usuarios realizar tareas más avanzadas de manera eficiente.
+
+Existen una gran variedad de librerías disponibles en R, cada una diseñada para abordar un campo o área de aplicación particular. A continuación, mencionaré algunos de los campos más comunes en los que se utilizan las librerías de R:
+
+Análisis de datos: 
+: R es ampliamente utilizado en el análisis de datos y estadísticas. Librerías como "dplyr", "tidyr" y "ggplot2" son muy populares en este campo. Estas librerías proporcionan funciones para el manejo de datos, filtrado, transformación, agregación y visualización.
+
+Aprendizaje automático (Machine Learning): 
+: R es una opción popular para aplicar algoritmos de aprendizaje automático. Librerías como "caret", "randomForest" y "glmnet" ofrecen una amplia gama de algoritmos y herramientas para entrenar modelos de machine learning, realizar validación cruzada, seleccionar características y evaluar el rendimiento de los modelos.
+
+Procesamiento de texto y lenguaje natural: 
+: Para el análisis de texto y procesamiento del lenguaje natural, existen librerías como "tm", "stringr" y "text2vec". Estas librerías permiten realizar tareas como tokenización, limpieza de texto, extracción de características y modelado de temas.
+
+
+Visualización de datos: 
+: R es conocido por su capacidad para generar gráficos y visualizaciones de datos. Librerías como "ggplot2", "plotly" y "lattice" ofrecen herramientas para crear gráficos estáticos y dinámicos, mapas, diagramas de dispersión y muchas otras visualizaciones.
+
+
+Estos son solo algunos ejemplos de los campos en los que se utilizan las librerías de R. Es importante destacar que la comunidad de R es muy activa y constantemente se desarrollan nuevas librerías para abordar diferentes necesidades en diversos campos de aplicación. El uso de estas librerías no solo ahorra tiempo y esfuerzo, sino que también permite a los programadores y analistas aprovechar las mejores prácticas y métodos establecidos en sus respectivos campos.
+
+### Ejemplo de Instalación de Librerías desde R
+
+Podemos instalar paquetes usando la función `install.packages()`, dando como argumento el nombre del paquete que deseamos instalar, entre comillas.
+
+Para instalar librerías se puede hacer directamente desde la consola de RStudio, por ejemplo:
+
+```{r eval=FALSE}
+install.packages("dplyr") # Se puede instalar más de una librería a la vez
+```
+
+
+### Ejemplo de Instalación de Librerías desde Rstudio
+
+También se pude instalar librerías del Panel "Packages"
+
+<center>![](images/install_pack2.png){width=90%}</center>  
+
+
+Y por último se puede instalar desde Pestaña "Tools" -> "Install Packages":
+
+<center>![](images/install_pckages.gif){width=90%}</center>
+
+
+
+## Directorios de Trabajos
+
+Un directorio de trabajo, también conocido como carpeta de trabajo, es una ubicación específica en un sistema de archivos donde se almacenan y organizan los archivos relacionados con un proyecto o una tarea determinada. Estos directorios son esenciales para mantener un entorno de desarrollo ordenado y estructurado. Aquí tienes algunas razones por las que son importantes:
+
+Organización: 
+: Los directorios de trabajo permiten organizar y clasificar los archivos de un proyecto. Puedes crear subdirectorios para agrupar archivos relacionados, como código fuente, recursos multimedia, documentación, pruebas, entre otros. Esto facilita la búsqueda y el acceso a los archivos necesarios, lo que ahorra tiempo y evita la confusión.
+
+Mantenimiento: 
+: Al utilizar directorios de trabajo adecuados, es más sencillo realizar tareas de mantenimiento en un proyecto. Puedes realizar actualizaciones, realizar pruebas, corregir errores y agregar nuevas funcionalidades de manera más eficiente. Además, si trabajas en equipo, un directorio de trabajo bien estructurado permite a los miembros del equipo colaborar de manera más fluida y reducir posibles conflictos al fusionar sus cambios.
+
+Portabilidad: 
+: Los directorios de trabajo facilitan la portabilidad de un proyecto. Si necesitas mover o copiar tu proyecto a otro lugar, simplemente tendrás que llevar el directorio principal y todos los subdirectorios y archivos asociados estarán incluidos. Esto garantiza que no falten archivos esenciales y que el proyecto se pueda ejecutar sin problemas en un nuevo entorno.
+
+
+### Directorios de Trabajo en RStudio
+
+
+Definir directorio de Trabajo con RStudio se puede hacer de varias formas:
+
+1. Desde Rstudio.
+
+```
+Session -> Set Working Directory -> Choose Directory
+
+```
+
+
+<center>![](images/wdirectory.png){width=80%}</center>
+<center>![](images/folder_directory.png){width=60%}</center>
+
+2. Mediante Códigos.
+
+Definir Directorio de Trabajo con una función
+
+```{r eval=FALSE}
+setwd("/Users/denisberroeta/Library/CloudStorage/OneDrive-UniversidadAdolfoIbanez/Goblab/Reportes/reportes_book")
+```
+
+
+
+Consultar Directorio de Trabajo
+
+```{r}
+getwd()
+```
+
+
+## Referencias:
+
+- [R para Ciencia de Datos](https://es.r4ds.hadley.nz)
+- [RStudio para Estadística Descriptiva en Ciencias Sociales](https://bookdown.org/gboccardo/manual-ED-UCH/)
+
+
+
+
+

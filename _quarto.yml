@@ -1,0 +1,45 @@
+project:
+  type: book
+
+book:
+  title: "Reportes Automáticos"
+  subtitle: "Escuela de Gobierno - Universidad Adolfo Ibáñez. Chile"
+  # affiliation-title: "Universidad Adolfo Ibáñez - Chile"
+  author: "Denis Berroeta (<denis.berroeta@uai.cl>)"
+  date: "2023-05-27"
+  #number-sections: 3
+  page-footer: 
+    left: "Copyright 2023, Denis Berroeta" 
+  chapters:
+    - index.qmd
+    - intro_r.qmd
+    - variables_R.qmd
+    - funciones.qmd
+    # - loops_R.qmd
+    # - tidyverse_R.qmd
+    # - espacial_R.qmd
+    - references.qmd
+        
+  appendices:
+    - recursos.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    html-math-method: katex
+    css: styles/style.css
+    fig-align: "center"
+    fig-cap-location: "margin"
+    tab-cap-location: "left"
+    mailto: "<denis.berroeta@uai.cl>"
+  
+execute:
+  warning: false
+  
+editor: source
+always_allow_html: true
+
+
+

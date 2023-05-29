@@ -1,0 +1,96 @@
+---
+title: "Instalación de Recursos"
+subtitle: "Introducción al Lenguaje de Programación"
+---
+
+
+
+
+
+
+## Instalación de R Project {#sec-installR}
+
+![](images/R_logo.png){fig-align="left" width="100"}
+
+Primero se debe instalar R Project desde su sitio oficial [https://cran.r-project.org/index.html](https://cran.r-project.org/index.html), se ejecuta el instalador que se descarga dependiendo del sistema operativo del PC, como se muestra en las siguientes figuras:
+
+
+![](images/install_r.png)
+
+<br>
+
+**Instalación de [R para Windows](https://cran.r-project.org/bin/windows/)**
+
+<center>![](images/install_r_w.gif){width=90%}</center>
+
+
+<br>
+
+**Instalar [Rtools](https://cran.r-project.org/bin/windows/Rtools/) (solo Sistema Operativo Windows)**
+
+<center>![](images/w_rtools.png){width=60%}</center>
+
+<center>![](images/install_rtools.png){width=60%}</center>
+
+<br>
+
+
+**Instalación de [R para Mac](https://cran.r-project.org/bin/macosx/)**
+
+<center>![](images/install_r_mac.gif){width=90%}</center>
+
+
+<br>
+
+**R Project Ejecutándose**
+
+![](images/r_project.png)
+
+
+## Instalación de RStudio {#sec-installRStudio}
+
+
+![](images/Logo-RStudio.png){fig-align="left" width="100"}
+
+
+Se recomienta instalar 
+{{< var software.rstudio >}} desde el siguiente [link](https://posit.co/download/rstudio-desktop/), que es Interfaz de Usuario de R Project, desde su sitio web oficial, el cual permite acceder con mayor facilidad a sus funciones y potencialidades de R.
+
+
+<center>![](images/instaladores_rstudio.png){width=60%}</center>
+
+
+
+![](images/Install_RStudio.png)
+
+
+
+
+![](images/rstudio.png)
+
+
+<center>![](images/rstudio-editor.svg){width=90%}</center>
+
+
+### RStudio Cloud
+
+
+[RStudio Cloud](https://rstudio.cloud) es una versión ligera del IDE RStudio alojada en la la nube que permite a cualquiera hacer, compartir, enseñar y aprender Ciencias de Datos Online. Tiene una versión gratuita limitada.
+
+#### Características:
+
+* Analyze your data using the RStudio IDE, directly from your browser.
+* Share projects with your team, class, workshop or the world.
+* Teach data science with R to your students or colleagues.
+* Learn data science in an instructor-led environment or with interactive tutorials.
+
+<center>![](images/Rstudio_cloud_page.png){width=90%}</center>
+
+<center>![](images/rstudio_logging.png){width=90%}</center>
+
+<center>![](images/rstudio_workspace.png){width=90%}</center>
+
+<center>![](images/rstudio_cloud.png){width=90%}</center>
+
+
+
