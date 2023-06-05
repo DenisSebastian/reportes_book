@@ -112,7 +112,7 @@ Las estructuras de bucles son una de las tres estructuras de control principales
 
 
 
-### Estructura de bucle "`for`":
+### Estructura de bucle "`for`": {#sec-for}
 
 La estructura "for" permite repetir la ejecución de un bloque de código un número determinado de veces. La sintaxis básica de la estructura "for" es la siguiente:
 

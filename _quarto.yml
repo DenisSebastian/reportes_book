@@ -15,11 +15,14 @@ book:
     - intro_r.qmd
     - variables_R.qmd
     - funciones.qmd
-    # - loops_R.qmd
-    # - tidyverse_R.qmd
+    - loops_R.qmd
+    - tidyverse_R.qmd
     # - espacial_R.qmd
     - references.qmd
-        
+    - part: "Tareas"
+      # chapters:
+        # - tarea_1.qmd
+        # - tarea_2.qmd
   appendices:
     - recursos.qmd
 

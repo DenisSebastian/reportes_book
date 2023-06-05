@@ -189,22 +189,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./espacial_R.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Objetos Espaciales en R</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Appendices</a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Tareas</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tarea_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tarea 1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./recursos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Instalación de Recursos</span></a>
@@ -224,7 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#estructuras-condicionales" id="toc-estructuras-condicionales" class="nav-link active" data-scroll-target="#estructuras-condicionales"><span class="toc-section-number">5.1</span>  Estructuras condicionales</a></li>
   <li><a href="#estructuras-de-bucles" id="toc-estructuras-de-bucles" class="nav-link" data-scroll-target="#estructuras-de-bucles"><span class="toc-section-number">5.2</span>  Estructuras de bucles</a>
   <ul class="collapse">
-  <li><a href="#estructura-de-bucle-for" id="toc-estructura-de-bucle-for" class="nav-link" data-scroll-target="#estructura-de-bucle-for"><span class="toc-section-number">5.2.1</span>  Estructura de bucle “<code>for</code>”:</a></li>
+  <li><a href="#sec-for" id="toc-sec-for" class="nav-link" data-scroll-target="#sec-for"><span class="toc-section-number">5.2.1</span>  Estructura de bucle “<code>for</code>”:</a></li>
   <li><a href="#estructura-de-bucle-while" id="toc-estructura-de-bucle-while" class="nav-link" data-scroll-target="#estructura-de-bucle-while"><span class="toc-section-number">5.2.2</span>  Estructura de bucle “while”:</a></li>
   <li><a href="#estructura-de-bucle-repeat" id="toc-estructura-de-bucle-repeat" class="nav-link" data-scroll-target="#estructura-de-bucle-repeat"><span class="toc-section-number">5.2.3</span>  Estructura de bucle “repeat”:</a></li>
   </ul></li>
@@ -338,8 +348,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Es más sencillo responder a cambios en los requerimientos. A medida que tus necesidades cambian, solo necesitarás realizar cambios en un lugar, en vez de recordar cambiar en cada lugar donde copiaste y pegaste el código.</li>
 <li>Es probable que tengas menos errores porque cada línea de código es utilizada en más lugares.</li>
 </ul>
-<section id="estructura-de-bucle-for" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="estructura-de-bucle-for"><span class="header-section-number">5.2.1</span> Estructura de bucle “<code>for</code>”:</h3>
+<section id="sec-for" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="sec-for"><span class="header-section-number">5.2.1</span> Estructura de bucle “<code>for</code>”:</h3>
 <p>La estructura “for” permite repetir la ejecución de un bloque de código un número determinado de veces. La sintaxis básica de la estructura “for” es la siguiente:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (variable <span class="cf">in</span> secuencia) {</span>
@@ -397,10 +407,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(promedio)</span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.0173628
-[1] -0.2188709
-[1] 0.3515333
-[1] 0.1452774</code></pre>
+<pre><code>[1] 0.4362273
+[1] -0.4262583
+[1] 0.1194993
+[1] 0.2897774</code></pre>
 </div>
 </div>
 </section>

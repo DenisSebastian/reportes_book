@@ -1,0 +1,117 @@
+---
+title: "Tarea 1"
+editor_options: 
+  chunk_output_type: console
+---
+```{r setup, include=FALSE, eval = FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, warning = FALSE, eval = FALSE,  fig.align='center')
+library(knitr)
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(sf))
+```
+
+## Enunciado General
+
+**Integrantes**: 1 (Individual).   
+**Fecha de Entrega**: 18 de Junio, 23:59 horas.
+
+Se utilizará la base del servicio de impuestos internos (SII), se le descartará la geometría (`st_drop_geometry()`) ya que se utilizará la tabla de datos, como se observa a continuación:
+
+
+```{r}
+library(dplyr)
+library(sf)
+tbl_sii  <- readRDS("data/sii/mz_constru_SII.rds") %>% 
+  st_drop_geometry() # descartar geometrias solo usar la tabla de datos
+```
+
+
+Se debe además seleccionar una columna de su interés, como en el siguiente código de ejemplo.
+
+```{r}
+mi_comuna <- "LAS CONDES" 
+
+sii_com <- tbl_sii %>%
+  filter(n_com == mi_comuna) 
+```
+
+
+## Parte 1: Función
+
+Escriba una función que calcule la desidad de `viviendas` por manzana. Y aplicarla generando una nueva columna con esa información. Para escribir la función se puede apoyar en la @sec-funciones.
+
+::: {.callout-tip appearance="simple"}
+
+## Densidad
+Se puede entender como la división de la cantidad de metros cuadrados de `viviendas` dividio por el total de metros cuadrados (`AREA`).
+:::
+
+
+
+## Parte 2
+
+Crear un ciclo iterativo con la función `for()` que itere por todas las comunas de la base del SII, para lo cual primeramente deben obtener todos los nombres de comuna, lo cual se pude obtener usando la función `unique()` sobre la columna `n_com`. Seguidamente crear una variable vacía (`NULL`) para que vaya almacenando los resultados. Finalmente utilizar la función `for()` que se encuentra en la siguiente sección @sec-for
+
+```{r eval=FALSE}
+# comunas <- ...
+results <- NULL
+for(com in comunas){
+  print(com)
+  # ...
+}
+```
+
+```{r echo=FALSE}
+# results <- NULL
+# for(com in comunas){
+#   print(com)
+#   sii_com <- tbl_sii %>%
+#     filter(n_com == com)
+#   sum_viv <- sum(sii_com$vivienda, na.rm = T)
+#   results <-rbind(results, c(COMUNA = com, VIVIENDAS =sum_viv))
+# }
+```
+
+
+## Parte 3
+
+Similar a la parte anterior de la tarea ahora, ahora utilizando las funciones de la librerías {{< var library.dplyr >}} generar un tabla que contega por **comuna** la suma de `viviendas`, `oficinas`, `comercio`, ordenadas des forma descendente por la variable `comercio`.
+
+Seleccionar las 10 primeras comunas con valores de suma de comercio más altos.
+
+
+
+```{r eval = FALSE, }
+options(scipen = 999)
+# tab_res <- ... generar tabla resumen
+
+# seleccionar los 10 primeros
+tab_res <- tab_res %>% slice(1:10)
+```
+
+```{r eval = FALSE, echo=FALSE}
+options(scipen = 999)
+tab_res <- tbl_sii %>% group_by(n_com) %>% 
+  summarise(
+    sum_viv = sum(vivienda, na.rm = T),
+    sum_ofi = sum(oficinas, na.rm = T),
+    sum_com = sum(comercio, na.rm = T)) %>% 
+  arrange(desc(sum_com)) %>% 
+  slice(1:10)
+```
+
+Realizar gráfico de barras para dimensionar diferencias. Ejemplo de visualización de las 10 comunas con mayor cantidad de metros cuadrados de comercio.
+
+```{r eval = FALSE}
+library(ggplot2)
+ggplot(tab_res, aes(x = sum_com, y = n_com)) +
+  geom_bar(stat = "identity", fill= "orange")+
+  theme_bw()  +
+  labs(title="Suma de Comercio y Oficinas",
+       x ="Mt2. Comercio", y = "Comunas")+
+  theme(plot.title = element_text(face = "bold",colour= "gray60", size=10))
+```
+
+
+![Resultado esperado (puede cambiar opciones de visualización si lo desea)](images/bars_tarea1.png)
+
