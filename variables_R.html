@@ -179,17 +179,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./loops_R.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estructura de Control en R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tidyverse_R.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tidyverse en R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Tareas</span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Appendices</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./recursos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Instalación de Recursos</span></a>
@@ -296,19 +309,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ru <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ru</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 9.755610 8.043813 4.180006 2.813395 3.542679 5.247615 7.633336 8.064597
-  [9] 1.257641 5.455441 8.593087 5.660450 2.473608 3.208081 6.498492 1.912994
- [17] 5.311786 6.496261 1.848151 9.135297 3.799194 2.560905 5.554571 6.996694
- [25] 4.489659 9.489848 3.867235 3.217458 5.639804 6.695536 6.175560 2.757721
- [33] 2.003120 2.392868 6.305945 6.797677 5.990787 4.427131 7.211067 3.990515
- [41] 3.562743 3.136538 8.063838 4.769267 6.857233 3.988102 4.221855 7.315196
- [49] 6.440215 7.840885 5.090410 1.933167 2.169438 3.564588 6.208318 8.880117
- [57] 5.143388 7.040736 2.761852 6.089795 8.455555 8.054936 4.007987 5.991851
- [65] 5.855778 9.941932 4.118951 3.356891 9.295047 4.258591 7.995507 3.245312
- [73] 7.815039 7.866384 3.494633 6.153566 5.462999 8.068703 1.033125 1.634691
- [81] 3.056555 8.581766 1.436499 2.038019 9.539610 9.726101 6.866189 6.031727
- [89] 9.441140 1.937858 6.348735 4.526317 9.833461 3.075623 8.345436 9.922921
- [97] 1.871458 4.059078 7.685239 7.821073</code></pre>
+<pre><code>  [1] 2.872032 9.562448 5.487213 9.636502 3.683541 3.896438 4.030208 5.026642
+  [9] 1.891528 8.187221 1.059904 2.616365 3.498080 5.244286 4.531757 6.339218
+ [17] 4.578426 2.141596 9.530782 2.366831 7.208461 9.584015 4.986901 5.056633
+ [25] 4.483034 1.864475 9.735955 1.797772 1.648018 1.766058 7.431233 7.099600
+ [33] 6.121151 5.958273 7.519026 9.767563 4.802689 6.463040 9.485817 7.901200
+ [41] 8.418338 8.259923 8.343629 1.102076 9.083772 2.288461 2.472192 5.968419
+ [49] 6.673368 9.785365 1.960829 4.571195 1.159390 9.773884 6.704370 2.664172
+ [57] 9.265459 8.178644 1.224399 2.004221 8.382366 2.353118 1.715510 3.853045
+ [65] 3.008829 4.399031 3.569443 3.056860 1.184658 8.720268 4.089277 3.162171
+ [73] 5.013116 2.895332 5.075893 5.986220 7.095618 3.352437 4.688851 3.332772
+ [81] 3.874269 3.712434 6.740299 6.224543 5.060199 3.483585 8.796368 2.364308
+ [89] 3.557209 5.750247 9.508457 2.602906 7.649732 9.773810 6.917154 1.436521
+ [97] 2.321826 5.800448 8.268483 1.641194</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
@@ -327,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample.int</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 3 1 4 6 1 5 6 5 6 3</code></pre>
+<pre><code> [1] 4 6 5 2 3 2 4 3 1 1</code></pre>
 </div>
 </div>
 </section>
