@@ -17,14 +17,20 @@ book:
     - funciones.qmd
     - loops_R.qmd
     - tidyverse_R.qmd
-    # - espacial_R.qmd
+    - reporte.qmd
+    - first_report.qmd
+    - workflow.qmd
     - references.qmd
     - part: "Tareas"
-      # chapters:
-        # - tarea_1.qmd
-        # - tarea_2.qmd
+      chapters:
+        - tarea_1.qmd
+        - tarea_2.qmd
   appendices:
     - recursos.qmd
+    - espacial_R.qmd
+    - times.qmd
+    - tablas.qmd
+    - iter_graph.qmd
 
 bibliography: references.bib
 

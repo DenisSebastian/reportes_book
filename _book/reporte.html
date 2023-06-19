@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.361">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Reportes Automáticos - 7&nbsp; Rmarkdown</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./first_report.html" rel="next">
+<link href="./tidyverse_R.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body class="nav-sidebar floating slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./reporte.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Rmarkdown</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Reportes Automáticos</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Prefacio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introducción a R Project</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./variables_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variables en R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./funciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Funciones en R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./loops_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estructura de Control en R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tidyverse_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tidyverse en R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reporte.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Rmarkdown</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./first_report.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mi Primer Reporte</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Flujos de Trabajo</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Tareas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tarea_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tarea 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tarea_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tarea 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recursos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Instalación de Recursos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./espacial_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Datos Espaciales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./times.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Datos temporales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tablas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Tablas en Markdown</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./iter_graph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Gráficos Interativos</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">7.1</span> Introducción</a></li>
+  <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown"><span class="header-section-number">7.2</span> Markdown</a></li>
+  <li><a href="#instalación-de-complementos" id="toc-instalación-de-complementos" class="nav-link" data-scroll-target="#instalación-de-complementos"><span class="header-section-number">7.3</span> Instalación de complementos</a></li>
+  <li><a href="#creación-de-reporte" id="toc-creación-de-reporte" class="nav-link" data-scroll-target="#creación-de-reporte"><span class="header-section-number">7.4</span> Creación de Reporte</a></li>
+  <li><a href="#sec-YAML" id="toc-sec-YAML" class="nav-link" data-scroll-target="#sec-YAML"><span class="header-section-number">7.5</span> Elementos de un documento Rmarkdown</a></li>
+  <li><a href="#sintaxis" id="toc-sintaxis" class="nav-link" data-scroll-target="#sintaxis"><span class="header-section-number">7.6</span> Sintaxis</a>
+  <ul class="collapse">
+  <li><a href="#sec-titles" id="toc-sec-titles" class="nav-link" data-scroll-target="#sec-titles"><span class="header-section-number">7.6.1</span> Títulos</a></li>
+  <li><a href="#formato-a-texto" id="toc-formato-a-texto" class="nav-link" data-scroll-target="#formato-a-texto"><span class="header-section-number">7.6.2</span> Formato a texto</a></li>
+  <li><a href="#sec-images" id="toc-sec-images" class="nav-link" data-scroll-target="#sec-images"><span class="header-section-number">7.6.3</span> Imágenes</a></li>
+  <li><a href="#sec-links" id="toc-sec-links" class="nav-link" data-scroll-target="#sec-links"><span class="header-section-number">7.6.4</span> Links</a></li>
+  <li><a href="#listas" id="toc-listas" class="nav-link" data-scroll-target="#listas"><span class="header-section-number">7.6.5</span> Listas</a></li>
+  <li><a href="#formulas" id="toc-formulas" class="nav-link" data-scroll-target="#formulas"><span class="header-section-number">7.6.6</span> Formulas</a></li>
+  </ul></li>
+  <li><a href="#configuración-del-código" id="toc-configuración-del-código" class="nav-link" data-scroll-target="#configuración-del-código"><span class="header-section-number">7.7</span> Configuración del Código</a></li>
+  <li><a href="#otras-referencias" id="toc-otras-referencias" class="nav-link" data-scroll-target="#otras-referencias"><span class="header-section-number">7.8</span> Otras Referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Rmarkdown</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introducción" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">7.1</span> Introducción</h2>
+<p>Rmarkdown es que permite generar informes a partir de R.Este permite incluir texto, comandos de R, imágenes y gráficos a un documento.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tipos_reportes.jpg" class="img-fluid figure-img" width="400"></p>
+</figure>
+</div>
+</section>
+<section id="markdown" class="level2 page-columns page-full" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="markdown"><span class="header-section-number">7.2</span> Markdown</h2>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="images/rmarkdown_elementos.png" class="img-fluid figure-img" width="800"></p>
+<figcaption class="figure-caption margin-caption">Funcionamiento de compilación de una archivo Rmarkdown (.rmd)</figcaption>
+</figure>
+</div>
+<dl>
+<dt>RMarkdown:</dt>
+<dd>
+Basado en el lenguaje markdown - funcionalidad que busca convertir rápida y fácilmente texto plano tipo bloc de notas a formato HTML - RMarkdown es un tipo de documento de RStudio que permite integrar texto con código de R.
+</dd>
+<dt>Knitr:</dt>
+<dd>
+Este paquete integra en un sólo archivo markdown el texto ingresado en formato RMarkdown y los resultados de la ejecución de los códigos construidos mediante R.
+</dd>
+<dt>Pandoc:</dt>
+<dd>
+Se trata de un paquete de R que convierte el formato markdown a alguno de los diferentes formatos de reporte ya señalados (HTML y editor de texto tipo Word).
+</dd>
+<dt>LaTex:</dt>
+<dd>
+Es una aplicación computacional en sí misma, enfocada en la preparación de documentos para su publicación con una alta calidad profesional del formato final. Está pensado para ser utilizado en procesos editoriales de alta complejidad y exigencia de calidad.
+</dd>
+<dt>Archivo .Rmd:</dt>
+<dd>
+Son simplemente documento de texto (se pueden escribir en cualquier editor de texto, por ejemplo Notepad); pero facilitan mucho la tarea de generar informes o presentaciones con contenido estadístico, ya que permiten mezclar en un mismo documento texto y código R.
+</dd>
+</dl>
+</section>
+<section id="instalación-de-complementos" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="instalación-de-complementos"><span class="header-section-number">7.3</span> Instalación de complementos</h2>
+<p>Instalación de <a href="https://bookdown.org/yihui/rmarkdown/installation.html"><code>rmarkdown</code></a></p>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>Instalar LaTeX para los reportes PDF, a través de la librería `tinytex’:</p>
+<div class="cell" data-layout-align="center">
+
+</div>
+</section>
+<section id="creación-de-reporte" class="level2 page-columns page-full" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="creación-de-reporte"><span class="header-section-number">7.4</span> Creación de Reporte</h2>
+<p>Existen en Rstudio dos formas de trabajar con un archivo Rmd (RMarkdown) con código directo llamado source o a través de Visual Editor (Shift + Ctrl + F4 ), como se observa a continuación:</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="images/visual_editor.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption margin-caption">Visual Editor (Shift + Ctrl + F4 )</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-YAML" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="sec-YAML"><span class="header-section-number">7.5</span> Elementos de un documento Rmarkdown</h2>
+<p>Aspectos generales del texto. Referencias <a href="https://bookdown.org/gboccardo/manual-ED-UCH/introduccion-al-uso-de-rmarkdown-para-la-compilacion-de-resultados-de-rstudio-en-diferentes-formatos.html#aspectos-generales-formato-de-texto">Link</a></p>
+<ul>
+<li><strong>title</strong> Texto entre comillas que servirá de título general al documento.</li>
+<li><strong>subtitle</strong>. Texto entre comillas que servirá de subtitulo para el título general del documento.</li>
+<li><strong>author</strong> Texto entre comillas para indicar el nombre del o los autores.</li>
+<li><strong>date</strong>. Campo para indicar la fecha. En el texto, con la expresión today, se solicita que imprima la fecha actual según el calendario del sistema operativo.</li>
+<li><strong>bibliography</strong>. Se indica el nombre del archivo que contiene los datos para construir el listado de referencia bibliográficas. Este archivo es de formato BibTex y se construye usando un gestor de referencias como Zotero.</li>
+<li><strong>pdf_document:</strong> indica el formato preestablecido para compilar el documento. En este caso, se trata de un PDF. Puede ser <em>html_document</em> o <em>word_document</em>. El usuario puede escoger la modalidad que desee al compilar usando las opciones del botón knit; si se compila sin escoger ninguna opción, se compilará según el formato indicado en este encabezado.</li>
+<li><strong>fig_caption</strong>: indica si las figuras deben incorporar leyendas. latex_engine: permite definir el motor de LaTex utilizado para compilar los documentos.</li>
+<li><strong>number_sections</strong>: si está definido como yes define que se numerarán los títulos y sutítulos a lo largo del documento, de manera automática y correlativa.</li>
+<li><strong>toc:</strong> es la abreviación de table of contents; si está definido como yes incorporará al inicio del documento una tabla de contenidos construida a partir de los tres primeros niveles de los títulos y subtítulos de sección utilizados.</li>
+</ul>
+</section>
+<section id="sintaxis" class="level2 page-columns page-full" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="sintaxis"><span class="header-section-number">7.6</span> Sintaxis</h2>
+<section id="sec-titles" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="sec-titles"><span class="header-section-number">7.6.1</span> Títulos</h3>
+<p><img src="images/titulos_H.jpeg" class="img-fluid"></p>
+</section>
+<section id="formato-a-texto" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="formato-a-texto"><span class="header-section-number">7.6.2</span> Formato a texto</h3>
+<p>Declaración:</p>
+<pre><code>*Cursiva*,  **Negrita**, ~~Tachado~~ y Km^2^</code></pre>
+<p>Resultados:</p>
+<p><em>Cursiva</em>, <strong>Negrita</strong>, <del>Tachado</del> y Km<sup>2</sup></p>
+</section>
+<section id="sec-images" class="level3 page-columns page-full" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="sec-images"><span class="header-section-number">7.6.3</span> Imágenes</h3>
+<p>Declaración:</p>
+<pre><code>![Logo de R](images/Rlogo.png)</code></pre>
+<p>Resultados:</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="images/Rlogo.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption margin-caption">Logo de R</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-links" class="level3" data-number="7.6.4">
+<h3 data-number="7.6.4" class="anchored" data-anchor-id="sec-links"><span class="header-section-number">7.6.4</span> Links</h3>
+<p>Este es el formato para crear links <code>[R para Ciencia de Datos](https://es.r4ds.hadley.nz)</code></p>
+<p>Este es el resultado: <a href="https://es.r4ds.hadley.nz">R para Ciencia de Datos</a></p>
+</section>
+<section id="listas" class="level3" data-number="7.6.5">
+<h3 data-number="7.6.5" class="anchored" data-anchor-id="listas"><span class="header-section-number">7.6.5</span> Listas</h3>
+<pre><code>* Item 1
+    + Item 2a
+    + Item 2b</code></pre>
+<ul>
+<li><p>Ítem 1</p>
+<ul>
+<li>Item 2a</li>
+<li>Item 2b</li>
+</ul></li>
+</ul>
+</section>
+<section id="formulas" class="level3" data-number="7.6.6">
+<h3 data-number="7.6.6" class="anchored" data-anchor-id="formulas"><span class="header-section-number">7.6.6</span> Formulas</h3>
+<pre><code>Esto es una función en la línea $h^2 = a^2+b^2$</code></pre>
+<p>Esto es una función en la línea <span class="math inline">h^2 = a^2+b^2</span></p>
+<pre><code>$$h = \sqrt{a^2+b^2}$$ </code></pre>
+<p><span class="math display">h = \sqrt{a^2+b^2}</span></p>
+</section>
+</section>
+<section id="configuración-del-código" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="configuración-del-código"><span class="header-section-number">7.7</span> Configuración del Código</h2>
+<p>Teniendo en cuenta que uno de los elementos con mayor importancia en los reportes es la capacidad de incorporar bloques de código y este esa renderizado, entonce también se debe conocer los aspectos de configuración de ellos.</p>
+<p>Se trata de bloques de código delimitados por la siguiente estructura: el inicio de un código está delimitado por tres apostrofes seguidos por un r entre corchetes curvos {r}, y su cierre por otros tres apostrofes. Eso delimita lo que se ejecutará como código de computación, diferenciándolo respecto al texto simple. A continuación se observa un ejemplo de esto:</p>
+<p><img src="images/code_chunk.png" class="img-fluid"></p>
+<p>Los argumentos sirven para configurar el comportamiento del código al momento de compilar el documento.</p>
+<p>Como no siempre se buscará que en el reporte final se despliegue la sintaxis original, o los mensajes y/o advertencias que reporta R luego de ejecutar un comando, es posible configurar la ejecución de cada trozo de código agregando diferentes opciones.</p>
+<p>Por ejemplo, al abrir el siguiente código de nuestra sintaxis de Markdown con las siguientes opciones <code>{r, echo = FALSE, results = 'asis', message= FALSE}</code> les estamos indicando lo siguiente:</p>
+<p><code>echo = FALSE</code> significa que no se desplegará la sintaxis en el reporte, pero sí se ejecutará la operación y mostrarán los resultados.</p>
+<p><code>results = 'asis'</code> indica que el resultado se exportará directamente al nuevo archivo, sin que sea configurado por RMarkdown. Esto es útil con funciones que formatean de manera inmediata los resultados al formato deseado.</p>
+<p><code>message = FALSE</code> indica que no se mostrarán los mensajes de información en el informe final.</p>
+<p>En la siguiente tabla se indican algunos de los argumentos de mayor utilidad para configurar trozos de código en RMarkdown.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Argumentos para configurar los chunks de código en RMarkdown</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Argumento</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Valor_por_defecto</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">eval</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Si se configura como FALSE, R sólo mostrará, pero no correrá el código</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">include</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Si se configura como FALSE, R no mostrará el código, pero correrá el comando y mostrará sus resultados.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">error</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Si se configura como FALSE, R no mostrará los mensajes de errores que resulten de la ejecución del código.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">Si se configura como hide, R no mostrará los resultados del código aunque lo ejecutará tras bambalinas. Si se configura como delay, R mostrará sólo el último resultado del trozo de código. Si se configura como asis R no configurará con markdown la estructura de los resultados, imprimiéndolos de manera directa en el reporte final. Esto resulta útil cuando usamos funciones específicas para presentar resultados en algún formato de reporte específico (Word, PDF, etc.)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">warning</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Si se configura como FALSE R no mostrará los mensajes de advertencia que resulten de la ejecución del código.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Si se configura como FALSE R no mostrará ningún tipo de mensaje que resulten de la ejecución del código.</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="otras-referencias" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="otras-referencias"><span class="header-section-number">7.8</span> Otras Referencias</h2>
+<ul>
+<li><p>Xie, Dervieux, Riedere, 2023. “R Markdown Cookbook”. <a href="https://bookdown.org/yihui/rmarkdown-cookbook/notebook.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/notebook.html</a></p></li>
+<li><p>Boccardo, Ruiz, 2019. “RStudio para Estadística Descriptiva en Ciencias Sociales”. <a href="https://bookdown.org/gboccardo/manual-ED-UCH/introduccion-al-uso-de-rmarkdown-para-la-compilacion-de-resultados-de-rstudio-en-diferentes-formatos.html" class="uri">https://bookdown.org/gboccardo/manual-ED-UCH/introduccion-al-uso-de-rmarkdown-para-la-compilacion-de-resultados-de-rstudio-en-diferentes-formatos.html</a></p></li>
+<li><p>Miller, Steven V. 2018. “A Pandoc Markdown Article Starter and Template”. <a href="https://github.com/svmiller/svm-r-markdown-templates" class="uri">https://github.com/svmiller/svm-r-markdown-templates</a>.</p></li>
+<li><p>Grolemund, Garret. 2014. “Introduction to R Markdown”. <a href="https://rmarkdown.rstudio.com/articles_intro.html" class="uri">https://rmarkdown.rstudio.com/articles_intro.html</a>.</p></li>
+<li><p>Workshop, Reproducible Research. 2016. ““Writing Publications with R. Writing Publications with R”. <a href="http://www.geo.uzh.ch/microsite/reproducible_research/post/rr-r-publication/" class="uri">http://www.geo.uzh.ch/microsite/reproducible_research/post/rr-r-publication/</a>.</p></li>
+<li><p>Navarro, Juan. 2014. “LaTeX Fácil: Guía Rápida de LaTeX”. <a href="http://nokyotsu.com/latex/guia.html" class="uri">http://nokyotsu.com/latex/guia.html</a>.</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./tidyverse_R.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tidyverse en R</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./first_report.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mi Primer Reporte</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Denis Berroeta</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

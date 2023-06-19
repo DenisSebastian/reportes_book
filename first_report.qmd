@@ -1,0 +1,54 @@
+---
+title: "Mi Primer Reporte"
+---
+
+## Descripción
+
+En este capítulo nos centraremos principalmente en escribir un reporte sobre un tema a elección utilizando una base de datos propia, o las dispuestas en presente curso o bien alguna fuente de datos abierta como las dispuestas en la siguiente lista:
+
+Ejemplo de Fuente de datos abiertas.
+
+-   <https://datos.gob.cl>
+-   <https://www.ide.cl>
+-   <https://datausa.io>
+-   <https://observatorio.ciren.cl/>
+-   <https://www.datawheel.us>
+-   [https://es.wikipedia.org/wiki/Wikipedia_en_español](https://es.wikipedia.org/wiki/Wikipedia_en_español)
+
+El reporte en cuestión no importa demasiado el tema lo importante es que se utilice los diferentes contenidos en los que se encuentran en el presente libro digital:
+
+-   Encabezado YAML (@sec-YAML)
+-   Orden basados en títulos (@sec-titles)
+-   Resumen de Bases (@sec-genRes, @sec-timesGra)
+-   Tablas (@sec-tablas)
+-   Gráficos y/o Mapas (@sec-ggplot, @sec-spatial)
+-   Imágenes (@sec-images)
+-   Links (@sec-links)
+
+::: {.callout-tip appearance="simple"}
+## Tip
+
+El presente reporte es en esencia lo que requiere para la tarea 2.
+:::
+
+## Configuración de Proyecto en RStudio {#sec-ProyRStudio}
+
+**Crear Estructura de Carpetas**
+
+![](images/folder_proj.png){fig-align="center" width="250"}
+
+**Proyecto RStudio de nuestro reporte**
+
+![](images/new_project.png){fig-align="center" width="250"}
+
+**Indicar que va ser en una carpeta existente**
+
+![](images/existente.png){fig-align="center" width="400"}
+
+**Seleccionar Carpeta**
+
+![](images/sel_folder.png){fig-align="center" width="400"}
+
+
+
+

@@ -98,7 +98,7 @@ sii_com %>%
 
 
 
-## Resúmenes Estadísticos con `dplyr`
+## Resúmenes Estadísticos con `dplyr` {#sec-genRes}
 
 <center>![](images/dplyr_group_by.png){width="70%"}</center>
 
@@ -140,7 +140,7 @@ hist(sii_com$vivienda, breaks = 50,
 
 
 
-### Package [ggplot2](https://ggplot2.tidyverse.org)
+### Package [ggplot2](https://ggplot2.tidyverse.org) {#sec-ggplot}
 
 ```{r  fig.align='center', fig.height=3.5}
 library(ggplot2)

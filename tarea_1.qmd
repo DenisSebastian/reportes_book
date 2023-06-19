@@ -1,8 +1,6 @@
----
-title: "Tarea 1"
-editor_options: 
-  chunk_output_type: console
----
+# Tarea 1 {.unnumbered}
+
+
 ```{r setup, include=FALSE, eval = FALSE}
 knitr::opts_chunk$set(echo = TRUE, comment = NA, warning = FALSE, eval = FALSE,  fig.align='center')
 library(knitr)
@@ -13,7 +11,7 @@ suppressPackageStartupMessages(library(sf))
 ## Enunciado General
 
 **Integrantes**: 1 (Individual).   
-**Fecha de Entrega**: 18 de Junio, 23:59 horas.
+**Fecha de Entrega**: 21 de Junio, 23:59 horas.
 
 Se utilizará la base del servicio de impuestos internos (SII), se le descartará la geometría (`st_drop_geometry()`) ya que se utilizará la tabla de datos, como se observa a continuación:
 

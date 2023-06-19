@@ -1,0 +1,381 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+
+# Datos temporales 
+
+Manipulación de datos temporales haciendo uso de la librería {{< var library.lubridate >}}
+
+![](images/logo_lubridate.png){width="200" fig-aling="center"}
+
+
+## Lectura de archivo con tasaciones
+
+```{r eval=FALSE}
+library(dplyr)
+tasacion <- read.csv("data/tasaciones//base_250.csv")
+head(tasacion)
+```
+
+```{r echo=FALSE}
+suppressPackageStartupMessages(library(dplyr))
+tasacion_original <- read.csv("data/tasaciones//base_250.csv")
+```
+
+
+
+
+Tabla de Tasaciones
+
+```{r echo=FALSE}
+suppressPackageStartupMessages(library(kableExtra))
+#solo para ver visualización en la presentación 
+tasacion_original %>%
+  head() %>%
+  kbl() %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    font_size = 12
+  )
+
+
+```
+
+
+## Instalar [lubridate](https://lubridate.tidyverse.org)
+
+```{r eval=FALSE}
+# Instalar librería
+install.packages("lubridate")
+
+# Cargar Librería
+library(lubridate)
+```
+
+
+```{r echo=FALSE}
+suppressPackageStartupMessages(library(lubridate))
+```
+
+
+## Manipulación de datos temporales
+
+Convertir variables variable fecha, de texto a date
+
+```{r}
+
+tasacion <- tasacion_original %>% 
+  mutate(Fecha_Tasacion = ymd_hms(Fecha_Tasacion))
+
+```
+
+```{r echo=FALSE}
+suppressPackageStartupMessages(library(kableExtra))
+#solo para ver visualización en la presentación 
+tasacion %>%
+  head() %>%
+  kbl() %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    font_size = 12
+  )
+
+
+```
+
+##  Agregar Variables Temporales
+
+
+```{r}
+
+tasacion <- tasacion %>%
+  mutate(DIA = day(Fecha_Tasacion),
+         MES = month(Fecha_Tasacion),
+         AÑO = year(Fecha_Tasacion),
+         DIA_SEM = wday(Fecha_Tasacion, 
+                        label = TRUE, abbr = FALSE,
+                        week_start = getOption("lubridate.week.start", 1),
+                        locale =  Sys.getlocale("LC_TIME")),
+         SEMANA = week(Fecha_Tasacion)) %>% 
+  mutate(HORA = hour(Fecha_Tasacion),
+         MINUTO = minute(Fecha_Tasacion)) 
+```
+
+
+## Actividades de Resumen y Gráficos {#sec-timesGra}
+
+**Actividad: **
+
+Contar la cantidad de tasaciones que se realizaron por día semana y genere un gráfico
+
+```{r echo=FALSE, eval=TRUE}
+library(ggplot2)
+library(viridis, quietly = T)
+tas_day <- tasacion %>% 
+  group_by(DIA_SEM) %>% 
+  summarise(Cantidad = n())
+
+nombre_plot <- "Tasaciones por día"
+gd <- ggplot() +
+  geom_bar(data = tas_day, aes(x = DIA_SEM, y = Cantidad, 
+                               fill=DIA_SEM),
+           stat = "identity", 
+           alpha = 0.9, linewidth = 0.5)+
+  scale_fill_viridis_d()+
+  ggtitle(lab =  nombre_plot )+
+  labs(fill = "DIA_SEM")+
+  theme_bw()
+gd
+```
+
+
+
+**Actividad: **
+
+Contar la cantidad de tasaciones que se realizaron por mes y genere un gráfico
+
+```{r echo=FALSE, eval=TRUE}
+
+tas_mes <- tasacion %>% 
+  group_by(MES) %>% 
+  summarise(Cantidad = n(),  .groups = "keep") %>% 
+  mutate(MES = sprintf("%02d", MES))
+
+nombre_plot <- "Tasaciones por Mes"
+gm <- ggplot() +
+  geom_bar(data = tas_mes, aes(x = MES, y = Cantidad, 
+                               fill = MES),
+           stat = "identity",
+           alpha = 0.9, linewidth = 0.5)+
+  # scale_x_discrete(breaks =seq(0,12, 1))+
+  scale_fill_viridis_d()+
+  ggtitle(lab =  nombre_plot )+
+  labs(fill = "MES")+
+  theme_bw()
+gm
+```
+
+
+Gráficos de  Día Semana por Comuna
+
+```{r eval=FALSE}
+tas_day <- tasacion %>% 
+  group_by(DIA_SEM, Comuna) %>% 
+  summarise(Cantidad = n(), .groups = "keep")
+
+nombre_plot <- "Tasaciones por día"
+gdc <- ggplot() +
+  geom_bar(data = tas_day, aes(x = DIA_SEM, y = Cantidad, group = 1,
+                               fill=DIA_SEM),
+           stat = "identity", 
+           alpha = 0.9, size = 0.5)+
+  scale_fill_viridis_d()+
+  ggtitle(lab =  nombre_plot )+
+  labs(fill = "Día Semana")+
+   facet_wrap(~Comuna, nrow = 3)+ # Genera el mismo gráfico por comuna
+  theme_bw()
+gdc
+```
+
+
+```{r eval=TRUE, echo=FALSE, fig.width=8, fig.height=6}
+tas_day <- tasacion %>% 
+  group_by(DIA_SEM, Comuna) %>% 
+  summarise(Cantidad = n(), .groups = "keep")
+
+nombre_plot <- "Tasaciones por día por Comuna"
+gdc <- ggplot() +
+  geom_bar(data = tas_day, aes(x = DIA_SEM, y = Cantidad, group = 1,
+                               fill=DIA_SEM),
+           stat = "identity", 
+           alpha = 0.9, size = 0.5)+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  scale_fill_viridis_d()+
+  ggtitle(lab =  nombre_plot )+
+  labs(fill = "Día de la semana \npor comuna")+
+  facet_wrap(~Comuna, nrow = 3)+
+  theme_bw()
+gdc
+```
+
+
+
+`coord_flip()+`
+
+```{r eval=FALSE, echo=TRUE, fig.width=8, fig.height=6}
+tas_day <- tasacion %>% 
+  group_by(DIA_SEM, Comuna) %>% 
+  summarise(Cantidad = n(), .groups = "keep")
+
+nombre_plot <- "Tasaciones por día por Comuna"
+gdc_flip <- ggplot() +
+  geom_bar(data = tas_day, aes(x = DIA_SEM, y = Cantidad, group = 1,
+                               fill=DIA_SEM),
+           stat = "identity", 
+           alpha = 0.9, size = 0.5)+
+  scale_fill_viridis_d()+
+  ggtitle(lab =  nombre_plot )+
+  labs(fill = "Día de la semana \npor comuna")+
+  facet_wrap(~Comuna, nrow = 3)+
+  coord_flip()+
+  theme_bw()
+gdc_flip
+```
+
+
+
+```{r eval=TRUE, echo=FALSE, fig.width=8, fig.height=6}
+tas_day <- tasacion %>% 
+  group_by(DIA_SEM, Comuna) %>% 
+  summarise(Cantidad = n(), .groups = "keep")
+
+nombre_plot <- "Tasaciones por día por Comuna"
+gdc_flip <- ggplot() +
+  geom_bar(data = tas_day, aes(x = DIA_SEM, y = Cantidad, group = 1,
+                               fill=DIA_SEM),
+           stat = "identity", 
+           alpha = 0.9, size = 0.5)+
+  scale_fill_viridis_d()+
+  ggtitle(lab =  nombre_plot )+
+  labs(fill = "Día de la semana \npor comuna")+
+  facet_wrap(~Comuna, nrow = 3)+
+  coord_flip()+
+  theme_bw()
+gdc_flip
+```
+
+
+
+## Gráficos en 2 Dimensiones
+
+
+```{r eval=FALSE, warning=FALSE}
+t_h_semana <- tasacion %>%
+  group_by( DIA_SEM, HORA) %>%
+  summarize(count = n(), .groups = "keep")
+
+
+nombre_plot <- "Hora Día"
+plot <- ggplot(t_h_semana, aes(x = HORA, y = DIA_SEM, fill = count)) +
+  scale_x_continuous(breaks =seq(1,24, 2))+
+  geom_tile() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.6),
+        axis.title.x=element_blank(), axis.title.y=element_blank(),
+        panel.grid.major = element_line(colour = "NA"), 
+        panel.grid.minor = element_line(colour = "NA"),
+        plot.title = element_text(hjust = 0.5, size = rel(1)), 
+        plot.subtitle = element_text(hjust = 0.5, size = rel(1)),
+        panel.background = element_rect(fill = "NA", colour = "NA", linewidth = 1),
+        legend.title = element_blank(), legend.position="top",
+        legend.direction="horizontal", legend.key.width=unit(2, "cm"),
+        legend.key.height=unit(0.25, "cm"), legend.spacing=unit(-0.5,"cm"), 
+        panel.spacing=element_blank()) +
+  labs(nombre_plot) +
+  scale_fill_gradient(low = "gray98", high = "#27AE60")
+plot
+```
+
+##
+
+
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, fig.height=5, fig.width=9}
+t_h_semana <- tasacion %>%
+  group_by( DIA_SEM, HORA) %>%
+  summarize(count = n(), .group = "keep")
+
+
+nombre_plot <- "Hora Día"
+plot <- ggplot(t_h_semana, aes(x = HORA, y = DIA_SEM, fill = count)) +
+  scale_x_continuous(breaks =seq(1,24, 2))+
+  geom_tile() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.6),
+        axis.title.x=element_blank(), axis.title.y=element_blank(),
+        panel.grid.major = element_line(colour = "NA"), 
+        panel.grid.minor = element_line(colour = "NA"),
+        plot.title = element_text(hjust = 0.5, size = rel(1)), 
+        plot.subtitle = element_text(hjust = 0.5, size = rel(1)),
+        panel.background = element_rect(fill = "NA", colour = "NA", linewidth = 1),
+        legend.title = element_blank(), legend.position="top",
+        legend.direction="horizontal", legend.key.width=unit(2, "cm"),
+        legend.key.height=unit(0.25, "cm"), legend.spacing=unit(-0.5,"cm"), 
+        panel.spacing=element_blank()) +
+  labs(nombre_plot) +
+  scale_fill_gradient(low = "gray98", high = "#27AE60")
+plot
+```
+
+
+Guardar un Gráfico
+
+```{r eval=FALSE}
+nombre_plot <- "Tasaciones_dia_comuna"
+nombre_imagen <- paste0("../data/graficos/",gsub(" ", "_", nombre_plot) ,".jpg")
+ggplot2::ggsave(filename = nombre_imagen, plot = gdc, height = 7, width = 9)
+```
+
+
+
+## Gráficos Dinámicos
+
+
+
+Instalar librería [`plotly`](https://plotly.com/graphing-libraries/)
+
+```{r}
+# install.packages("plotly")
+suppressPackageStartupMessages(library(plotly))
+```
+
+
+Gráfico de Tasaciones por mes por Mes
+
+```{r eval=FALSE}
+library(ggplot2)
+library(scales)
+
+tas_mes <- tasacion %>% 
+  group_by(MES) %>% 
+  summarise(Cantidad = n(),  .groups = "keep")%>% 
+  mutate(MES = sprintf("%02d", MES))
+
+nombre_plot <- "Tasaciones por Mes"
+gm <- ggplot() +
+  geom_bar(data = tas_mes, aes(x = MES, y = Cantidad, fill = MES),
+           stat = "identity",
+           alpha = 0.9, size = 0.5)+
+  scale_fill_viridis_d()+
+  ggtitle(lab =  nombre_plot )+
+  labs(fill = "MES")+
+  theme_bw()
+
+ggplotly(gm)
+```
+
+
+```{r eval=TRUE, echo = FALSE, fig.width=8, fig.height=6, fig.align='center'}
+library(ggplot2)
+library(scales)
+
+tas_mes <- tasacion %>% 
+  group_by(MES) %>% 
+  summarise(Cantidad = n(),  .groups = "keep")%>% 
+  mutate(MES = sprintf("%02d", MES))
+
+nombre_plot <- "Tasaciones por Mes"
+gm <- ggplot() +
+  geom_bar(data = tas_mes, aes(x = MES, y = Cantidad, fill = MES),
+           stat = "identity",
+           alpha = 0.9, size = 0.5)+
+  scale_fill_viridis_d()+
+  ggtitle(lab =  nombre_plot )+
+  labs(fill = "MES")+
+  theme_bw()
+
+ggplotly(gm)
+```
+
+
+

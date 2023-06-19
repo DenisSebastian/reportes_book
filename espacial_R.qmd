@@ -1,5 +1,5 @@
 
-# Objetos Espaciales en R
+# Datos Espaciales {#sec-spatial}
 
 ## Introducción
 
@@ -81,6 +81,33 @@ m
 ```
 
 ![](images/mapa_mapview.png){fig-aling=center}
+
+
+## Volcano en 3D
+
+```{r eval=FALSE, echo = TRUE, fig.width=8, fig.height=6, fig.align='center'}
+library(plotly)
+# volcano is a numeric matrix that ships with R
+fig <- plot_ly(z = ~volcano)
+fig <- fig %>% add_surface()
+
+fig
+```
+
+
+
+
+```{r eval=TRUE, echo = FALSE, fig.width=8, fig.height=6, fig.align='center'}
+library(plotly)
+# volcano is a numeric matrix that ships with R
+fig <- plot_ly(z = ~volcano/2)
+fig <- fig %>% add_surface()
+
+fig
+```
+
+</div>
+
 
 
 ## Referencias

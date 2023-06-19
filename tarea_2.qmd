@@ -1,0 +1,33 @@
+# Tarea 2 {.unnumbered}
+
+
+
+```{r setup, include=FALSE, eval = FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, warning = FALSE, eval = FALSE,  fig.align='center')
+library(knitr)
+suppressPackageStartupMessages(library(dplyr))
+```
+
+## Enunciado General
+
+**Integrantes**: 1 (Individual).   
+**Fecha de Entrega**: 30 de Junio, 23:59 horas.
+
+
+## Parte 1 (Ponderación 70%)
+
+El reporte en cuestión no importa demasiado el tema lo importante es que se utilice los diferentes contenidos en los que se encuentran en el presente libro digital:
+
+-   Encabezado YAML (@sec-YAML)
+-   Orden basados en títulos (@sec-titles)
+-   Resumen de Bases (@sec-genRes, @sec-timesGra)
+-   Tablas (@sec-tablas)
+-   Gráficos y/o Mapas (@sec-ggplot, @sec-spatial)
+-   Imágenes (@sec-images)
+-   Links (@sec-links)
+
+
+## Parte 2 (Ponderación 30%)
+
+El reporte debe estar contenido en un proyecto de RStudio, y este proyecto es que se entrega como tarea 2, debe contener en su interior todas las subcarpetas que se utilizaron como por ejemplo `data`, `images` `R`, etc.
+En este punto se evaluará el orden en los códigos y estructura del proyecto, como referencia para crear el proyecto seguir las instrucción de @sec-ProyRStudio.

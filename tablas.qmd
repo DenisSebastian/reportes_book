@@ -1,0 +1,133 @@
+
+# Tablas en Markdown {#sec-tablas}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, warning = FALSE,  
+                      fig.align='center', fig.height=3.5)
+library(sf)
+library(dplyr)
+library(ggplot2)
+options(kableExtra.latex.load_packages = FALSE) # tener todas posbilidades
+library(kableExtra)
+```
+
+## kableExtra
+
+Existen muchas formas de generar tablas en markdown, para el caso de curso utilizaremos la librería `kableExtra` y su uso general se explica a continuación:
+
+![](images/logo_kableExtra.svg){fig-align="center" width="150"}
+
+**Instalación de `kableExtra`**
+
+```{r eval =FALSE}
+install.packages("kableExtra")
+# For dev version
+# install.packages("devtools") devtools::install_github("haozhu233/kableExtra")
+```
+
+**Cargar Librería**
+
+```{r eval=FALSE}
+options(kableExtra.latex.load_packages = FALSE) # tener todas posbilidades
+library(kableExtra)
+```
+
+Poner en el encabezado YAML
+
+```         
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflsca   pe}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
+  - \usepackage{xcolor}
+```
+
+**Generar una tabla de referencia**
+
+```{r}
+dt <- mtcars[1:5, 1:6]
+dt
+```
+
+**Tabla básica**
+
+```{r}
+kbl(dt)
+```
+
+**Tabla con Caption**
+
+```{r}
+kbl(dt, caption = "Demo table", booktabs = T) %>% 
+  kable_styling(latex_options = c("striped", "hold_position"))
+```
+
+**Tamaño de fuente**
+
+```{r}
+kbl(dt, booktabs = T) %>% 
+  kable_styling(font_size = 7)
+```
+
+**Estilos Colores**
+
+```{r}
+that_cell <- c(rep(F, 7), T)
+mtcars[1:8, 1:8] %>%
+  kbl(booktabs = T, linesep = "") %>%
+  kable_paper(full_width = T) %>%
+  kable_styling(font_size = 11) %>% 
+  column_spec(2, color = spec_color(mtcars$mpg[1:8]),
+              link = "https://haozhu233.github.io/kableExtra") %>% 
+  column_spec(6, color = "white",background = spec_color(mtcars$drat[1:8], end = 0.7),
+              popover = paste("am:", mtcars$am[1:8])) %>% 
+  column_spec(9,strikeout = that_cell, bold = that_cell, color = c(rep("black", 7), "red"))
+```
+
+
+## Tablas con Add-in [insert_table](https://github.com/lbusett/insert_table)
+
+
+**Instalación**
+
+```{r eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("lbusett/insert_table")
+```
+
+
+**Uso Básico**
+
+Al instalarlo, `insert_table` registra un nuevo Addin de RStudio (Insert Table) que puede utilizarse para insertar fácilmente una tabla en un documento Rmd. Para utilizarlo, abra un documento Rmd y, con el cursor dentro de un trozo r y seleccione "Addins –> Insert Table".
+
+![](images/tab_addin1.gif)
+
+**Uso de Copiar y Pegar**
+
+![](images/tab_addin2.gif)
+
+
+Mas referencias en [acá](https://lbusett.netlify.app/post/a-new-rstudio-addin-to-facilitate-inserting-tables-in-rmarkdown-documents/)
+
+
+## Referencias Generales
+
+**Referencias para generar tablas con estilos**
+
+-   <http://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf>
+-   <http://destio.us.es/calvo/ficheros/ComoCrearTablasRMarkdown_PedroLuque_2019Sep_librodigital.pdf>
+
+Tablas para html:
+
+-   <http://haozhu233.github.io/kableExtra/awesome_table_in_html.html>
+
