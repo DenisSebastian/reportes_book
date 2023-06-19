@@ -37,11 +37,14 @@ La base que se utulizará corresponderá las zonas censales urbanas de Chile, pa
 
 ```{r}
 
+comunas <- readRDS("data/censo/Comunas_Chile.rds")
 zonas <-  readRDS("data/censo/zonas_urb_consolidadas.rds")
 # unique(zonas$NOM_PROVIN)
 provincia  <- "SAN ANTONIO"
 
+comunas_prov <- comunas  %>% filter(NOM_PROVIN == provincia)
 base_provincial <-  zonas %>% filter(NOM_PROVIN == provincia)
+
 comunas <- unique(base_provincial$NOM_COMUNA)
 comunas
 ```
@@ -58,13 +61,18 @@ ruta_salida <- "data/graficos/"
 
 for(comuna in comunas){
   print(paste0("Operando la comuna: ", comuna))
+  
+  comunas_contorno <-  comunas_prov %>% 
+    filter(NOM_COMUNA == comuna)
   #Fitrar base
   base_comunal <- base_provincial %>% 
     filter(NOM_COMUNA == comuna)
   # generar gráfico
   grafico_com <- ggplot() +
+    geom_sf(data = comunas_contorno, fill ="gray95",
+            color = "gray40")+
     geom_sf(data = base_comunal, aes(fill = DENS_HAB), alpha= 0.8)+
-    scale_fill_viridis_c()+
+    scale_fill_viridis_c(name = "Densidad \nHabitantes")+
     ggtitle(paste0("DENSIDAD HABITANTES ", comuna)) +
     theme_bw() +
     theme(panel.grid.major = element_line(colour = "gray80"),
@@ -72,7 +80,8 @@ for(comuna in comunas){
   #guardar imagenes
   nombre_plot <- "Densidad_habitantes"
   nombre_imagen <- paste0(ruta_salida, gsub(" ", "_", comuna) ,".jpg")
-  ggplot2::ggsave(filename = nombre_imagen, plot = grafico_com, height = 7, width = 9)
+  ggplot2::ggsave(filename = nombre_imagen, plot = grafico_com, 
+                  height = 7, width = 9)
 }
 ```
 
@@ -80,17 +89,18 @@ for(comuna in comunas){
 
 ::: {#fig-elephants layout-ncol=2}
 
-![Densidad Algarrobo](data/graficos/ALGARROBO.jpg){width=60%}
 
-![Densidad Cartagena](data/graficos/CARTAGENA.jpg){width=60%}
+![Densidad de Habitantes Algarrobo](data/graficos/ALGARROBO.jpg){width=60%}
 
-![Densidad El Quisco](data/graficos/EL_QUISCO.jpg){width=60%}
+![Densidad de Habitantes Cartagena](data/graficos/CARTAGENA.jpg){width=60%}
 
-![Densidad El Tabo](data/graficos/EL_TABO.jpg){width=60%}
+![Densidad de Habitantes El Quisco](data/graficos/EL_QUISCO.jpg){width=60%}
 
-![Densidad San Antonio](data/graficos/SAN_ANTONIO.jpg){width=60%}
+![Densidad de Habitantes El Tabo](data/graficos/EL_TABO.jpg){width=60%}
 
-![Densidad Santo Domingo](data/graficos/SANTO_DOMINGO.jpg){width=60%}
+![Densidad de Habitantes San Antonio](data/graficos/SAN_ANTONIO.jpg){width=60%}
+
+![Densidad de Habitantes Santo Domingo](data/graficos/SANTO_DOMINGO.jpg){width=60%}
 
 
 Mapas generados de forma iterativa

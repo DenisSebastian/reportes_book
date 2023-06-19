@@ -95,7 +95,7 @@
     "href": "variables_R.html#tipos-de-objetos-en-r",
     "title": "3  Variables en R",
     "section": "3.1 Tipos de Objetos en R",
-    "text": "3.1 Tipos de Objetos en R\nLos Datos en R se pueden clasificar por su dimensiones y los tipos de Datos que permiten almacenar, como se muestra en la siguiente tabla:\n\n\n\nDimensiones\nHomogéneos\nHeterogéneos\n\n\n\n\n1d\nAtomic vector\nList\n\n\n2d\nMatrix\nData frame\n\n\nnd\nArray\n\n\n\n\nFuente: http://adv-r.had.co.nz/Data-structures.html\nR nos permite definir variables que pueden ser luego usadas en las distintas operaciones. El lenguaje no solo permite definir escalares (variable de un numero), si no también variables que sean un conjunto de numero o caracteres ordenados.\n\n3.1.1 Variables Numéricas\n\n# La asignación en R son válidos 2 métodos '&lt;-' o '='\nx &lt;- 7 # Definir variable (escalar) x que sea igual a 7\nx # Mostrar que es x\n\n[1] 7\n\ny &lt;- 3 + 2 * x # Crear y como funcion de x \ny\n\n[1] 17\n\nclass(y)\n\n[1] \"numeric\"\n\n\nNúmeros Random con decimales\n\nru &lt;- runif(n = 100, min = 1, max = 10)\nru\n\n  [1] 5.930788 3.956131 3.342021 8.697688 9.944607 2.994681 8.525285 5.047273\n  [9] 2.850082 9.774288 5.226254 3.780178 5.223975 5.208808 1.878857 7.971354\n [17] 6.128305 8.561189 1.243277 3.978106 7.700536 4.839797 9.439901 4.071227\n [25] 1.988674 4.730944 3.084477 9.362690 1.157382 7.293323 1.729778 3.423252\n [33] 9.463366 4.647926 5.398147 7.740617 9.775634 6.411100 1.475157 5.839752\n [41] 7.729371 2.686535 7.247792 4.461482 1.613324 9.616716 6.746802 6.804118\n [49] 4.834852 3.362311 6.682948 4.445659 4.538496 8.205258 3.564600 9.279856\n [57] 2.065776 5.121146 1.678057 4.998802 8.961468 5.339518 9.883989 6.581984\n [65] 7.924488 1.872681 3.681108 3.580355 3.794134 9.793604 3.835547 6.493651\n [73] 9.802915 2.561087 7.903989 6.319108 5.478905 3.295461 7.752855 6.892406\n [81] 4.595018 6.246136 9.303504 3.098247 9.998047 2.188718 8.328250 5.993208\n [89] 4.742395 5.028677 1.810516 5.621878 9.772403 3.515527 9.999783 8.260599\n [97] 5.386895 6.820558 4.539352 3.451335\n\n\n\nhist(ru, breaks = 20, col = \"orange\", border = \"gray60\", \n     main = \"Histograma de valores Random\")\n\n\n\n\n\n\n\n\nNúmeros Random Enteros\nSimular los lanzamientos de un dado\n\nsample.int(n = 6, size = 10, replace = T)\n\n [1] 4 5 2 2 5 3 4 3 3 4\n\n\n\n\n3.1.2 Variables de Caracter\n\nch &lt;- \"Chile\" # Definir variable (objeto) ch que sea la palabra \"Chile\"\nsn &lt;- \"Santiago\"\nch # Mostrar ch\n\n[1] \"Chile\"\n\nsn\n\n[1] \"Santiago\"\n\n\nUnir variables de texto con paste()\n\nch &lt;- \"Chile\" # Definir variable (objeto) ch que sea la palabra \"Chile\"\nsn &lt;- \"Santiago\"\nunion &lt;- paste(sn,ch, sep = \", \")\nunion\n\n[1] \"Santiago, Chile\"\n\n\nUtilizar paste0()\n\nunion &lt;- paste(\"Provincia de \", sn,ch, sep = \", \")\nunion\n\n[1] \"Provincia de , Santiago, Chile\"\n\nunion0 &lt;- paste0(\"Provincia de \", sn, \", \", ch)\nunion0\n\n[1] \"Provincia de Santiago, Chile\"\n\n\nBuscar y reemplazar con gsub\n\nav &lt;- \"Av. Apoquindo\"\ncomuna &lt;- \"comuna de Las Condes\"\ncalle &lt;- paste(av, comuna, union0, sep = \", \")\ncalle\n\n[1] \"Av. Apoquindo, comuna de Las Condes, Provincia de Santiago, Chile\"\n\n# reemplazar Av. por Avenida\ncalle_new &lt;- gsub(pattern = \"Av.\", replacement = \"Avenida\", x = calle)\ncalle_new\n\n[1] \"Avenida Apoquindo, comuna de Las Condes, Provincia de Santiago, Chile\""
+    "text": "3.1 Tipos de Objetos en R\nLos Datos en R se pueden clasificar por su dimensiones y los tipos de Datos que permiten almacenar, como se muestra en la siguiente tabla:\n\n\n\nDimensiones\nHomogéneos\nHeterogéneos\n\n\n\n\n1d\nAtomic vector\nList\n\n\n2d\nMatrix\nData frame\n\n\nnd\nArray\n\n\n\n\nFuente: http://adv-r.had.co.nz/Data-structures.html\nR nos permite definir variables que pueden ser luego usadas en las distintas operaciones. El lenguaje no solo permite definir escalares (variable de un numero), si no también variables que sean un conjunto de numero o caracteres ordenados.\n\n3.1.1 Variables Numéricas\n\n# La asignación en R son válidos 2 métodos '&lt;-' o '='\nx &lt;- 7 # Definir variable (escalar) x que sea igual a 7\nx # Mostrar que es x\n\n[1] 7\n\ny &lt;- 3 + 2 * x # Crear y como funcion de x \ny\n\n[1] 17\n\nclass(y)\n\n[1] \"numeric\"\n\n\nNúmeros Random con decimales\n\nru &lt;- runif(n = 100, min = 1, max = 10)\nru\n\n  [1] 7.705509 5.699855 7.457653 5.800335 3.067788 6.984738 4.546210 2.905978\n  [9] 3.621082 1.032743 4.647513 8.397943 2.426449 2.753083 2.968158 8.990907\n [17] 5.150697 6.086878 2.529096 2.168656 2.480777 4.944015 8.321978 2.738360\n [25] 9.034522 2.208302 6.288985 8.155777 8.680585 3.792172 1.547014 5.427647\n [33] 9.020320 4.340298 1.427913 9.893897 9.390765 1.354699 6.950624 1.243195\n [41] 9.009755 2.096389 6.274919 4.213946 5.635025 4.118357 6.650826 3.292109\n [49] 5.393661 7.527108 4.380082 3.973448 4.898590 1.757224 6.997311 8.562691\n [57] 5.618079 3.725880 1.354909 9.392723 4.796647 1.002321 1.017374 9.184238\n [65] 4.719618 3.896864 3.572570 2.472667 2.121100 8.792520 7.331109 9.303452\n [73] 3.238761 9.201473 6.071368 8.326933 8.085320 3.471231 4.525108 2.067189\n [81] 4.107972 6.458798 7.185021 7.641806 3.669091 5.398600 4.577850 2.449626\n [89] 4.060541 7.299998 3.201689 9.518517 7.500428 5.327798 1.421597 7.492527\n [97] 3.384699 5.111891 4.771216 3.613366\n\n\n\nhist(ru, breaks = 20, col = \"orange\", border = \"gray60\", \n     main = \"Histograma de valores Random\")\n\n\n\n\n\n\n\n\nNúmeros Random Enteros\nSimular los lanzamientos de un dado\n\nsample.int(n = 6, size = 10, replace = T)\n\n [1] 6 6 3 3 2 4 5 1 6 4\n\n\n\n\n3.1.2 Variables de Caracter\n\nch &lt;- \"Chile\" # Definir variable (objeto) ch que sea la palabra \"Chile\"\nsn &lt;- \"Santiago\"\nch # Mostrar ch\n\n[1] \"Chile\"\n\nsn\n\n[1] \"Santiago\"\n\n\nUnir variables de texto con paste()\n\nch &lt;- \"Chile\" # Definir variable (objeto) ch que sea la palabra \"Chile\"\nsn &lt;- \"Santiago\"\nunion &lt;- paste(sn,ch, sep = \", \")\nunion\n\n[1] \"Santiago, Chile\"\n\n\nUtilizar paste0()\n\nunion &lt;- paste(\"Provincia de \", sn,ch, sep = \", \")\nunion\n\n[1] \"Provincia de , Santiago, Chile\"\n\nunion0 &lt;- paste0(\"Provincia de \", sn, \", \", ch)\nunion0\n\n[1] \"Provincia de Santiago, Chile\"\n\n\nBuscar y reemplazar con gsub\n\nav &lt;- \"Av. Apoquindo\"\ncomuna &lt;- \"comuna de Las Condes\"\ncalle &lt;- paste(av, comuna, union0, sep = \", \")\ncalle\n\n[1] \"Av. Apoquindo, comuna de Las Condes, Provincia de Santiago, Chile\"\n\n# reemplazar Av. por Avenida\ncalle_new &lt;- gsub(pattern = \"Av.\", replacement = \"Avenida\", x = calle)\ncalle_new\n\n[1] \"Avenida Apoquindo, comuna de Las Condes, Provincia de Santiago, Chile\""
   },
   {
     "objectID": "variables_R.html#estructuras-de-datos",
@@ -137,7 +137,7 @@
     "href": "loops_R.html#estructuras-de-bucles",
     "title": "5  Estructura de Control en R",
     "section": "5.2 Estructuras de bucles",
-    "text": "5.2 Estructuras de bucles\nLas estructuras de bucles son una de las tres estructuras de control principales en R. Estas estructuras permiten ejecutar un bloque de código repetidamente mientras se cumpla una condición determinada. En R, existen tres estructuras de bucles principales: “while”, “for” y “repeat”.\nBeneficios\n\nEs más fácil ver el objetivo de tu código; lo diferente llama más atención a la vista que aquello que permanece igual.\nEs más sencillo responder a cambios en los requerimientos. A medida que tus necesidades cambian, solo necesitarás realizar cambios en un lugar, en vez de recordar cambiar en cada lugar donde copiaste y pegaste el código.\nEs probable que tengas menos errores porque cada línea de código es utilizada en más lugares.\n\n\n5.2.1 Estructura de bucle “for”:\nLa estructura “for” permite repetir la ejecución de un bloque de código un número determinado de veces. La sintaxis básica de la estructura “for” es la siguiente:\n\nfor (variable in secuencia) {\n  # Código a ejecutar para cada elemento en la secuencia\n}\n\nLa “secuencia” es un objeto que contiene una serie de elementos. La “variable” toma el valor de cada elemento de la secuencia en cada iteración del bucle. En cada iteración, se ejecutará el bloque de código dentro del “for” para ese valor de la variable.\nEjemplo simple: print una secuencia\n\nfor (i in 1:5){\n  print(i)\n}\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n\n\nEjemplo 2: Guardando los resultados en un vector\n\ndado &lt;- 1:6\nmi_vector &lt;- NULL\nfor(cara in dado) {\n  mi_vector[cara] &lt;- cara ^ 2\n}\nmi_vector\n\n[1]  1  4  9 16 25 36\n\n\nEjemplo 3: Loops con vectores\n\nalumnos &lt;- c(\"Carmen\", \"Adriana\", \"Marco\", \"Fabi\", \"Brenda\")\n\nfor(i in 1:length(alumnos)) {\n  print(paste(\"Hola,\", alumnos[i], sep = \" \"))\n}\n\n[1] \"Hola, Carmen\"\n[1] \"Hola, Adriana\"\n[1] \"Hola, Marco\"\n[1] \"Hola, Fabi\"\n[1] \"Hola, Brenda\"\n\n\nEjemplo 4: loops en Dataframes\n\ndf &lt;- data.frame(a = rnorm(10), b = rnorm(10),\n                 c = rnorm(10), d = rnorm(10))\n\nfor(i in 1:ncol(df)){\n  promedio = mean(df[,i])\n  print(promedio)\n}\n\n[1] -0.1810021\n[1] 0.249796\n[1] 0.0492003\n[1] -0.4137817\n\n\n\n\n5.2.2 Estructura de bucle “while”:\nLa estructura “while” permite repetir la ejecución de un bloque de código mientras se cumpla una condición determinada. La sintaxis básica de la estructura “while” es la siguiente:\n\nwhile (condición) {\n  # Código a ejecutar mientras se cumpla la condición\n}\n\nLa “condición” es una expresión lógica que evalúa a verdadero o falso. Si la condición es verdadera, se ejecutará el bloque de código dentro del “while”. Este proceso se repetirá hasta que la condición sea falsa.\n\n\n5.2.3 Estructura de bucle “repeat”:\n\nrepeat {\n  # Código a ejecutar de manera indefinida\n  if (condición) {\n    break\n  }\n}\n\nEl bloque de código dentro del “repeat” se ejecutará de manera indefinida hasta que se encuentre la sentencia “break”, que permite salir del bucle. La “condición” es una expresión lógica que evalúa a verdadero o falso. Si la condición es verdadera, se ejecutará la sentencia “break” y se saldrá del bucle."
+    "text": "5.2 Estructuras de bucles\nLas estructuras de bucles son una de las tres estructuras de control principales en R. Estas estructuras permiten ejecutar un bloque de código repetidamente mientras se cumpla una condición determinada. En R, existen tres estructuras de bucles principales: “while”, “for” y “repeat”.\nBeneficios\n\nEs más fácil ver el objetivo de tu código; lo diferente llama más atención a la vista que aquello que permanece igual.\nEs más sencillo responder a cambios en los requerimientos. A medida que tus necesidades cambian, solo necesitarás realizar cambios en un lugar, en vez de recordar cambiar en cada lugar donde copiaste y pegaste el código.\nEs probable que tengas menos errores porque cada línea de código es utilizada en más lugares.\n\n\n5.2.1 Estructura de bucle “for”:\nLa estructura “for” permite repetir la ejecución de un bloque de código un número determinado de veces. La sintaxis básica de la estructura “for” es la siguiente:\n\nfor (variable in secuencia) {\n  # Código a ejecutar para cada elemento en la secuencia\n}\n\nLa “secuencia” es un objeto que contiene una serie de elementos. La “variable” toma el valor de cada elemento de la secuencia en cada iteración del bucle. En cada iteración, se ejecutará el bloque de código dentro del “for” para ese valor de la variable.\nEjemplo simple: print una secuencia\n\nfor (i in 1:5){\n  print(i)\n}\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n\n\nEjemplo 2: Guardando los resultados en un vector\n\ndado &lt;- 1:6\nmi_vector &lt;- NULL\nfor(cara in dado) {\n  mi_vector[cara] &lt;- cara ^ 2\n}\nmi_vector\n\n[1]  1  4  9 16 25 36\n\n\nEjemplo 3: Loops con vectores\n\nalumnos &lt;- c(\"Carmen\", \"Adriana\", \"Marco\", \"Fabi\", \"Brenda\")\n\nfor(i in 1:length(alumnos)) {\n  print(paste(\"Hola,\", alumnos[i], sep = \" \"))\n}\n\n[1] \"Hola, Carmen\"\n[1] \"Hola, Adriana\"\n[1] \"Hola, Marco\"\n[1] \"Hola, Fabi\"\n[1] \"Hola, Brenda\"\n\n\nEjemplo 4: loops en Dataframes\n\ndf &lt;- data.frame(a = rnorm(10), b = rnorm(10),\n                 c = rnorm(10), d = rnorm(10))\n\nfor(i in 1:ncol(df)){\n  promedio = mean(df[,i])\n  print(promedio)\n}\n\n[1] 0.08395199\n[1] 0.8664503\n[1] 0.4807239\n[1] -0.5006916\n\n\n\n\n5.2.2 Estructura de bucle “while”:\nLa estructura “while” permite repetir la ejecución de un bloque de código mientras se cumpla una condición determinada. La sintaxis básica de la estructura “while” es la siguiente:\n\nwhile (condición) {\n  # Código a ejecutar mientras se cumpla la condición\n}\n\nLa “condición” es una expresión lógica que evalúa a verdadero o falso. Si la condición es verdadera, se ejecutará el bloque de código dentro del “while”. Este proceso se repetirá hasta que la condición sea falsa.\n\n\n5.2.3 Estructura de bucle “repeat”:\n\nrepeat {\n  # Código a ejecutar de manera indefinida\n  if (condición) {\n    break\n  }\n}\n\nEl bloque de código dentro del “repeat” se ejecutará de manera indefinida hasta que se encuentre la sentencia “break”, que permite salir del bucle. La “condición” es una expresión lógica que evalúa a verdadero o falso. Si la condición es verdadera, se ejecutará la sentencia “break” y se saldrá del bucle."
   },
   {
     "objectID": "loops_R.html#estructuras-de-control-de-flujo",
@@ -175,8 +175,8 @@
     "text": "6.3 Funciones básicas dplyr\n\n\n\n\n6.3.1 Select\nselect Seleccionar variables relevantes\n\n# seleccionar nomnres de columnas que deseo conservar\ntbl_sii %&gt;%\n  select(n_com, oficinas, comercio, vivienda)\n\n# A tibble: 210,662 × 4\n   n_com         oficinas comercio vivienda\n   &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n 1 IQUIQUE              0        0        0\n 2 IQUIQUE              0        0        0\n 3 ALTO HOSPICIO        0        0        0\n 4 ALTO HOSPICIO        0        0        0\n 5 ALTO HOSPICIO        0        0        0\n 6 ALTO HOSPICIO        0        0        0\n 7 ALTO HOSPICIO        0        0        0\n 8 ALTO HOSPICIO        0        0        0\n 9 ALTO HOSPICIO        0        0        0\n10 ALTO HOSPICIO        0        0        0\n# ℹ 210,652 more rows\n\n# seleccionar nomnres de columnas que deseo eliminar anteponiendo un \"-\"\ntbl_sii %&gt;%\n  select(-cod_com)\n\n# A tibble: 210,662 × 9\n   n_com         manzana   reg num_manz oficinas comercio vivienda total   AREA\n   &lt;chr&gt;         &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n 1 IQUIQUE       1201-0      1        0        0        0        0     0   585.\n 2 IQUIQUE       1201-0      1        0        0        0        0     0 17291.\n 3 ALTO HOSPICIO 1211-0      1        0        0        0        0     0  1859.\n 4 ALTO HOSPICIO 1211-0      1        0        0        0        0     0   442.\n 5 ALTO HOSPICIO 1211-0      1        0        0        0        0     0   205.\n 6 ALTO HOSPICIO 1211-0      1        0        0        0        0     0  1200.\n 7 ALTO HOSPICIO 1211-0      1        0        0        0        0     0  4548.\n 8 ALTO HOSPICIO 1211-0      1        0        0        0        0     0   130.\n 9 ALTO HOSPICIO 1211-0      1        0        0        0        0     0   300.\n10 ALTO HOSPICIO 1211-0      1        0        0        0        0     0  6488.\n# ℹ 210,652 more rows\n\n\n\n\n6.3.2 Filter\n\nmi_comuna &lt;- \"LAS CONDES\" \n\nsii_com &lt;- tbl_sii %&gt;%\n  filter(n_com == mi_comuna) \n \nhead(sii_com, 5)\n\n# A tibble: 5 × 10\n  n_com    manzana   reg cod_com num_manz oficinas comercio vivienda total  AREA\n  &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 LAS CON… 15108-…    13   15108     2358        0        0     1316  1390 2358.\n2 LAS CON… 15108-…    13   15108     2360        0        0     1590  1622 2280.\n3 LAS CON… 15108-…    13   15108     2362        0        0     1436  1502 2659.\n4 LAS CON… 15108-…    13   15108     2364        0        0     1926  1926 3348.\n5 LAS CON… 15108-…    13   15108     2366        0        0     2584  2656 4390.\n\n\nfilter: Operadores Lógicos\n\n\n\n\n\n\n\n\n\n\n\nOperador\nComparación\nEjemplo\nResultado\n\n\n\n\nx | y\nx Ó y es verdadero\nTRUE | FALSE\nTRUE\n\n\nx & y\nx Y y son verdaderos\nTRUE & FALSE\nFALSE\n\n\n!x\nx no es verdadero (negación)\n!TRUE\nFALSE\n\n\nisTRUE(x)\nx es verdadero (afirmación)\nisTRUE(TRUE)\nTRUE\n\n\n\n\n\nFiltrar las manzanas que tengan valores de oficina y comercio mayores a 0\n\nsii_com %&gt;%\n  filter(oficinas &gt; 0 & comercio &gt; 0) \n\n# A tibble: 493 × 10\n   n_com manzana   reg cod_com num_manz oficinas comercio vivienda  total   AREA\n   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n 1 LAS … 15108-…    13   15108     2400     322     3388    65422  1.22e5 1.06e5\n 2 LAS … 15108-…    13   15108     2407   30864     2518        0  7.50e4 4.04e3\n 3 LAS … 15108-…    13   15108     1392     424     9902        0  1.58e4 1.27e4\n 4 LAS … 15108-…    13   15108      336   45190     1432        0  8.28e4 3.24e3\n 5 LAS … 15108-…    13   15108      338     424.     244.    9993. 1.17e4 1.11e4\n 6 LAS … 15108-…    13   15108      338     414.     238.    9765. 1.14e4 1.06e4\n 7 LAS … 15108-…    13   15108      339    1120     5274     7748  1.49e4 9.38e3\n 8 LAS … 15108-…    13   15108      340     250       72    55206  7.23e4 1.22e4\n 9 LAS … 15108-…    13   15108      342     494     1914    47690  6.97e4 1.62e4\n10 LAS … 15108-…    13   15108      349   17826     1568        0  3.38e4 1.84e3\n# ℹ 483 more rows"
   },
   {
-    "objectID": "tidyverse_R.html#resúmenes-estadísticos-con-dplyr",
-    "href": "tidyverse_R.html#resúmenes-estadísticos-con-dplyr",
+    "objectID": "tidyverse_R.html#sec-genRes",
+    "href": "tidyverse_R.html#sec-genRes",
     "title": "6  Tidyverse en R",
     "section": "6.4 Resúmenes Estadísticos con dplyr",
     "text": "6.4 Resúmenes Estadísticos con dplyr\n\n\n\nContabilizar cuantos metros cuadrados de oficina por cada comuna.\n\ntbl_resumen &lt;-  tbl_sii %&gt;%\n  group_by(n_com) %&gt;%\n  summarise(Cantidad_mz = n(),\n            Total_of = sum(oficinas)) %&gt;%\n  arrange(desc(Total_of)) # Ordenar\n\ntbl_resumen\n\n# A tibble: 170 × 3\n   n_com           Cantidad_mz Total_of\n   &lt;chr&gt;                 &lt;int&gt;    &lt;dbl&gt;\n 1 SANTIAGO CENTRO         686  6105996\n 2 LAS CONDES             2310  4248336\n 3 PROVIDENCIA             885  3495426\n 4 HUECHURABA             1160  1006138\n 5 QUILICURA              2592   751874\n 6 VITACURA                950   743734\n 7 SANTIAGO SUR            623   669270\n 8 Ã‘UÃ‘OA                1337   637982\n 9 SANTIAGO OESTE          586   586724\n10 PUDAHUEL               2775   561868\n# ℹ 160 more rows\n\n\nActividad\n\nContabilizar cuantos metros cuadrados de Comercio hay por cada comuna rdenar de mayor a menor.\nCrear tabla con las 10 comunas que tienen mayor densisdad de Comercio\n\n\n\n\n\n\n\nDensidad de comercio\n\n\n\nSe puede entender como la división de la cantidad de metros cuadrados de comercio dividio por el total de metros cuadrados."
@@ -224,11 +224,11 @@
     "text": "7.4 Creación de Reporte\nExisten en Rstudio dos formas de trabajar con un archivo Rmd (RMarkdown) con código directo llamado source o a través de Visual Editor (Shift + Ctrl + F4 ), como se observa a continuación:\n\n\n\nVisual Editor (Shift + Ctrl + F4 )"
   },
   {
-    "objectID": "reporte.html#elementos-de-un-documento-rmarkdown",
-    "href": "reporte.html#elementos-de-un-documento-rmarkdown",
+    "objectID": "reporte.html#sec-YAML",
+    "href": "reporte.html#sec-YAML",
     "title": "7  Rmarkdown",
     "section": "7.5 Elementos de un documento Rmarkdown",
-    "text": "7.5 Elementos de un documento Rmarkdown\nAspetos generales del texto. Referencias Link\n\ntitle Texto entre comillas que servirá de título general al documento.\nsubtitle. Texto entre comillas que servirá de subtítulo para el título general del documento.\nauthor Texto entre comillas para indicar el nombre del o los autores.\ndate. Campo para indicar la fecha. En el texto, con la expresión today, se solicita que imprima la fecha actual según el calendario del sistema operativo.\nbibliography. Se indica el nombre del archivo que contiene los datos para construir el listado de referencia bibliográficas. Este archivo es de formato BibTex y se construye usando un gestor de referencias como Zotero.\npdf_document: indica el formato preestablecido para compilar el documento. En este caso, se trata de un PDF. Puede ser html_document o word_document. El usuario puede escoger la modalidad que desee al compilar usando las opciones del botón knit; si se compila sin escoger ninguna opción, se compilará según el formato indicado en este encabezado.\nfig_caption: indica si las figuras deben incorporar leyendas. latex_engine: permite definir el motor de LaTex utilizado para compilar los documentos.\nnumber_sections: si está definido como yes define que se numerarán los títulos y sutítulos a lo largo del documento, de manera automática y correlativa.\ntoc: es la abreviación de table of contents; si está definido como yes incorporará al inicio del documento una tabla de contenidos construida a partir de los tres primeros niveles de los títulos y subtítulos de sección utilizados."
+    "text": "7.5 Elementos de un documento Rmarkdown\nAspectos generales del texto. Referencias Link\n\ntitle Texto entre comillas que servirá de título general al documento.\nsubtitle. Texto entre comillas que servirá de subtitulo para el título general del documento.\nauthor Texto entre comillas para indicar el nombre del o los autores.\ndate. Campo para indicar la fecha. En el texto, con la expresión today, se solicita que imprima la fecha actual según el calendario del sistema operativo.\nbibliography. Se indica el nombre del archivo que contiene los datos para construir el listado de referencia bibliográficas. Este archivo es de formato BibTex y se construye usando un gestor de referencias como Zotero.\npdf_document: indica el formato preestablecido para compilar el documento. En este caso, se trata de un PDF. Puede ser html_document o word_document. El usuario puede escoger la modalidad que desee al compilar usando las opciones del botón knit; si se compila sin escoger ninguna opción, se compilará según el formato indicado en este encabezado.\nfig_caption: indica si las figuras deben incorporar leyendas. latex_engine: permite definir el motor de LaTex utilizado para compilar los documentos.\nnumber_sections: si está definido como yes define que se numerarán los títulos y sutítulos a lo largo del documento, de manera automática y correlativa.\ntoc: es la abreviación de table of contents; si está definido como yes incorporará al inicio del documento una tabla de contenidos construida a partir de los tres primeros niveles de los títulos y subtítulos de sección utilizados."
   },
   {
     "objectID": "reporte.html#sintaxis",
@@ -236,6 +236,62 @@
     "title": "7  Rmarkdown",
     "section": "7.6 Sintaxis",
     "text": "7.6 Sintaxis\n\n7.6.1 Títulos\n\n\n\n7.6.2 Formato a texto\nDeclaración:\n*Cursiva*,  **Negrita**, ~~Tachado~~ y Km^2^\nResultados:\nCursiva, Negrita, Tachado y Km2\n\n\n7.6.3 Imágenes\nDeclaración:\n![Logo de R](images/Rlogo.png)\nResultados:\n\n\n\nLogo de R\n\n\n\n\n7.6.4 Links\nEste es el formato para crear links [R para Ciencia de Datos](https://es.r4ds.hadley.nz)\nEste es el resultado: R para Ciencia de Datos\n\n\n7.6.5 Listas\n* Item 1\n    + Item 2a\n    + Item 2b\n\nÍtem 1\n\nItem 2a\nItem 2b\n\n\n\n\n7.6.6 Formulas\nEsto es una función en la línea $h^2 = a^2+b^2$\nEsto es una función en la línea h^2 = a^2+b^2\n$$h = \\sqrt{a^2+b^2}$$ \nh = \\sqrt{a^2+b^2}"
+  },
+  {
+    "objectID": "reporte.html#configuración-del-código",
+    "href": "reporte.html#configuración-del-código",
+    "title": "7  Rmarkdown",
+    "section": "7.7 Configuración del Código",
+    "text": "7.7 Configuración del Código\nTeniendo en cuenta que uno de los elementos con mayor importancia en los reportes es la capacidad de incorporar bloques de código y este esa renderizado, entonce también se debe conocer los aspectos de configuración de ellos.\nSe trata de bloques de código delimitados por la siguiente estructura: el inicio de un código está delimitado por tres apostrofes seguidos por un r entre corchetes curvos {r}, y su cierre por otros tres apostrofes. Eso delimita lo que se ejecutará como código de computación, diferenciándolo respecto al texto simple. A continuación se observa un ejemplo de esto:\n\nLos argumentos sirven para configurar el comportamiento del código al momento de compilar el documento.\nComo no siempre se buscará que en el reporte final se despliegue la sintaxis original, o los mensajes y/o advertencias que reporta R luego de ejecutar un comando, es posible configurar la ejecución de cada trozo de código agregando diferentes opciones.\nPor ejemplo, al abrir el siguiente código de nuestra sintaxis de Markdown con las siguientes opciones {r, echo = FALSE, results = 'asis', message= FALSE} les estamos indicando lo siguiente:\necho = FALSE significa que no se desplegará la sintaxis en el reporte, pero sí se ejecutará la operación y mostrarán los resultados.\nresults = 'asis' indica que el resultado se exportará directamente al nuevo archivo, sin que sea configurado por RMarkdown. Esto es útil con funciones que formatean de manera inmediata los resultados al formato deseado.\nmessage = FALSE indica que no se mostrarán los mensajes de información en el informe final.\nEn la siguiente tabla se indican algunos de los argumentos de mayor utilidad para configurar trozos de código en RMarkdown.\n\n\n\nArgumentos para configurar los chunks de código en RMarkdown\n\n\nArgumento\nValor_por_defecto\nDetalle\n\n\n\n\neval\nTRUE\nSi se configura como FALSE, R sólo mostrará, pero no correrá el código\n\n\ninclude\nTRUE\nSi se configura como FALSE, R no mostrará el código, pero correrá el comando y mostrará sus resultados.\n\n\nerror\nTRUE\nSi se configura como FALSE, R no mostrará los mensajes de errores que resulten de la ejecución del código.\n\n\nresults\n—\nSi se configura como hide, R no mostrará los resultados del código aunque lo ejecutará tras bambalinas. Si se configura como delay, R mostrará sólo el último resultado del trozo de código. Si se configura como asis R no configurará con markdown la estructura de los resultados, imprimiéndolos de manera directa en el reporte final. Esto resulta útil cuando usamos funciones específicas para presentar resultados en algún formato de reporte específico (Word, PDF, etc.)\n\n\nwarning\nTRUE\nSi se configura como FALSE R no mostrará los mensajes de advertencia que resulten de la ejecución del código.\n\n\nmessage\nTRUE\nSi se configura como FALSE R no mostrará ningún tipo de mensaje que resulten de la ejecución del código."
+  },
+  {
+    "objectID": "reporte.html#otras-referencias",
+    "href": "reporte.html#otras-referencias",
+    "title": "7  Rmarkdown",
+    "section": "7.8 Otras Referencias",
+    "text": "7.8 Otras Referencias\n\nXie, Dervieux, Riedere, 2023. “R Markdown Cookbook”. https://bookdown.org/yihui/rmarkdown-cookbook/notebook.html\nBoccardo, Ruiz, 2019. “RStudio para Estadística Descriptiva en Ciencias Sociales”. https://bookdown.org/gboccardo/manual-ED-UCH/introduccion-al-uso-de-rmarkdown-para-la-compilacion-de-resultados-de-rstudio-en-diferentes-formatos.html\nMiller, Steven V. 2018. “A Pandoc Markdown Article Starter and Template”. https://github.com/svmiller/svm-r-markdown-templates.\nGrolemund, Garret. 2014. “Introduction to R Markdown”. https://rmarkdown.rstudio.com/articles_intro.html.\nWorkshop, Reproducible Research. 2016. ““Writing Publications with R. Writing Publications with R”. http://www.geo.uzh.ch/microsite/reproducible_research/post/rr-r-publication/.\nNavarro, Juan. 2014. “LaTeX Fácil: Guía Rápida de LaTeX”. http://nokyotsu.com/latex/guia.html."
+  },
+  {
+    "objectID": "first_report.html#descripción",
+    "href": "first_report.html#descripción",
+    "title": "8  Mi Primer Reporte",
+    "section": "8.1 Descripción",
+    "text": "8.1 Descripción\nEn este capítulo nos centraremos principalmente en escribir un reporte sobre un tema a elección utilizando una base de datos propia, o las dispuestas en presente curso o bien alguna fuente de datos abierta como las dispuestas en la siguiente lista:\nEjemplo de Fuente de datos abiertas.\n\nhttps://datos.gob.cl\nhttps://www.ide.cl\nhttps://datausa.io\nhttps://observatorio.ciren.cl/\nhttps://www.datawheel.us\nhttps://es.wikipedia.org/wiki/Wikipedia_en_español\n\nEl reporte en cuestión no importa demasiado el tema lo importante es que se utilice los diferentes contenidos en los que se encuentran en el presente libro digital:\n\nEncabezado YAML (Section 7.5)\nOrden basados en títulos (Section 7.6.1)\nResumen de Bases (Section 6.4, Section C.5)\nTablas (Appendix D)\nGráficos y/o Mapas (Section 6.5.2, Appendix B)\nImágenes (Section 7.6.3)\nLinks (Section 7.6.4)\n\n\n\n\n\n\n\nTip\n\n\n\nEl presente reporte es en esencia lo que requiere para la tarea 2."
+  },
+  {
+    "objectID": "first_report.html#sec-ProyRStudio",
+    "href": "first_report.html#sec-ProyRStudio",
+    "title": "8  Mi Primer Reporte",
+    "section": "8.2 Configuración de Proyecto en RStudio",
+    "text": "8.2 Configuración de Proyecto en RStudio\nCrear Estructura de Carpetas\n\n\n\n\n\nProyecto RStudio de nuestro reporte\n\n\n\n\n\nIndicar que va ser en una carpeta existente\n\n\n\n\n\nSeleccionar Carpeta"
+  },
+  {
+    "objectID": "workflow.html#flujo-de-trabajo-general",
+    "href": "workflow.html#flujo-de-trabajo-general",
+    "title": "9  Flujos de Trabajo",
+    "section": "9.1 Flujo de Trabajo General",
+    "text": "9.1 Flujo de Trabajo General\nDenominaremos Flujo de Trabajo General a un proceso general de análisis de datos y concluir en oun reporte. Comienza con la Adquisisón de datos, ya sea cargando los datos directamente o conectarse a una base de datos.Posteriormente se puede establacer como la siguiente etapa denominada Data Clean o limpiza de datos correspondiente a la preparación de estos para ser insumo para análisis profundos, esta epata se realiza en R en el caso del presente curso. Análisis de Datos corresponde a la etapa donde se realiza el resumen o análisis de datos y se transforma en información, se conluyen resuemenes, tablas, gráficos, mapas y todo lo que sirva para explicar o reforzar las conclusiones de estos análisis, estos productos se pueden crear y almacenar para ser consumidos en el proceso posterior. Finalmente es la etapa del reporte que se realiza con R y Markdown, que consume los productos derivados de la etapa anterior e insumos externos que puede estar relaciones con el estilo y personalización del reporte como son portadas y logos."
+  },
+  {
+    "objectID": "workflow.html#esquema-básico",
+    "href": "workflow.html#esquema-básico",
+    "title": "9  Flujos de Trabajo",
+    "section": "9.2 Esquema Básico",
+    "text": "9.2 Esquema Básico\nPara cumplir el esquema anterior se puede realizar de muchas formas, a continuación se explica el modelo básico para generar un informe. El principal elemnto es el Reporte RMarkdown que realiza todo, lee los datos, analiza, generar graficos y construye el documento.\n Es recomendable para informes únicos y sencillos."
+  },
+  {
+    "objectID": "workflow.html#esquema-iterativo",
+    "href": "workflow.html#esquema-iterativo",
+    "title": "9  Flujos de Trabajo",
+    "section": "9.3 Esquema Iterativo",
+    "text": "9.3 Esquema Iterativo\nEl esquema iterátivo es más avanzado y está orientado para realizar múltiples reportes similares pero con diferentes unidades de análisis (personas, meses, comunas, sucursales, etc.). Este flujo de trabajo consta de dos elementos escenciales primero un reporte agnóstico o estandar que permita hacer el resultado variable de acuerdo a los datos de entrada pero manteniendo la estructura similar. El segundo elemento es una script en R que llamaremos main.R el que será el encargado de orquestar la ejecución de los reportes de forma iterativa.\n\nEste esquema es el recomendable seguir para cumplir con los objetivos del curso."
+  },
+  {
+    "objectID": "workflow.html#esquema-iterativo-2",
+    "href": "workflow.html#esquema-iterativo-2",
+    "title": "9  Flujos de Trabajo",
+    "section": "9.4 Esquema Iterativo 2",
+    "text": "9.4 Esquema Iterativo 2\nEste segundo esquema iterativo en esencia el similar al anterior con la unica variaedad es que para la generación de productos de análisis se realice de forma independiente y con anterioridad del reporte, y solo el reporte solo lea los resultados y no calcule. Es útil cuando la generación de estos productos tome mucho tiempo de cálculo, como ocurre en ocasiones con modelos estadísticos o de machine learning, o mapas inclusive. Lo anterior permite que el tiempo de ejecución (renderizado) del reporte sea muy eficiente y rápido.\n\nRecomendable para usuarios más avanzados y cuando sus análisis sean de alto costo computacional y tiempo de ejecución."
   },
   {
     "objectID": "tarea_1.html#enunciado-general",
@@ -264,6 +320,27 @@
     "title": "Tarea 1",
     "section": "Parte 3",
     "text": "Parte 3\nSimilar a la parte anterior de la tarea ahora, ahora utilizando las funciones de la librerías dplyr generar un tabla que contega por comuna la suma de viviendas, oficinas, comercio, ordenadas des forma descendente por la variable comercio.\nSeleccionar las 10 primeras comunas con valores de suma de comercio más altos.\n\noptions(scipen = 999)\n# tab_res &lt;- ... generar tabla resumen\n\n# seleccionar los 10 primeros\ntab_res &lt;- tab_res %&gt;% slice(1:10)\n\n\n\n\nRealizar gráfico de barras para dimensionar diferencias. Ejemplo de visualización de las 10 comunas con mayor cantidad de metros cuadrados de comercio.\n\nlibrary(ggplot2)\nggplot(tab_res, aes(x = sum_com, y = n_com)) +\n  geom_bar(stat = \"identity\", fill= \"orange\")+\n  theme_bw()  +\n  labs(title=\"Suma de Comercio y Oficinas\",\n       x =\"Mt2. Comercio\", y = \"Comunas\")+\n  theme(plot.title = element_text(face = \"bold\",colour= \"gray60\", size=10))\n\n\n\n\nResultado esperado (puede cambiar opciones de visualización si lo desea)"
+  },
+  {
+    "objectID": "tarea_2.html#enunciado-general",
+    "href": "tarea_2.html#enunciado-general",
+    "title": "Tarea 2",
+    "section": "Enunciado General",
+    "text": "Enunciado General\nIntegrantes: 1 (Individual).\nFecha de Entrega: 30 de Junio, 23:59 horas."
+  },
+  {
+    "objectID": "tarea_2.html#parte-1-ponderación-70",
+    "href": "tarea_2.html#parte-1-ponderación-70",
+    "title": "Tarea 2",
+    "section": "Parte 1 (Ponderación 70%)",
+    "text": "Parte 1 (Ponderación 70%)\nEl reporte en cuestión no importa demasiado el tema lo importante es que se utilice los diferentes contenidos en los que se encuentran en el presente libro digital:\n\nEncabezado YAML (Section 7.5)\nOrden basados en títulos (Section 7.6.1)\nResumen de Bases (Section 6.4, Section C.5)\nTablas (Appendix D)\nGráficos y/o Mapas (Section 6.5.2, Appendix B)\nImágenes (Section 7.6.3)\nLinks (Section 7.6.4)"
+  },
+  {
+    "objectID": "tarea_2.html#parte-2-ponderación-30",
+    "href": "tarea_2.html#parte-2-ponderación-30",
+    "title": "Tarea 2",
+    "section": "Parte 2 (Ponderación 30%)",
+    "text": "Parte 2 (Ponderación 30%)\nEl reporte debe estar contenido en un proyecto de RStudio, y este proyecto es que se entrega como tarea 2, debe contener en su interior todas las subcarpetas que se utilizaron como por ejemplo data, images R, etc. En este punto se evaluará el orden en los códigos y estructura del proyecto, como referencia para crear el proyecto seguir las instrucción de Section 8.2."
   },
   {
     "objectID": "recursos.html#sec-installR",
@@ -357,6 +434,13 @@
     "text": "C.4 Agregar Variables Temporales\n\ntasacion &lt;- tasacion %&gt;%\n  mutate(DIA = day(Fecha_Tasacion),\n         MES = month(Fecha_Tasacion),\n         AÑO = year(Fecha_Tasacion),\n         DIA_SEM = wday(Fecha_Tasacion, \n                        label = TRUE, abbr = FALSE,\n                        week_start = getOption(\"lubridate.week.start\", 1),\n                        locale =  Sys.getlocale(\"LC_TIME\")),\n         SEMANA = week(Fecha_Tasacion)) %&gt;% \n  mutate(HORA = hour(Fecha_Tasacion),\n         MINUTO = minute(Fecha_Tasacion))"
   },
   {
+    "objectID": "times.html#sec-timesGra",
+    "href": "times.html#sec-timesGra",
+    "title": "Appendix C — Datos temporales",
+    "section": "C.5 Actividades de Resumen y Gráficos",
+    "text": "C.5 Actividades de Resumen y Gráficos\nActividad: \nContar la cantidad de tasaciones que se realizaron por día semana y genere un gráfico\n\n\n\n\n\nActividad: \nContar la cantidad de tasaciones que se realizaron por mes y genere un gráfico\n\n\n\n\n\nGráficos de Día Semana por Comuna\n\ntas_day &lt;- tasacion %&gt;% \n  group_by(DIA_SEM, Comuna) %&gt;% \n  summarise(Cantidad = n(), .groups = \"keep\")\n\nnombre_plot &lt;- \"Tasaciones por día\"\ngdc &lt;- ggplot() +\n  geom_bar(data = tas_day, aes(x = DIA_SEM, y = Cantidad, group = 1,\n                               fill=DIA_SEM),\n           stat = \"identity\", \n           alpha = 0.9, size = 0.5)+\n  scale_fill_viridis_d()+\n  ggtitle(lab =  nombre_plot )+\n  labs(fill = \"Día Semana\")+\n   facet_wrap(~Comuna, nrow = 3)+ # Genera el mismo gráfico por comuna\n  theme_bw()\ngdc\n\n\n\n\n\n\ncoord_flip()+\n\ntas_day &lt;- tasacion %&gt;% \n  group_by(DIA_SEM, Comuna) %&gt;% \n  summarise(Cantidad = n(), .groups = \"keep\")\n\nnombre_plot &lt;- \"Tasaciones por día por Comuna\"\ngdc_flip &lt;- ggplot() +\n  geom_bar(data = tas_day, aes(x = DIA_SEM, y = Cantidad, group = 1,\n                               fill=DIA_SEM),\n           stat = \"identity\", \n           alpha = 0.9, size = 0.5)+\n  scale_fill_viridis_d()+\n  ggtitle(lab =  nombre_plot )+\n  labs(fill = \"Día de la semana \\npor comuna\")+\n  facet_wrap(~Comuna, nrow = 3)+\n  coord_flip()+\n  theme_bw()\ngdc_flip"
+  },
+  {
     "objectID": "times.html#gráficos-en-2-dimensiones",
     "href": "times.html#gráficos-en-2-dimensiones",
     "title": "Appendix C — Datos temporales",
@@ -385,20 +469,6 @@
     "text": "D.1 kableExtra\nExisten muchas formas de generar tablas en markdown, para el caso de curso utilizaremos la librería kableExtra y su uso general se explica a continuación:\n\n\n\n\n\nInstalación de kableExtra\n\ninstall.packages(\"kableExtra\")\n# For dev version\n# install.packages(\"devtools\") devtools::install_github(\"haozhu233/kableExtra\")\n\nCargar Librería\n\noptions(kableExtra.latex.load_packages = FALSE) # tener todas posbilidades\nlibrary(kableExtra)\n\nPoner en el encabezado YAML\nheader-includes:\n  - \\usepackage{booktabs}\n  - \\usepackage{longtable}\n  - \\usepackage{array}\n  - \\usepackage{multirow}\n  - \\usepackage{wrapfig}\n  - \\usepackage{float}\n  - \\usepackage{colortbl}\n  - \\usepackage{pdflsca   pe}\n  - \\usepackage{tabu}\n  - \\usepackage{threeparttable}\n  - \\usepackage{threeparttablex}\n  - \\usepackage[normalem]{ulem}\n  - \\usepackage{makecell}\n  - \\usepackage{xcolor}\nGenerar una tabla de referencia\n\ndt &lt;- mtcars[1:5, 1:6]\ndt\n\n                   mpg cyl disp  hp drat    wt\nMazda RX4         21.0   6  160 110 3.90 2.620\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875\nDatsun 710        22.8   4  108  93 3.85 2.320\nHornet 4 Drive    21.4   6  258 110 3.08 3.215\nHornet Sportabout 18.7   8  360 175 3.15 3.440\n\n\nTabla básica\n\nkbl(dt)\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n3.90\n2.620\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n3.90\n2.875\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.320\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.08\n3.215\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.15\n3.440\n\n\n\n\n\n\n\nTabla con Caption\n\nkbl(dt, caption = \"Demo table\", booktabs = T) %&gt;% \n  kable_styling(latex_options = c(\"striped\", \"hold_position\"))\n\n\nDemo table\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n3.90\n2.620\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n3.90\n2.875\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.320\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.08\n3.215\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.15\n3.440\n\n\n\n\n\n\n\nTamaño de fuente\n\nkbl(dt, booktabs = T) %&gt;% \n  kable_styling(font_size = 7)\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n3.90\n2.620\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n3.90\n2.875\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.320\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.08\n3.215\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.15\n3.440\n\n\n\n\n\n\n\nEstilos Colores\n\nthat_cell &lt;- c(rep(F, 7), T)\nmtcars[1:8, 1:8] %&gt;%\n  kbl(booktabs = T, linesep = \"\") %&gt;%\n  kable_paper(full_width = T) %&gt;%\n  kable_styling(font_size = 11) %&gt;% \n  column_spec(2, color = spec_color(mtcars$mpg[1:8]),\n              link = \"https://haozhu233.github.io/kableExtra\") %&gt;% \n  column_spec(6, color = \"white\",background = spec_color(mtcars$drat[1:8], end = 0.7),\n              popover = paste(\"am:\", mtcars$am[1:8])) %&gt;% \n  column_spec(9,strikeout = that_cell, bold = that_cell, color = c(rep(\"black\", 7), \"red\"))\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\n\n\n\n\nMazda RX4\n21.0\n6\n160.0\n110\n3.90\n2.620\n16.46\n0\n\n\nMazda RX4 Wag\n21.0\n6\n160.0\n110\n3.90\n2.875\n17.02\n0\n\n\nDatsun 710\n22.8\n4\n108.0\n93\n3.85\n2.320\n18.61\n1\n\n\nHornet 4 Drive\n21.4\n6\n258.0\n110\n3.08\n3.215\n19.44\n1\n\n\nHornet Sportabout\n18.7\n8\n360.0\n175\n3.15\n3.440\n17.02\n0\n\n\nValiant\n18.1\n6\n225.0\n105\n2.76\n3.460\n20.22\n1\n\n\nDuster 360\n14.3\n8\n360.0\n245\n3.21\n3.570\n15.84\n0\n\n\nMerc 240D\n24.4\n4\n146.7\n62\n3.69\n3.190\n20.00\n1"
   },
   {
-    "objectID": "tablas.html#tablas-con-add-in",
-    "href": "tablas.html#tablas-con-add-in",
-    "title": "Appendix D — Tablas en Markdown",
-    "section": "D.2 Tablas con Add-in",
-    "text": "D.2 Tablas con Add-in\nInstalacción\n\n# install.packages(\"devtools\")\ndevtools::install_github(\"lbusett/insert_table\")\n\nUso Básico\nAl instalarlo, inserttable registra un nuevo Addin de RStudio (Insert Table) que puede utilizarse para insertar fácilmente una tabla en un documento Rmd. Para utilizarlo, abra un documento Rmd y, con el cursor dentro de un trozo r y seleccione “Addins –&gt; Insert Table”.\n\nUso de Copiar y Pegar\n\nMas referencias en acá"
-  },
-  {
-    "objectID": "tablas.html#referencias-generales",
-    "href": "tablas.html#referencias-generales",
-    "title": "Appendix D — Tablas en Markdown",
-    "section": "D.3 Referencias Generales",
-    "text": "D.3 Referencias Generales\nReferencias para generar tablas con estilos\n\nhttp://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf\nhttp://destio.us.es/calvo/ficheros/ComoCrearTablasRMarkdown_PedroLuque_2019Sep_librodigital.pdf\n\nTablas para html:\n\nhttp://haozhu233.github.io/kableExtra/awesome_table_in_html.html"
-  },
-  {
     "objectID": "tablas.html#tablas-con-add-in-insert_table",
     "href": "tablas.html#tablas-con-add-in-insert_table",
     "title": "Appendix D — Tablas en Markdown",
@@ -406,60 +476,11 @@
     "text": "D.2 Tablas con Add-in insert_table\nInstalación\n\n# install.packages(\"devtools\")\ndevtools::install_github(\"lbusett/insert_table\")\n\nUso Básico\nAl instalarlo, insert_table registra un nuevo Addin de RStudio (Insert Table) que puede utilizarse para insertar fácilmente una tabla en un documento Rmd. Para utilizarlo, abra un documento Rmd y, con el cursor dentro de un trozo r y seleccione “Addins –&gt; Insert Table”.\n\nUso de Copiar y Pegar\n\nMas referencias en acá"
   },
   {
-    "objectID": "workflow.html#section",
-    "href": "workflow.html#section",
-    "title": "8  Flujos de Trabajo",
-    "section": "8.1 ",
-    "text": "8.1"
-  },
-  {
-    "objectID": "workflow.html#section-1",
-    "href": "workflow.html#section-1",
-    "title": "8  Flujos de Trabajo",
-    "section": "8.2 ",
-    "text": "8.2"
-  },
-  {
-    "objectID": "workflow.html#section-2",
-    "href": "workflow.html#section-2",
-    "title": "8  Flujos de Trabajo",
-    "section": "8.3 ",
-    "text": "8.3"
-  },
-  {
-    "objectID": "workflow.html#section-3",
-    "href": "workflow.html#section-3",
-    "title": "8  Flujos de Trabajo",
-    "section": "8.4 ",
-    "text": "8.4"
-  },
-  {
-    "objectID": "workflow.html#flujo-de-trabajo-general",
-    "href": "workflow.html#flujo-de-trabajo-general",
-    "title": "8  Flujos de Trabajo",
-    "section": "8.1 Flujo de Trabajo General",
-    "text": "8.1 Flujo de Trabajo General\nDenominaremos Flujo de Trabajo General a un proceso general de análisis de datos y concluir en oun reporte. Comienza con la Adquisisón de datos, ya sea cargando los datos directamente o conectarse a una base de datos.Posteriormente se puede establacer como la siguiente etapa denominada Data Clean o limpiza de datos correspondiente a la preparación de estos para ser insumo para análisis profundos, esta epata se realiza en R en el caso del presente curso. Análisis de Datos corresponde a la etapa donde se realiza el resumen o análisis de datos y se transforma en información, se conluyen resuemenes, tablas, gráficos, mapas y todo lo que sirva para explicar o reforzar las conclusiones de estos análisis, estos productos se pueden crear y almacenar para ser consumidos en el proceso posterior. Finalmente es la etapa del reporte que se realiza con R y Markdown, que consume los productos derivados de la etapa anterior e insumos externos que puede estar relaciones con el estilo y personalización del reporte como son portadas y logos."
-  },
-  {
-    "objectID": "workflow.html#esquema-básico",
-    "href": "workflow.html#esquema-básico",
-    "title": "8  Flujos de Trabajo",
-    "section": "8.2 Esquema Básico",
-    "text": "8.2 Esquema Básico\nPara cumplir el esquema anterior se puede realizar de muchas formas, a continuación se explica el modelo básico para generar un informe. El principal elemnto es el Reporte RMarkdown que realiza todo, lee los datos, analiza, generar graficos y construye el documento.\n Es recomendable para informes únicos y sencillos."
-  },
-  {
-    "objectID": "workflow.html#esquema-iterativo",
-    "href": "workflow.html#esquema-iterativo",
-    "title": "8  Flujos de Trabajo",
-    "section": "8.3 Esquema Iterativo",
-    "text": "8.3 Esquema Iterativo\nEl esquema iterátivo es más avanzado y está orientado para realizar múltiples reportes similares pero con diferentes unidades de análisis (personas, meses, comunas, sucursales, etc.). Este flujo de trabajo consta de dos elementos escenciales primero un reporte agnóstico o estandar que permita hacer el resultado variable de acuerdo a los datos de entrada pero manteniendo la estructura similar. El segundo elemento es una script en R que llamaremos main.R el que será el encargado de orquestar la ejecución de los reportes de forma iterativa.\n\nEste esquema es el recomendable seguir para cumplir con los objetivos del curso."
-  },
-  {
-    "objectID": "workflow.html#esquema-iterativo-2",
-    "href": "workflow.html#esquema-iterativo-2",
-    "title": "8  Flujos de Trabajo",
-    "section": "8.4 Esquema Iterativo 2",
-    "text": "8.4 Esquema Iterativo 2\nEste segundo esquema iterativo en esencia el similar al anterior con la unica variaedad es que para la generación de productos de análisis se realice de forma independiente y con anterioridad del reporte, y solo el reporte solo lea los resultados y no calcule. Es útil cuando la generación de estos productos tome mucho tiempo de cálculo, como ocurre en ocasiones con modelos estadísticos o de machine learning, o mapas inclusive. Lo anterior permite que el tiempo de ejecución (renderizado) del reporte sea muy eficiente y rápido.\n\nRecomendable para usuarios más avanzados y cuando sus análisis sean de alto costo computacional y tiempo de ejecución."
+    "objectID": "tablas.html#referencias-generales",
+    "href": "tablas.html#referencias-generales",
+    "title": "Appendix D — Tablas en Markdown",
+    "section": "D.3 Referencias Generales",
+    "text": "D.3 Referencias Generales\nReferencias para generar tablas con estilos\n\nhttp://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf\nhttp://destio.us.es/calvo/ficheros/ComoCrearTablasRMarkdown_PedroLuque_2019Sep_librodigital.pdf\n\nTablas para html:\n\nhttp://haozhu233.github.io/kableExtra/awesome_table_in_html.html"
   },
   {
     "objectID": "iter_graph.html#descripción",
@@ -473,132 +494,20 @@
     "href": "iter_graph.html#lectura-de-insumos",
     "title": "Appendix E — Gráficos Interativos",
     "section": "E.2 Lectura de Insumos",
-    "text": "E.2 Lectura de Insumos\nLibrerías\n\nlibrary(sf)\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(viridis)\n\nBase de Datos\nLa base que se utulizará corresponderá las zonas censales urbanas de Chile, para luego filtrar una provincia a elección para el elemplo será provincia de San Antonio que cuenta con 6 comunas.\n\nzonas &lt;-  readRDS(\"data/censo/zonas_urb_consolidadas.rds\")\n# unique(zonas$NOM_PROVIN)\nprovincia  &lt;- \"SAN ANTONIO\"\n\nbase_provincial &lt;-  zonas %&gt;% filter(NOM_PROVIN == provincia)\ncomunas &lt;- unique(base_provincial$NOM_COMUNA)\ncomunas\n\n[1] \"ALGARROBO\"     \"EL QUISCO\"     \"CARTAGENA\"     \"EL TABO\"      \n[5] \"SAN ANTONIO\"   \"SANTO DOMINGO\""
+    "text": "E.2 Lectura de Insumos\nLibrerías\n\nlibrary(sf)\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(viridis)\n\nBase de Datos\nLa base que se utulizará corresponderá las zonas censales urbanas de Chile, para luego filtrar una provincia a elección para el elemplo será provincia de San Antonio que cuenta con 6 comunas.\n\ncomunas &lt;- readRDS(\"data/censo/Comunas_Chile.rds\")\nzonas &lt;-  readRDS(\"data/censo/zonas_urb_consolidadas.rds\")\n# unique(zonas$NOM_PROVIN)\nprovincia  &lt;- \"SAN ANTONIO\"\n\ncomunas_prov &lt;- comunas  %&gt;% filter(NOM_PROVIN == provincia)\nbase_provincial &lt;-  zonas %&gt;% filter(NOM_PROVIN == provincia)\n\ncomunas &lt;- unique(base_provincial$NOM_COMUNA)\ncomunas\n\n[1] \"ALGARROBO\"     \"EL QUISCO\"     \"CARTAGENA\"     \"EL TABO\"      \n[5] \"SAN ANTONIO\"   \"SANTO DOMINGO\""
   },
   {
     "objectID": "iter_graph.html#interación",
     "href": "iter_graph.html#interación",
     "title": "Appendix E — Gráficos Interativos",
     "section": "E.3 Interación",
-    "text": "E.3 Interación\nEn esta etapa se creará un script donde se genere un flujo que permita iterar por cada zona urbana de las comunas de la provincia de San Antonio. Primero se define una ruta de salida de los mapas donde se iràn almacenando. Posteriormente se crea una estructura de iteración mediante ciclo for (Section 5.2.1), donde al iterar por cada comna primero filtra la base de datos, luego genera el gráfico y finalmente guarda el mapa con nombre independiente.\n\nruta_salida &lt;- \"data/graficos/\"\n\n\nfor(comuna in comunas){\n  print(paste0(\"Operando la comuna: \", comuna))\n  #Fitrar base\n  base_comunal &lt;- base_provincial %&gt;% \n    filter(NOM_COMUNA == comuna)\n  # generar gráfico\n  grafico_com &lt;- ggplot() +\n    geom_sf(data = base_comunal, aes(fill = DENS_HAB), alpha= 0.8)+\n    scale_fill_viridis_c()+\n    ggtitle(paste0(\"DENSIDAD HABITANTES \", comuna)) +\n    theme_bw() +\n    theme(panel.grid.major = element_line(colour = \"gray80\"),\n          panel.grid.minor = element_line(colour = \"gray80\"))\n  #guardar imagenes\n  nombre_plot &lt;- \"Densidad_habitantes\"\n  nombre_imagen &lt;- paste0(ruta_salida, gsub(\" \", \"_\", comuna) ,\".jpg\")\n  ggplot2::ggsave(filename = nombre_imagen, plot = grafico_com, height = 7, width = 9)\n}"
+    "text": "E.3 Interación\nEn esta etapa se creará un script donde se genere un flujo que permita iterar por cada zona urbana de las comunas de la provincia de San Antonio. Primero se define una ruta de salida de los mapas donde se iràn almacenando. Posteriormente se crea una estructura de iteración mediante ciclo for (Section 5.2.1), donde al iterar por cada comna primero filtra la base de datos, luego genera el gráfico y finalmente guarda el mapa con nombre independiente.\n\nruta_salida &lt;- \"data/graficos/\"\n\n\nfor(comuna in comunas){\n  print(paste0(\"Operando la comuna: \", comuna))\n  \n  comunas_contorno &lt;-  comunas_prov %&gt;% \n    filter(NOM_COMUNA == comuna)\n  #Fitrar base\n  base_comunal &lt;- base_provincial %&gt;% \n    filter(NOM_COMUNA == comuna)\n  # generar gráfico\n  grafico_com &lt;- ggplot() +\n    geom_sf(data = comunas_contorno, fill =\"gray95\",\n            color = \"gray40\")+\n    geom_sf(data = base_comunal, aes(fill = DENS_HAB), alpha= 0.8)+\n    scale_fill_viridis_c(name = \"Densidad \\nHabitantes\")+\n    ggtitle(paste0(\"DENSIDAD HABITANTES \", comuna)) +\n    theme_bw() +\n    theme(panel.grid.major = element_line(colour = \"gray80\"),\n          panel.grid.minor = element_line(colour = \"gray80\"))\n  #guardar imagenes\n  nombre_plot &lt;- \"Densidad_habitantes\"\n  nombre_imagen &lt;- paste0(ruta_salida, gsub(\" \", \"_\", comuna) ,\".jpg\")\n  ggplot2::ggsave(filename = nombre_imagen, plot = grafico_com, \n                  height = 7, width = 9)\n}"
   },
   {
     "objectID": "iter_graph.html#visualización-de-resultados",
     "href": "iter_graph.html#visualización-de-resultados",
     "title": "Appendix E — Gráficos Interativos",
     "section": "E.4 Visualización de resultados",
-    "text": "E.4 Visualización de resultados\n\n\n\n\n\n\n\nDensidad Algarrobo\n\n\n\n\n\n\n\nDensidad Cartagena\n\n\n\n\n\n\n\n\n\nDensidad El Quisco\n\n\n\n\n\n\n\nDensidad El Tabo\n\n\n\n\n\n\n\n\n\nDensidad San Antonio\n\n\n\n\n\n\n\nDensidad Santo Domingo\n\n\n\n\nFigure E.1: Mapas generados de forma iterativa"
-  },
-  {
-    "objectID": "first_report.html#descripción",
-    "href": "first_report.html#descripción",
-    "title": "8  Mi Primer Reporte",
-    "section": "8.1 Descripción",
-    "text": "8.1 Descripción\nEn este capítulo nos centraremos principalmente en escribir un reporte sobre un tema a elección utilizando una base de datos propia, o las dispuestas en presente curso o bien alguna fuente de datos abierta como las dispuestas en la siguiente lista:\nEjemplo de Fuente de datos abiertas.\n\nhttps://datos.gob.cl\nhttps://www.ide.cl\nhttps://datausa.io\nhttps://observatorio.ciren.cl/\nhttps://www.datawheel.us\nhttps://es.wikipedia.org/wiki/Wikipedia_en_español\n\nEl reporte en cuestión no importa demasiado el tema lo importante es que se utilice los diferentes contenidos en los que se encuentran en el presente libro digital:\n\nEncabezado YAML (Section 7.5)\nOrden basados en títulos (Section 7.6.1)\nResumen de Bases (Section 6.4, Section C.5)\nTablas (Appendix D)\nGráficos y/o Mapas (Section 6.5.2, Appendix B)\nImágenes (Section 7.6.3)\nLinks (Section 7.6.4)\n\n\n\n\n\n\n\nTip\n\n\n\nEl presente reporte es en esencia lo que requiere para la tarea 2."
-  },
-  {
-    "objectID": "tidyverse_R.html#sec-genRes",
-    "href": "tidyverse_R.html#sec-genRes",
-    "title": "6  Tidyverse en R",
-    "section": "6.4 Resúmenes Estadísticos con dplyr",
-    "text": "6.4 Resúmenes Estadísticos con dplyr\n\n\n\nContabilizar cuantos metros cuadrados de oficina por cada comuna.\n\ntbl_resumen &lt;-  tbl_sii %&gt;%\n  group_by(n_com) %&gt;%\n  summarise(Cantidad_mz = n(),\n            Total_of = sum(oficinas)) %&gt;%\n  arrange(desc(Total_of)) # Ordenar\n\ntbl_resumen\n\n# A tibble: 170 × 3\n   n_com           Cantidad_mz Total_of\n   &lt;chr&gt;                 &lt;int&gt;    &lt;dbl&gt;\n 1 SANTIAGO CENTRO         686  6105996\n 2 LAS CONDES             2310  4248336\n 3 PROVIDENCIA             885  3495426\n 4 HUECHURABA             1160  1006138\n 5 QUILICURA              2592   751874\n 6 VITACURA                950   743734\n 7 SANTIAGO SUR            623   669270\n 8 Ã‘UÃ‘OA                1337   637982\n 9 SANTIAGO OESTE          586   586724\n10 PUDAHUEL               2775   561868\n# ℹ 160 more rows\n\n\nActividad\n\nContabilizar cuantos metros cuadrados de Comercio hay por cada comuna rdenar de mayor a menor.\nCrear tabla con las 10 comunas que tienen mayor densisdad de Comercio\n\n\n\n\n\n\n\nDensidad de comercio\n\n\n\nSe puede entender como la división de la cantidad de metros cuadrados de comercio dividio por el total de metros cuadrados."
-  },
-  {
-    "objectID": "times.html#sec-timesGra",
-    "href": "times.html#sec-timesGra",
-    "title": "Appendix C — Datos temporales",
-    "section": "C.5 Actividades de Resumen y Gráficos",
-    "text": "C.5 Actividades de Resumen y Gráficos\nActividad: \nContar la cantidad de tasaciones que se realizaron por día semana y genere un gráfico\n\n\n\n\n\nActividad: \nContar la cantidad de tasaciones que se realizaron por mes y genere un gráfico\n\n\n\n\n\nGráficos de Día Semana por Comuna\n\ntas_day &lt;- tasacion %&gt;% \n  group_by(DIA_SEM, Comuna) %&gt;% \n  summarise(Cantidad = n(), .groups = \"keep\")\n\nnombre_plot &lt;- \"Tasaciones por día\"\ngdc &lt;- ggplot() +\n  geom_bar(data = tas_day, aes(x = DIA_SEM, y = Cantidad, group = 1,\n                               fill=DIA_SEM),\n           stat = \"identity\", \n           alpha = 0.9, size = 0.5)+\n  scale_fill_viridis_d()+\n  ggtitle(lab =  nombre_plot )+\n  labs(fill = \"Día Semana\")+\n   facet_wrap(~Comuna, nrow = 3)+ # Genera el mismo gráfico por comuna\n  theme_bw()\ngdc\n\n\n\n\n\n\ncoord_flip()+\n\ntas_day &lt;- tasacion %&gt;% \n  group_by(DIA_SEM, Comuna) %&gt;% \n  summarise(Cantidad = n(), .groups = \"keep\")\n\nnombre_plot &lt;- \"Tasaciones por día por Comuna\"\ngdc_flip &lt;- ggplot() +\n  geom_bar(data = tas_day, aes(x = DIA_SEM, y = Cantidad, group = 1,\n                               fill=DIA_SEM),\n           stat = \"identity\", \n           alpha = 0.9, size = 0.5)+\n  scale_fill_viridis_d()+\n  ggtitle(lab =  nombre_plot )+\n  labs(fill = \"Día de la semana \\npor comuna\")+\n  facet_wrap(~Comuna, nrow = 3)+\n  coord_flip()+\n  theme_bw()\ngdc_flip"
-  },
-  {
-    "objectID": "first_report.html#configuración-de-proyecto",
-    "href": "first_report.html#configuración-de-proyecto",
-    "title": "8  Mi Primer Reporte",
-    "section": "8.2 Configuración de Proyecto",
-    "text": "8.2 Configuración de Proyecto"
-  },
-  {
-    "objectID": "first_report.html#configuración-de-proyecto-en-rstudio",
-    "href": "first_report.html#configuración-de-proyecto-en-rstudio",
-    "title": "8  Mi Primer Reporte",
-    "section": "8.2 Configuración de Proyecto en RStudio",
-    "text": "8.2 Configuración de Proyecto en RStudio\nCrear Estructura de Carpetas\n\n\n\n\n\nProyecto RStudio de nuestro reporte\n\n\n\n\n\nIndicar que va ser en una carpeta existente\n\n\n\n\n\nSeleccionar Carpeta"
-  },
-  {
-    "objectID": "reporte.html#elementos-de-un-documento-rmarkdown-sec-yalm",
-    "href": "reporte.html#elementos-de-un-documento-rmarkdown-sec-yalm",
-    "title": "7  Rmarkdown",
-    "section": "7.5 Elementos de un documento Rmarkdown {sec-YALM}",
-    "text": "7.5 Elementos de un documento Rmarkdown {sec-YALM}\nAspetos generales del texto. Referencias Link\n\ntitle Texto entre comillas que servirá de título general al documento.\nsubtitle. Texto entre comillas que servirá de subtítulo para el título general del documento.\nauthor Texto entre comillas para indicar el nombre del o los autores.\ndate. Campo para indicar la fecha. En el texto, con la expresión today, se solicita que imprima la fecha actual según el calendario del sistema operativo.\nbibliography. Se indica el nombre del archivo que contiene los datos para construir el listado de referencia bibliográficas. Este archivo es de formato BibTex y se construye usando un gestor de referencias como Zotero.\npdf_document: indica el formato preestablecido para compilar el documento. En este caso, se trata de un PDF. Puede ser html_document o word_document. El usuario puede escoger la modalidad que desee al compilar usando las opciones del botón knit; si se compila sin escoger ninguna opción, se compilará según el formato indicado en este encabezado.\nfig_caption: indica si las figuras deben incorporar leyendas. latex_engine: permite definir el motor de LaTex utilizado para compilar los documentos.\nnumber_sections: si está definido como yes define que se numerarán los títulos y sutítulos a lo largo del documento, de manera automática y correlativa.\ntoc: es la abreviación de table of contents; si está definido como yes incorporará al inicio del documento una tabla de contenidos construida a partir de los tres primeros niveles de los títulos y subtítulos de sección utilizados."
-  },
-  {
-    "objectID": "reporte.html#configuración-del-código",
-    "href": "reporte.html#configuración-del-código",
-    "title": "7  Rmarkdown",
-    "section": "7.7 Configuración del Código",
-    "text": "7.7 Configuración del Código\nTeniendo en cuenta que uno de los elementos con mayor importancia en los reportes es la capacidad de incorporar bloques de código y este esa renderizado, entonce también se debe conocer los aspectos de configuración de ellos.\nSe trata de bloques de código delimitados por la siguiente estructura: el inicio de un código está delimitado por tres apostrofes seguidos por un r entre corchetes curvos {r}, y su cierre por otros tres apostrofes. Eso delimita lo que se ejecutará como código de computación, diferenciándolo respecto al texto simple. A continuación se observa un ejemplo de esto:\n\nLos argumentos sirven para configurar el comportamiento del código al momento de compilar el documento.\nComo no siempre se buscará que en el reporte final se despliegue la sintaxis original, o los mensajes y/o advertencias que reporta R luego de ejecutar un comando, es posible configurar la ejecución de cada trozo de código agregando diferentes opciones.\nPor ejemplo, al abrir el siguiente código de nuestra sintaxis de Markdown con las siguientes opciones {r, echo = FALSE, results = 'asis', message= FALSE} les estamos indicando lo siguiente:\necho = FALSE significa que no se desplegará la sintaxis en el reporte, pero sí se ejecutará la operación y mostrarán los resultados.\nresults = 'asis' indica que el resultado se exportará directamente al nuevo archivo, sin que sea configurado por RMarkdown. Esto es útil con funciones que formatean de manera inmediata los resultados al formato deseado.\nmessage = FALSE indica que no se mostrarán los mensajes de información en el informe final.\nEn la siguiente tabla se indican algunos de los argumentos de mayor utilidad para configurar trozos de código en RMarkdown.\n\n\n\nArgumentos para configurar los chunks de código en RMarkdown\n\n\nArgumento\nValor_por_defecto\nDetalle\n\n\n\n\neval\nTRUE\nSi se configura como FALSE, R sólo mostrará, pero no correrá el código\n\n\ninclude\nTRUE\nSi se configura como FALSE, R no mostrará el código, pero correrá el comando y mostrará sus resultados.\n\n\nerror\nTRUE\nSi se configura como FALSE, R no mostrará los mensajes de errores que resulten de la ejecución del código.\n\n\nresults\n—\nSi se configura como hide, R no mostrará los resultados del código aunque lo ejecutará tras bambalinas. Si se configura como delay, R mostrará sólo el último resultado del trozo de código. Si se configura como asis R no configurará con markdown la estructura de los resultados, imprimiéndolos de manera directa en el reporte final. Esto resulta útil cuando usamos funciones específicas para presentar resultados en algún formato de reporte específico (Word, PDF, etc.)\n\n\nwarning\nTRUE\nSi se configura como FALSE R no mostrará los mensajes de advertencia que resulten de la ejecución del código.\n\n\nmessage\nTRUE\nSi se configura como FALSE R no mostrará ningún tipo de mensaje que resulten de la ejecución del código."
-  },
-  {
-    "objectID": "reporte.html#otras-referencias",
-    "href": "reporte.html#otras-referencias",
-    "title": "7  Rmarkdown",
-    "section": "7.8 Otras Referencias",
-    "text": "7.8 Otras Referencias\n\nXie, Dervieux, Riedere, 2023. “R Markdown Cookbook”. https://bookdown.org/yihui/rmarkdown-cookbook/notebook.html\nBoccardo, Ruiz, 2019. “RStudio para Estadística Descriptiva en Ciencias Sociales”. https://bookdown.org/gboccardo/manual-ED-UCH/introduccion-al-uso-de-rmarkdown-para-la-compilacion-de-resultados-de-rstudio-en-diferentes-formatos.html\nMiller, Steven V. 2018. “A Pandoc Markdown Article Starter and Template”. https://github.com/svmiller/svm-r-markdown-templates.\nGrolemund, Garret. 2014. “Introduction to R Markdown”. https://rmarkdown.rstudio.com/articles_intro.html.\nWorkshop, Reproducible Research. 2016. ““Writing Publications with R. Writing Publications with R”. http://www.geo.uzh.ch/microsite/reproducible_research/post/rr-r-publication/.\nNavarro, Juan. 2014. “LaTeX Fácil: Guía Rápida de LaTeX”. http://nokyotsu.com/latex/guia.html."
-  },
-  {
-    "objectID": "reporte.html#elementos-de-un-documento-rmarkdown-sec-yaml",
-    "href": "reporte.html#elementos-de-un-documento-rmarkdown-sec-yaml",
-    "title": "7  Rmarkdown",
-    "section": "7.5 Elementos de un documento Rmarkdown {sec-YAML}",
-    "text": "7.5 Elementos de un documento Rmarkdown {sec-YAML}\nAspetos generales del texto. Referencias Link\n\ntitle Texto entre comillas que servirá de título general al documento.\nsubtitle. Texto entre comillas que servirá de subtítulo para el título general del documento.\nauthor Texto entre comillas para indicar el nombre del o los autores.\ndate. Campo para indicar la fecha. En el texto, con la expresión today, se solicita que imprima la fecha actual según el calendario del sistema operativo.\nbibliography. Se indica el nombre del archivo que contiene los datos para construir el listado de referencia bibliográficas. Este archivo es de formato BibTex y se construye usando un gestor de referencias como Zotero.\npdf_document: indica el formato preestablecido para compilar el documento. En este caso, se trata de un PDF. Puede ser html_document o word_document. El usuario puede escoger la modalidad que desee al compilar usando las opciones del botón knit; si se compila sin escoger ninguna opción, se compilará según el formato indicado en este encabezado.\nfig_caption: indica si las figuras deben incorporar leyendas. latex_engine: permite definir el motor de LaTex utilizado para compilar los documentos.\nnumber_sections: si está definido como yes define que se numerarán los títulos y sutítulos a lo largo del documento, de manera automática y correlativa.\ntoc: es la abreviación de table of contents; si está definido como yes incorporará al inicio del documento una tabla de contenidos construida a partir de los tres primeros niveles de los títulos y subtítulos de sección utilizados."
-  },
-  {
-    "objectID": "reporte.html#sec-YAML",
-    "href": "reporte.html#sec-YAML",
-    "title": "7  Rmarkdown",
-    "section": "7.5 Elementos de un documento Rmarkdown",
-    "text": "7.5 Elementos de un documento Rmarkdown\nAspectos generales del texto. Referencias Link\n\ntitle Texto entre comillas que servirá de título general al documento.\nsubtitle. Texto entre comillas que servirá de subtitulo para el título general del documento.\nauthor Texto entre comillas para indicar el nombre del o los autores.\ndate. Campo para indicar la fecha. En el texto, con la expresión today, se solicita que imprima la fecha actual según el calendario del sistema operativo.\nbibliography. Se indica el nombre del archivo que contiene los datos para construir el listado de referencia bibliográficas. Este archivo es de formato BibTex y se construye usando un gestor de referencias como Zotero.\npdf_document: indica el formato preestablecido para compilar el documento. En este caso, se trata de un PDF. Puede ser html_document o word_document. El usuario puede escoger la modalidad que desee al compilar usando las opciones del botón knit; si se compila sin escoger ninguna opción, se compilará según el formato indicado en este encabezado.\nfig_caption: indica si las figuras deben incorporar leyendas. latex_engine: permite definir el motor de LaTex utilizado para compilar los documentos.\nnumber_sections: si está definido como yes define que se numerarán los títulos y sutítulos a lo largo del documento, de manera automática y correlativa.\ntoc: es la abreviación de table of contents; si está definido como yes incorporará al inicio del documento una tabla de contenidos construida a partir de los tres primeros niveles de los títulos y subtítulos de sección utilizados."
-  },
-  {
-    "objectID": "first_report.html#sec-ProyRStudio",
-    "href": "first_report.html#sec-ProyRStudio",
-    "title": "8  Mi Primer Reporte",
-    "section": "8.2 Configuración de Proyecto en RStudio",
-    "text": "8.2 Configuración de Proyecto en RStudio\nCrear Estructura de Carpetas\n\n\n\n\n\nProyecto RStudio de nuestro reporte\n\n\n\n\n\nIndicar que va ser en una carpeta existente\n\n\n\n\n\nSeleccionar Carpeta"
-  },
-  {
-    "objectID": "tarea_2.html#enunciado-general",
-    "href": "tarea_2.html#enunciado-general",
-    "title": "Tarea 2",
-    "section": "Enunciado General",
-    "text": "Enunciado General\nIntegrantes: 1 (Individual).\nFecha de Entrega: 30 de Junio, 23:59 horas."
-  },
-  {
-    "objectID": "tarea_2.html#parte-1-70",
-    "href": "tarea_2.html#parte-1-70",
-    "title": "Tarea 2",
-    "section": "Parte 1 70%",
-    "text": "Parte 1 70%\nEl reporte en cuestión no importa demasiado el tema lo importante es que se utilice los diferentes contenidos en los que se encuentran en el presente libro digital:\n\nEcabezado YAML (Section 7.5)\nOrden basados en títulos (Section 7.6.1)\nResumen de Bases (Section 6.4, Section C.5)\nTablas (Appendix D)\nGráficos y/o Mapas (Section 6.5.2, Appendix B)\nImágenes (Section 7.6.3)\nLinks (Section 7.6.4)"
-  },
-  {
-    "objectID": "tarea_2.html#parte-2-30",
-    "href": "tarea_2.html#parte-2-30",
-    "title": "Tarea 2",
-    "section": "Parte 2 30%",
-    "text": "Parte 2 30%\nEl reporte debe estar contenido en un proyecto de RStudio, y este proyecto es que se entrega como tarea 2, debe contener en su interior toras las subcarpetas que se utilizaron como por ejemplo data, images R, etc. En este punto se evaluará el orden enlos códigos y estructura del proyecto, como referencia para crear el proyecto seguir las instrucción de Section 8.2."
-  },
-  {
-    "objectID": "tarea_2.html#parte-1-ponderación-70",
-    "href": "tarea_2.html#parte-1-ponderación-70",
-    "title": "Tarea 2",
-    "section": "Parte 1 (Ponderación 70%)",
-    "text": "Parte 1 (Ponderación 70%)\nEl reporte en cuestión no importa demasiado el tema lo importante es que se utilice los diferentes contenidos en los que se encuentran en el presente libro digital:\n\nEncabezado YAML (Section 7.5)\nOrden basados en títulos (Section 7.6.1)\nResumen de Bases (Section 6.4, Section C.5)\nTablas (Appendix D)\nGráficos y/o Mapas (Section 6.5.2, Appendix B)\nImágenes (Section 7.6.3)\nLinks (Section 7.6.4)"
-  },
-  {
-    "objectID": "tarea_2.html#parte-2-ponderación-30",
-    "href": "tarea_2.html#parte-2-ponderación-30",
-    "title": "Tarea 2",
-    "section": "Parte 2 (Ponderación 30%)",
-    "text": "Parte 2 (Ponderación 30%)\nEl reporte debe estar contenido en un proyecto de RStudio, y este proyecto es que se entrega como tarea 2, debe contener en su interior todas las subcarpetas que se utilizaron como por ejemplo data, images R, etc. En este punto se evaluará el orden en los códigos y estructura del proyecto, como referencia para crear el proyecto seguir las instrucción de Section 8.2."
+    "text": "E.4 Visualización de resultados\n\n\n\n\n\n\n\nDensidad de Habitantes Algarrobo\n\n\n\n\n\n\n\nDensidad de Habitantes Cartagena\n\n\n\n\n\n\n\n\n\nDensidad de Habitantes El Quisco\n\n\n\n\n\n\n\nDensidad de Habitantes El Tabo\n\n\n\n\n\n\n\n\n\nDensidad de Habitantes San Antonio\n\n\n\n\n\n\n\nDensidad de Habitantes Santo Domingo\n\n\n\n\nFigure E.1: Mapas generados de forma iterativa"
   }
 ]
