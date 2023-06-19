@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Denis Berroeta (denis.berroeta@uai.cl)">
-<meta name="dcterms.date" content="2023-05-27">
 
-<title>Reportes Automáticos</title>
+<title>Reportes Automáticos - Tarea 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro_r.html" rel="next">
+<link href="./recursos.html" rel="next">
+<link href="./tarea_1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -76,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Prefacio</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tarea_1.html">Tareas</a></li><li class="breadcrumb-item"><a href="./tarea_2.html">Tarea 2</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -103,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Prefacio</span></span></a>
   </div>
 </li>
@@ -178,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tarea_2.html" class="sidebar-item-text sidebar-link">
+  <a href="./tarea_2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Tarea 2</span></a>
   </div>
 </li>
@@ -235,17 +234,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio"><span class="header-section-number">1</span> Prefacio</a>
-  <ul class="collapse">
-  <li><a href="#introducción" id="toc-introducción" class="nav-link" data-scroll-target="#introducción"><span class="header-section-number">1.1</span> Introducción</a></li>
-  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos"><span class="header-section-number">1.2</span> Objetivos</a></li>
-  <li><a href="#contenidos" id="toc-contenidos" class="nav-link" data-scroll-target="#contenidos"><span class="header-section-number">1.3</span> Contenidos</a></li>
-  <li><a href="#profesor-var-profesor.name" id="toc-profesor-var-profesor.name" class="nav-link" data-scroll-target="#profesor-var-profesor.name">Profesor: Denis Berroeta</a></li>
-  <li><a href="#ayudante-var-ayudante.name" id="toc-ayudante-var-ayudante.name" class="nav-link" data-scroll-target="#ayudante-var-ayudante.name">Ayudante: Lynn Richards</a></li>
-  <li><a href="#metodología" id="toc-metodología" class="nav-link" data-scroll-target="#metodología"><span class="header-section-number">1.4</span> Metodología</a></li>
-  <li><a href="#evaluación" id="toc-evaluación" class="nav-link" data-scroll-target="#evaluación"><span class="header-section-number">1.5</span> Evaluación</a></li>
-  <li><a href="#normas" id="toc-normas" class="nav-link" data-scroll-target="#normas"><span class="header-section-number">1.6</span> Normas</a></li>
-  </ul></li>
+  <li><a href="#enunciado-general" id="toc-enunciado-general" class="nav-link active" data-scroll-target="#enunciado-general">Enunciado General</a></li>
+  <li><a href="#parte-1-ponderación-70" id="toc-parte-1-ponderación-70" class="nav-link" data-scroll-target="#parte-1-ponderación-70">Parte 1 (Ponderación 70%)</a></li>
+  <li><a href="#parte-2-ponderación-30" id="toc-parte-2-ponderación-30" class="nav-link" data-scroll-target="#parte-2-ponderación-30">Parte 2 (Ponderación 30%)</a></li>
   </ul>
 </nav>
     </div>
@@ -254,27 +245,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Reportes Automáticos</h1>
-<p class="subtitle lead">Escuela de Gobierno - Universidad Adolfo Ibáñez. Chile</p>
+<h1 class="title">Tarea 2</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Denis Berroeta (<a href="mailto:denis.berroeta@uai.cl" class="email">denis.berroeta@uai.cl</a>) </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 27, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -282,86 +260,29 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p><br></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="https://cit.uai.cl"><img src="images/logo_goblab.JPG" class="img-fluid figure-img" width="250"></a></p>
-</figure>
-</div>
-<p><br></p>
-<section id="prefacio" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Prefacio</h1>
-<section id="introducción" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">1.1</span> Introducción</h2>
-<p>En este curso aprenderá a crear y modificar cada elemento de un archivo R Markdown, incluyendo código, texto, y metadatos. Manipulará y analizará información usando los paquetes tidyr y dplyr, creará visualizaciones con ggplot2, y combinará todas estas acciones en reportes reproducibles en formato Word utilizando el entorno RStudio. Esto se realizará a través de ejemplos prácticos de escritura de código y creación de documentos buscando también generar una lógica para organizar eficientemente sus reportes. Al final de este curso será capaz de abordar sus propios proyectos de generación y automatización de reportes.</p>
+<section id="enunciado-general" class="level2">
+<h2 class="anchored" data-anchor-id="enunciado-general">Enunciado General</h2>
+<p><strong>Integrantes</strong>: 1 (Individual).<br>
+<strong>Fecha de Entrega</strong>: 30 de Junio, 23:59 horas.</p>
 </section>
-<section id="objetivos" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="objetivos"><span class="header-section-number">1.2</span> Objetivos</h2>
+<section id="parte-1-ponderación-70" class="level2">
+<h2 class="anchored" data-anchor-id="parte-1-ponderación-70">Parte 1 (Ponderación 70%)</h2>
+<p>El reporte en cuestión no importa demasiado el tema lo importante es que se utilice los diferentes contenidos en los que se encuentran en el presente libro digital:</p>
 <ul>
-<li>Profundizar en el uso de técnicas de programación en R para el manejo y visualización de datos en el contexto de crear reportes</li>
-<li>Conocer los distintos componentes de un documento reproducible usando R Markdown y cómo combinar estos para la generación de documentos</li>
-<li>Aprender a utilizar la parametrización de documentos para automatizar la generación de estos</li>
-<li>Conocer las opciones de personalización que R y Markdown ofrecen y cómo incluir estas en sus reportes</li>
+<li>Encabezado YAML (<a href="reporte.html#sec-YAML"><span>Section&nbsp;7.5</span></a>)</li>
+<li>Orden basados en títulos (<a href="reporte.html#sec-titles"><span>Section&nbsp;7.6.1</span></a>)</li>
+<li>Resumen de Bases (<a href="tidyverse_R.html#sec-genRes"><span>Section&nbsp;6.4</span></a>, <a href="times.html#sec-timesGra"><span>Section&nbsp;C.5</span></a>)</li>
+<li>Tablas (<a href="tablas.html"><span>Appendix&nbsp;D</span></a>)</li>
+<li>Gráficos y/o Mapas (<a href="tidyverse_R.html#sec-ggplot"><span>Section&nbsp;6.5.2</span></a>, <a href="espacial_R.html"><span>Appendix&nbsp;B</span></a>)</li>
+<li>Imágenes (<a href="reporte.html#sec-images"><span>Section&nbsp;7.6.3</span></a>)</li>
+<li>Links (<a href="reporte.html#sec-links"><span>Section&nbsp;7.6.4</span></a>)</li>
 </ul>
 </section>
-<section id="contenidos" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="contenidos"><span class="header-section-number">1.3</span> Contenidos</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/all_diagrama.png" class="img-fluid figure-img" width="1000"></p>
-</figure>
-</div>
-<ol type="a">
-<li>Introducción a R y RStudio, conceptimos básicos del lenguajes programación, declaración, de variables, funciones, estructuras de control y bubles, necesarios para realizar operaciones y análsis.<br>
-</li>
-<li>Análisis, manejo de datos, y visualizaciones (6 horas): profundizar en el uso de paquetes pertenecientes al denominado tidyverse (<a href="https://dplyr.tidyverse.org">dplyr</a>, <a href="https://tidyr.tidyverse.org">tidyr</a> , y <a href="https://ggplot2.tidyverse.org/">ggplot2</a>, entre otros) con foco en la manipulación de datos para la generación de gráficos y tablas a incluir en reportes.</li>
-<li>Introducción a R Markdown (3 horas): aprender sobre los tres componentes de un archivo R Markdown (código, texto, y metadatos) y cómo agregar/modificar estos a la hora de generar un reporte.</li>
-<li>Automatizando reportes (3 horas): conocer el uso de parámetros en R Markdown y cómo incluirlos a la hora de generar un reporte. Utilizar funciones e iteraciones para generar distintos reportes de forma simple.</li>
-<li>Mejorando los reportes (3 horas): explorar las opciones de personalización que R y R Markdown ofrecen con el fin de adaptar los reportes a las necesidades (visuales) de la organización. Se hará especial énfasis en el uso del paquete flextable para la creación de tablas personalizadas.</li>
-</ol>
-</section>
-<section id="profesor-var-profesor.name" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="profesor-var-profesor.name">Profesor: <a href="https://cit.uai.cl/denis-berroeta/">Denis Berroeta</a></h2>
-<p>Coordinador de Investigación, Centro de Inteligencia Territorial - UAI, email: <a href="mailto:denis.berroeta@uai.cl" class="email">denis.berroeta@uai.cl</a></p>
-<p>Magíster en Inteligencia Artificial, Doctorado y Master en Data Science (cursando), Ingeniero en Prevención de Riesgos y Topógrafo. Tiene experiencia en modelamiento y análisis de datos espaciales, trabajando en diferentes proyectos de investigación públicos y privados en el Centro de Inteligencia Territorial de la Universidad Adolfo Ibáñez, donde se desempeña como coordinador de investigación, diseñando y gestionando la implementación de metodologías de análisis de datos territoriales. Posee experiencia como profesor en Geoestadísticas; Análisis Criminal, Análisis de imágenes satelitales para el monitoreo ambiental y gestión de desastres naturales; y Data Science. Tema de Tesis Detección de Cambios en Imágenes Radar con técnicas de deep learning.</p>
-<p>Profesor de cursos y postgrados de la Escuela de Gobierno y de Diseño en UAI, CIAE de Universidad de Chile.</p>
-</section>
-<section id="ayudante-var-ayudante.name" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="ayudante-var-ayudante.name">Ayudante: Lynn Richards</h2>
-<p>Ayudante del Curso email: <a href="mailto:lrichards@alumnos.uai.cl" class="email">lrichards@alumnos.uai.cl</a></p>
-</section>
-<section id="metodología" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="metodología"><span class="header-section-number">1.4</span> Metodología</h2>
-<p>Clases a distancia (vía Zoom) combinando componentes expositivos y prácticos. Durante el curso se realizarán distintos ejercicios en clase y demostraciones prácticas en R que requerirán que cada estudiante interactúe con un computador personal.</p>
-<p>Sumado a las clases lectivas, el curso tendrá 6 horas de ayudantía, donde los estudiantes podrán responder dudas de manera personalizada durante su desarrollo. Estas sesiones no son obligatorias y no tendrán -a priori- contenidos a ser cubiertos sino que se ajustarán a las consultas que los asistentes tengan o -idealmente- envíen con anticipación al ayudante.</p>
-</section>
-<section id="evaluación" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="evaluación"><span class="header-section-number">1.5</span> Evaluación</h2>
-<p>Se realizarán 3 evaluaciones, las 2 primeras con una ponderación de 20% cada una. Finalmente se realizará una evaluación final del curso con una ponderación de 60%. Todas las evaluaciones deberán ser entregada en línea. No hay entregas fuera de plazo.</p>
-</section>
-<section id="normas" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="normas"><span class="header-section-number">1.6</span> Normas</h2>
-<dl>
-<dt>Presencia Activa:</dt>
-<dd>
-Este curso, por su metodología experiencial, requiere de una participación activa de los participantes. Es importante descubrir las fuentes de distracción y evitarlas. Las más usuales son lectura o escritura de e-mails, navegar por internet o utilizar redes sociales. Esto distrae a quien lo hace y restringe al resto del curso de su participación activa.
-</dd>
-<dt>Puntualidad y Asistencia:</dt>
-<dd>
-Será necesario ingresar a clases en forma puntual y permanecer en la misma sin salir, a menos que haya una urgencia. Se requerirá como mínimo un 75% de asistencia. Es importante que quien tuviera problemas para estar a tiempo o para asistir, se ponga en contacto lo antes posible con la coordinadora del curso. Los alumnos que lleguen más de 15 minutos tarde serán considerados ausentes de la sesión.
-</dd>
-<dt>Responsabilidad en los grupos (si aplica):</dt>
-<dd>
-Todos los miembros del grupo han de contribuir al esfuerzo del equipo. Si surgen problemas con algún miembro del equipo, es responsabilidad de cada grupo tratar de resolverlo.
-</dd>
-<dt>Grabación de clases:</dt>
-<dd>
-La clase se grabará para apoyar a aquellos estudiantes que hayan tenido problemas de conectividad durante la sesión. Se disponibilizará por 60 días en la plataforma online del curso, para visualizar sin opción de descarga. Después de 60 días y por políticas de la Universidad para cursos sincrónicos, la clase se borra del servidor.
-</dd>
-</dl>
+<section id="parte-2-ponderación-30" class="level2">
+<h2 class="anchored" data-anchor-id="parte-2-ponderación-30">Parte 2 (Ponderación 30%)</h2>
+<p>El reporte debe estar contenido en un proyecto de RStudio, y este proyecto es que se entrega como tarea 2, debe contener en su interior todas las subcarpetas que se utilizaron como por ejemplo <code>data</code>, <code>images</code> <code>R</code>, etc. En este punto se evaluará el orden en los códigos y estructura del proyecto, como referencia para crear el proyecto seguir las instrucción de <a href="first_report.html#sec-ProyRStudio"><span>Section&nbsp;8.2</span></a>.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -600,10 +521,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./tarea_1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tarea 1</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro_r.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introducción a R Project</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./recursos.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Instalación de Recursos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

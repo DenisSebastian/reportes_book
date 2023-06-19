@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,7 +30,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./first_report.html" rel="next">
 <link href="./tidyverse_R.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -95,6 +61,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -194,6 +163,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./first_report.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mi Primer Reporte</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Flujos de Trabajo</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -210,7 +191,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./tarea_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Tarea 1</span></span></a>
+ <span class="menu-text">Tarea 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tarea_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tarea 2</span></a>
   </div>
 </li>
       </ul>
@@ -242,6 +229,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Datos temporales</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tablas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Tablas en Markdown</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./iter_graph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Gráficos Interativos</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -258,16 +257,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown"><span class="header-section-number">7.2</span> Markdown</a></li>
   <li><a href="#instalación-de-complementos" id="toc-instalación-de-complementos" class="nav-link" data-scroll-target="#instalación-de-complementos"><span class="header-section-number">7.3</span> Instalación de complementos</a></li>
   <li><a href="#creación-de-reporte" id="toc-creación-de-reporte" class="nav-link" data-scroll-target="#creación-de-reporte"><span class="header-section-number">7.4</span> Creación de Reporte</a></li>
-  <li><a href="#elementos-de-un-documento-rmarkdown" id="toc-elementos-de-un-documento-rmarkdown" class="nav-link" data-scroll-target="#elementos-de-un-documento-rmarkdown"><span class="header-section-number">7.5</span> Elementos de un documento Rmarkdown</a></li>
+  <li><a href="#sec-YAML" id="toc-sec-YAML" class="nav-link" data-scroll-target="#sec-YAML"><span class="header-section-number">7.5</span> Elementos de un documento Rmarkdown</a></li>
   <li><a href="#sintaxis" id="toc-sintaxis" class="nav-link" data-scroll-target="#sintaxis"><span class="header-section-number">7.6</span> Sintaxis</a>
   <ul class="collapse">
-  <li><a href="#títulos" id="toc-títulos" class="nav-link" data-scroll-target="#títulos"><span class="header-section-number">7.6.1</span> Títulos</a></li>
+  <li><a href="#sec-titles" id="toc-sec-titles" class="nav-link" data-scroll-target="#sec-titles"><span class="header-section-number">7.6.1</span> Títulos</a></li>
   <li><a href="#formato-a-texto" id="toc-formato-a-texto" class="nav-link" data-scroll-target="#formato-a-texto"><span class="header-section-number">7.6.2</span> Formato a texto</a></li>
-  <li><a href="#imágenes" id="toc-imágenes" class="nav-link" data-scroll-target="#imágenes"><span class="header-section-number">7.6.3</span> Imágenes</a></li>
-  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links"><span class="header-section-number">7.6.4</span> Links</a></li>
+  <li><a href="#sec-images" id="toc-sec-images" class="nav-link" data-scroll-target="#sec-images"><span class="header-section-number">7.6.3</span> Imágenes</a></li>
+  <li><a href="#sec-links" id="toc-sec-links" class="nav-link" data-scroll-target="#sec-links"><span class="header-section-number">7.6.4</span> Links</a></li>
   <li><a href="#listas" id="toc-listas" class="nav-link" data-scroll-target="#listas"><span class="header-section-number">7.6.5</span> Listas</a></li>
   <li><a href="#formulas" id="toc-formulas" class="nav-link" data-scroll-target="#formulas"><span class="header-section-number">7.6.6</span> Formulas</a></li>
   </ul></li>
+  <li><a href="#configuración-del-código" id="toc-configuración-del-código" class="nav-link" data-scroll-target="#configuración-del-código"><span class="header-section-number">7.7</span> Configuración del Código</a></li>
+  <li><a href="#otras-referencias" id="toc-otras-referencias" class="nav-link" data-scroll-target="#otras-referencias"><span class="header-section-number">7.8</span> Otras Referencias</a></li>
   </ul>
 </nav>
     </div>
@@ -293,7 +294,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introducción" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">7.1</span> Introducción</h2>
-<p>Rmarkdown es que permite generar informes a partir de R.Este permiteincluir texto, comandos de R, imágenes y gráficos a un documento.</p>
+<p>Rmarkdown es que permite generar informes a partir de R.Este permite incluir texto, comandos de R, imágenes y gráficos a un documento.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/tipos_reportes.jpg" class="img-fluid figure-img" width="400"></p>
@@ -311,7 +312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl>
 <dt>RMarkdown:</dt>
 <dd>
-Basado en el lenguaje markdown - funcionalidad que busca convertir rápida y fácilmente texto plano tipo bloc de notas a formato HTML - RMarkdown es un tipo de documento de RStudio quepermite integrar texto con código de R.
+Basado en el lenguaje markdown - funcionalidad que busca convertir rápida y fácilmente texto plano tipo bloc de notas a formato HTML - RMarkdown es un tipo de documento de RStudio que permite integrar texto con código de R.
 </dd>
 <dt>Knitr:</dt>
 <dd>
@@ -334,19 +335,17 @@ Son simplemente documento de texto (se pueden escribir en cualquier editor de te
 <section id="instalación-de-complementos" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="instalación-de-complementos"><span class="header-section-number">7.3</span> Instalación de complementos</h2>
 <p>Instalación de <a href="https://bookdown.org/yihui/rmarkdown/installation.html"><code>rmarkdown</code></a></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install from CRAN</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'rmarkdown'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+
 </div>
 <p>Instalar LaTeX para los reportes PDF, a través de la librería `tinytex’:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'tinytex'</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()  <span class="co"># instal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+
 </div>
 </section>
 <section id="creación-de-reporte" class="level2 page-columns page-full" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="creación-de-reporte"><span class="header-section-number">7.4</span> Creación de Reporte</h2>
-<p>Existen en Rstudio dos formas de trabajar con un archivo Rmd (RMarkdown) con código direto llamado source o a través de Visual Editor (Shift + Ctrl + F4 ), como se observa a continuación:</p>
+<p>Existen en Rstudio dos formas de trabajar con un archivo Rmd (RMarkdown) con código directo llamado source o a través de Visual Editor (Shift + Ctrl + F4 ), como se observa a continuación:</p>
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
 <p><img src="images/visual_editor.png" class="img-fluid figure-img"></p>
@@ -354,12 +353,12 @@ Son simplemente documento de texto (se pueden escribir en cualquier editor de te
 </figure>
 </div>
 </section>
-<section id="elementos-de-un-documento-rmarkdown" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="elementos-de-un-documento-rmarkdown"><span class="header-section-number">7.5</span> Elementos de un documento Rmarkdown</h2>
-<p>Aspetos generales del texto. Referencias <a href="https://bookdown.org/gboccardo/manual-ED-UCH/introduccion-al-uso-de-rmarkdown-para-la-compilacion-de-resultados-de-rstudio-en-diferentes-formatos.html#aspectos-generales-formato-de-texto">Link</a></p>
+<section id="sec-YAML" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="sec-YAML"><span class="header-section-number">7.5</span> Elementos de un documento Rmarkdown</h2>
+<p>Aspectos generales del texto. Referencias <a href="https://bookdown.org/gboccardo/manual-ED-UCH/introduccion-al-uso-de-rmarkdown-para-la-compilacion-de-resultados-de-rstudio-en-diferentes-formatos.html#aspectos-generales-formato-de-texto">Link</a></p>
 <ul>
 <li><strong>title</strong> Texto entre comillas que servirá de título general al documento.</li>
-<li><strong>subtitle</strong>. Texto entre comillas que servirá de subtítulo para el título general del documento.</li>
+<li><strong>subtitle</strong>. Texto entre comillas que servirá de subtitulo para el título general del documento.</li>
 <li><strong>author</strong> Texto entre comillas para indicar el nombre del o los autores.</li>
 <li><strong>date</strong>. Campo para indicar la fecha. En el texto, con la expresión today, se solicita que imprima la fecha actual según el calendario del sistema operativo.</li>
 <li><strong>bibliography</strong>. Se indica el nombre del archivo que contiene los datos para construir el listado de referencia bibliográficas. Este archivo es de formato BibTex y se construye usando un gestor de referencias como Zotero.</li>
@@ -371,8 +370,8 @@ Son simplemente documento de texto (se pueden escribir en cualquier editor de te
 </section>
 <section id="sintaxis" class="level2 page-columns page-full" data-number="7.6">
 <h2 data-number="7.6" class="anchored" data-anchor-id="sintaxis"><span class="header-section-number">7.6</span> Sintaxis</h2>
-<section id="títulos" class="level3" data-number="7.6.1">
-<h3 data-number="7.6.1" class="anchored" data-anchor-id="títulos"><span class="header-section-number">7.6.1</span> Títulos</h3>
+<section id="sec-titles" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="sec-titles"><span class="header-section-number">7.6.1</span> Títulos</h3>
 <p><img src="images/titulos_H.jpeg" class="img-fluid"></p>
 </section>
 <section id="formato-a-texto" class="level3" data-number="7.6.2">
@@ -382,8 +381,8 @@ Son simplemente documento de texto (se pueden escribir en cualquier editor de te
 <p>Resultados:</p>
 <p><em>Cursiva</em>, <strong>Negrita</strong>, <del>Tachado</del> y Km<sup>2</sup></p>
 </section>
-<section id="imágenes" class="level3 page-columns page-full" data-number="7.6.3">
-<h3 data-number="7.6.3" class="anchored" data-anchor-id="imágenes"><span class="header-section-number">7.6.3</span> Imágenes</h3>
+<section id="sec-images" class="level3 page-columns page-full" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="sec-images"><span class="header-section-number">7.6.3</span> Imágenes</h3>
 <p>Declaración:</p>
 <pre><code>![Logo de R](images/Rlogo.png)</code></pre>
 <p>Resultados:</p>
@@ -394,8 +393,8 @@ Son simplemente documento de texto (se pueden escribir en cualquier editor de te
 </figure>
 </div>
 </section>
-<section id="links" class="level3" data-number="7.6.4">
-<h3 data-number="7.6.4" class="anchored" data-anchor-id="links"><span class="header-section-number">7.6.4</span> Links</h3>
+<section id="sec-links" class="level3" data-number="7.6.4">
+<h3 data-number="7.6.4" class="anchored" data-anchor-id="sec-links"><span class="header-section-number">7.6.4</span> Links</h3>
 <p>Este es el formato para crear links <code>[R para Ciencia de Datos](https://es.r4ds.hadley.nz)</code></p>
 <p>Este es el resultado: <a href="https://es.r4ds.hadley.nz">R para Ciencia de Datos</a></p>
 </section>
@@ -405,7 +404,7 @@ Son simplemente documento de texto (se pueden escribir en cualquier editor de te
     + Item 2a
     + Item 2b</code></pre>
 <ul>
-<li><p>Item 1</p>
+<li><p>Ítem 1</p>
 <ul>
 <li>Item 2a</li>
 <li>Item 2b</li>
@@ -418,9 +417,81 @@ Son simplemente documento de texto (se pueden escribir en cualquier editor de te
 <p>Esto es una función en la línea <span class="math inline">h^2 = a^2+b^2</span></p>
 <pre><code>$$h = \sqrt{a^2+b^2}$$ </code></pre>
 <p><span class="math display">h = \sqrt{a^2+b^2}</span></p>
-
-
 </section>
+</section>
+<section id="configuración-del-código" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="configuración-del-código"><span class="header-section-number">7.7</span> Configuración del Código</h2>
+<p>Teniendo en cuenta que uno de los elementos con mayor importancia en los reportes es la capacidad de incorporar bloques de código y este esa renderizado, entonce también se debe conocer los aspectos de configuración de ellos.</p>
+<p>Se trata de bloques de código delimitados por la siguiente estructura: el inicio de un código está delimitado por tres apostrofes seguidos por un r entre corchetes curvos {r}, y su cierre por otros tres apostrofes. Eso delimita lo que se ejecutará como código de computación, diferenciándolo respecto al texto simple. A continuación se observa un ejemplo de esto:</p>
+<p><img src="images/code_chunk.png" class="img-fluid"></p>
+<p>Los argumentos sirven para configurar el comportamiento del código al momento de compilar el documento.</p>
+<p>Como no siempre se buscará que en el reporte final se despliegue la sintaxis original, o los mensajes y/o advertencias que reporta R luego de ejecutar un comando, es posible configurar la ejecución de cada trozo de código agregando diferentes opciones.</p>
+<p>Por ejemplo, al abrir el siguiente código de nuestra sintaxis de Markdown con las siguientes opciones <code>{r, echo = FALSE, results = 'asis', message= FALSE}</code> les estamos indicando lo siguiente:</p>
+<p><code>echo = FALSE</code> significa que no se desplegará la sintaxis en el reporte, pero sí se ejecutará la operación y mostrarán los resultados.</p>
+<p><code>results = 'asis'</code> indica que el resultado se exportará directamente al nuevo archivo, sin que sea configurado por RMarkdown. Esto es útil con funciones que formatean de manera inmediata los resultados al formato deseado.</p>
+<p><code>message = FALSE</code> indica que no se mostrarán los mensajes de información en el informe final.</p>
+<p>En la siguiente tabla se indican algunos de los argumentos de mayor utilidad para configurar trozos de código en RMarkdown.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Argumentos para configurar los chunks de código en RMarkdown</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Argumento</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Valor_por_defecto</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">eval</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Si se configura como FALSE, R sólo mostrará, pero no correrá el código</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">include</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Si se configura como FALSE, R no mostrará el código, pero correrá el comando y mostrará sus resultados.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">error</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Si se configura como FALSE, R no mostrará los mensajes de errores que resulten de la ejecución del código.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">results</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">Si se configura como hide, R no mostrará los resultados del código aunque lo ejecutará tras bambalinas. Si se configura como delay, R mostrará sólo el último resultado del trozo de código. Si se configura como asis R no configurará con markdown la estructura de los resultados, imprimiéndolos de manera directa en el reporte final. Esto resulta útil cuando usamos funciones específicas para presentar resultados en algún formato de reporte específico (Word, PDF, etc.)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">warning</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Si se configura como FALSE R no mostrará los mensajes de advertencia que resulten de la ejecución del código.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Si se configura como FALSE R no mostrará ningún tipo de mensaje que resulten de la ejecución del código.</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="otras-referencias" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="otras-referencias"><span class="header-section-number">7.8</span> Otras Referencias</h2>
+<ul>
+<li><p>Xie, Dervieux, Riedere, 2023. “R Markdown Cookbook”. <a href="https://bookdown.org/yihui/rmarkdown-cookbook/notebook.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/notebook.html</a></p></li>
+<li><p>Boccardo, Ruiz, 2019. “RStudio para Estadística Descriptiva en Ciencias Sociales”. <a href="https://bookdown.org/gboccardo/manual-ED-UCH/introduccion-al-uso-de-rmarkdown-para-la-compilacion-de-resultados-de-rstudio-en-diferentes-formatos.html" class="uri">https://bookdown.org/gboccardo/manual-ED-UCH/introduccion-al-uso-de-rmarkdown-para-la-compilacion-de-resultados-de-rstudio-en-diferentes-formatos.html</a></p></li>
+<li><p>Miller, Steven V. 2018. “A Pandoc Markdown Article Starter and Template”. <a href="https://github.com/svmiller/svm-r-markdown-templates" class="uri">https://github.com/svmiller/svm-r-markdown-templates</a>.</p></li>
+<li><p>Grolemund, Garret. 2014. “Introduction to R Markdown”. <a href="https://rmarkdown.rstudio.com/articles_intro.html" class="uri">https://rmarkdown.rstudio.com/articles_intro.html</a>.</p></li>
+<li><p>Workshop, Reproducible Research. 2016. ““Writing Publications with R. Writing Publications with R”. <a href="http://www.geo.uzh.ch/microsite/reproducible_research/post/rr-r-publication/" class="uri">http://www.geo.uzh.ch/microsite/reproducible_research/post/rr-r-publication/</a>.</p></li>
+<li><p>Navarro, Juan. 2014. “LaTeX Fácil: Guía Rápida de LaTeX”. <a href="http://nokyotsu.com/latex/guia.html" class="uri">http://nokyotsu.com/latex/guia.html</a>.</p></li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -664,8 +735,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./first_report.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mi Primer Reporte</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -178,6 +178,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./first_report.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mi Primer Reporte</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Flujos de Trabajo</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -194,7 +206,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./tarea_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Tarea 1</span></span></a>
+ <span class="menu-text">Tarea 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tarea_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tarea 2</span></a>
   </div>
 </li>
       </ul>
@@ -226,6 +244,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Datos temporales</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tablas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Tablas en Markdown</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./iter_graph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Gráficos Interativos</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -245,11 +275,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select"><span class="header-section-number">6.3.1</span> Select</a></li>
   <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter"><span class="header-section-number">6.3.2</span> Filter</a></li>
   </ul></li>
-  <li><a href="#resúmenes-estadísticos-con-dplyr" id="toc-resúmenes-estadísticos-con-dplyr" class="nav-link" data-scroll-target="#resúmenes-estadísticos-con-dplyr"><span class="header-section-number">6.4</span> Resúmenes Estadísticos con <code>dplyr</code></a></li>
+  <li><a href="#sec-genRes" id="toc-sec-genRes" class="nav-link" data-scroll-target="#sec-genRes"><span class="header-section-number">6.4</span> Resúmenes Estadísticos con <code>dplyr</code></a></li>
   <li><a href="#visualización-de-variables" id="toc-visualización-de-variables" class="nav-link" data-scroll-target="#visualización-de-variables"><span class="header-section-number">6.5</span> Visualización de Variables</a>
   <ul class="collapse">
   <li><a href="#función-plot" id="toc-función-plot" class="nav-link" data-scroll-target="#función-plot"><span class="header-section-number">6.5.1</span> Función Plot</a></li>
-  <li><a href="#package-ggplot2" id="toc-package-ggplot2" class="nav-link" data-scroll-target="#package-ggplot2"><span class="header-section-number">6.5.2</span> Package ggplot2</a></li>
+  <li><a href="#sec-ggplot" id="toc-sec-ggplot" class="nav-link" data-scroll-target="#sec-ggplot"><span class="header-section-number">6.5.2</span> Package ggplot2</a></li>
   </ul></li>
   <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">6.6</span> Referencias:</a></li>
   </ul>
@@ -461,8 +491,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="resúmenes-estadísticos-con-dplyr" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="resúmenes-estadísticos-con-dplyr"><span class="header-section-number">6.4</span> Resúmenes Estadísticos con <code>dplyr</code></h2>
+<section id="sec-genRes" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="sec-genRes"><span class="header-section-number">6.4</span> Resúmenes Estadísticos con <code>dplyr</code></h2>
 <center>
 <img src="images/dplyr_group_by.png" class="img-fluid" style="width:70.0%">
 </center>
@@ -525,8 +555,8 @@ Densidad de comercio
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># colores:https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="package-ggplot2" class="level3" data-number="6.5.2">
-<h3 data-number="6.5.2" class="anchored" data-anchor-id="package-ggplot2"><span class="header-section-number">6.5.2</span> Package <a href="https://ggplot2.tidyverse.org">ggplot2</a></h3>
+<section id="sec-ggplot" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="sec-ggplot"><span class="header-section-number">6.5.2</span> Package <a href="https://ggplot2.tidyverse.org">ggplot2</a></h3>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sii_com, <span class="fu">aes</span>(<span class="at">x =</span> vivienda)) <span class="sc">+</span> </span>

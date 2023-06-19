@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Denis Berroeta (denis.berroeta@uai.cl)">
-<meta name="dcterms.date" content="2023-05-27">
 
-<title>Reportes Automáticos</title>
+<title>Reportes Automáticos - Appendix E — Gráficos Interativos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro_r.html" rel="next">
+<link href="./tablas.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -76,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Prefacio</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./recursos.html">Appendices</a></li><li class="breadcrumb-item"><a href="./iter_graph.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Gráficos Interativos</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -103,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Prefacio</span></span></a>
   </div>
 </li>
@@ -219,7 +251,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./iter_graph.html" class="sidebar-item-text sidebar-link">
+  <a href="./iter_graph.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Gráficos Interativos</span></span></a>
   </div>
 </li>
@@ -235,17 +267,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio"><span class="header-section-number">1</span> Prefacio</a>
-  <ul class="collapse">
-  <li><a href="#introducción" id="toc-introducción" class="nav-link" data-scroll-target="#introducción"><span class="header-section-number">1.1</span> Introducción</a></li>
-  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos"><span class="header-section-number">1.2</span> Objetivos</a></li>
-  <li><a href="#contenidos" id="toc-contenidos" class="nav-link" data-scroll-target="#contenidos"><span class="header-section-number">1.3</span> Contenidos</a></li>
-  <li><a href="#profesor-var-profesor.name" id="toc-profesor-var-profesor.name" class="nav-link" data-scroll-target="#profesor-var-profesor.name">Profesor: Denis Berroeta</a></li>
-  <li><a href="#ayudante-var-ayudante.name" id="toc-ayudante-var-ayudante.name" class="nav-link" data-scroll-target="#ayudante-var-ayudante.name">Ayudante: Lynn Richards</a></li>
-  <li><a href="#metodología" id="toc-metodología" class="nav-link" data-scroll-target="#metodología"><span class="header-section-number">1.4</span> Metodología</a></li>
-  <li><a href="#evaluación" id="toc-evaluación" class="nav-link" data-scroll-target="#evaluación"><span class="header-section-number">1.5</span> Evaluación</a></li>
-  <li><a href="#normas" id="toc-normas" class="nav-link" data-scroll-target="#normas"><span class="header-section-number">1.6</span> Normas</a></li>
-  </ul></li>
+  <li><a href="#descripción" id="toc-descripción" class="nav-link active" data-scroll-target="#descripción"><span class="header-section-number">E.1</span> Descripción</a></li>
+  <li><a href="#lectura-de-insumos" id="toc-lectura-de-insumos" class="nav-link" data-scroll-target="#lectura-de-insumos"><span class="header-section-number">E.2</span> Lectura de Insumos</a></li>
+  <li><a href="#interación" id="toc-interación" class="nav-link" data-scroll-target="#interación"><span class="header-section-number">E.3</span> Interación</a></li>
+  <li><a href="#visualización-de-resultados" id="toc-visualización-de-resultados" class="nav-link" data-scroll-target="#visualización-de-resultados"><span class="header-section-number">E.4</span> Visualización de resultados</a></li>
   </ul>
 </nav>
     </div>
@@ -254,27 +279,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Reportes Automáticos</h1>
-<p class="subtitle lead">Escuela de Gobierno - Universidad Adolfo Ibáñez. Chile</p>
+<h1 class="title">Appendix E — Gráficos Interativos</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Denis Berroeta (<a href="mailto:denis.berroeta@uai.cl" class="email">denis.berroeta@uai.cl</a>) </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 27, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -282,86 +294,125 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p><br></p>
+<section id="descripción" class="level2" data-number="E.1">
+<h2 data-number="E.1" class="anchored" data-anchor-id="descripción"><span class="header-section-number">E.1</span> Descripción</h2>
+<p>En este apéndice la idea es generar un mapa por cada una de las comuna de una provicia de forma iterativa, utilizando ciclos <code>for</code> que vimos en <a href="loops_R.html#sec-for"><span>Section&nbsp;5.2.1</span></a>. Esto se puede aplicar para cualquier tipo de mapas y puede ser utilizado para preprocesar análisis, gráficos, modelos, etc. que tomen demasiado tiempo, entonces el hacerlo antes permite que la etapa de renderizado del markdown sea más eficiente.</p>
+</section>
+<section id="lectura-de-insumos" class="level2" data-number="E.2">
+<h2 data-number="E.2" class="anchored" data-anchor-id="lectura-de-insumos"><span class="header-section-number">E.2</span> Lectura de Insumos</h2>
+<p>Librerías</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Base de Datos</p>
+<p>La base que se utulizará corresponderá las zonas censales urbanas de Chile, para luego filtrar una provincia a elección para el elemplo será provincia de San Antonio que cuenta con 6 comunas.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>zonas <span class="ot">&lt;-</span>  <span class="fu">readRDS</span>(<span class="st">"data/censo/zonas_urb_consolidadas.rds"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># unique(zonas$NOM_PROVIN)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>provincia  <span class="ot">&lt;-</span> <span class="st">"SAN ANTONIO"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>base_provincial <span class="ot">&lt;-</span>  zonas <span class="sc">%&gt;%</span> <span class="fu">filter</span>(NOM_PROVIN <span class="sc">==</span> provincia)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>comunas <span class="ot">&lt;-</span> <span class="fu">unique</span>(base_provincial<span class="sc">$</span>NOM_COMUNA)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>comunas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "ALGARROBO"     "EL QUISCO"     "CARTAGENA"     "EL TABO"      
+[5] "SAN ANTONIO"   "SANTO DOMINGO"</code></pre>
+</div>
+</div>
+</section>
+<section id="interación" class="level2" data-number="E.3">
+<h2 data-number="E.3" class="anchored" data-anchor-id="interación"><span class="header-section-number">E.3</span> Interación</h2>
+<p>En esta etapa se creará un script donde se genere un flujo que permita iterar por cada zona urbana de las comunas de la provincia de San Antonio. Primero se define una ruta de salida de los mapas donde se iràn almacenando. Posteriormente se crea una estructura de iteración mediante ciclo for (<a href="loops_R.html#sec-for"><span>Section&nbsp;5.2.1</span></a>), donde al iterar por cada comna primero filtra la base de datos, luego genera el gráfico y finalmente guarda el mapa con nombre independiente.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ruta_salida <span class="ot">&lt;-</span> <span class="st">"data/graficos/"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(comuna <span class="cf">in</span> comunas){</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"Operando la comuna: "</span>, comuna))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Fitrar base</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  base_comunal <span class="ot">&lt;-</span> base_provincial <span class="sc">%&gt;%</span> </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(NOM_COMUNA <span class="sc">==</span> comuna)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># generar gráfico</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  grafico_com <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> base_comunal, <span class="fu">aes</span>(<span class="at">fill =</span> DENS_HAB), <span class="at">alpha=</span> <span class="fl">0.8</span>)<span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_viridis_c</span>()<span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="fu">paste0</span>(<span class="st">"DENSIDAD HABITANTES "</span>, comuna)) <span class="sc">+</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"gray80"</span>),</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">panel.grid.minor =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"gray80"</span>))</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">#guardar imagenes</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  nombre_plot <span class="ot">&lt;-</span> <span class="st">"Densidad_habitantes"</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  nombre_imagen <span class="ot">&lt;-</span> <span class="fu">paste0</span>(ruta_salida, <span class="fu">gsub</span>(<span class="st">" "</span>, <span class="st">"_"</span>, comuna) ,<span class="st">".jpg"</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="at">filename =</span> nombre_imagen, <span class="at">plot =</span> grafico_com, <span class="at">height =</span> <span class="dv">7</span>, <span class="at">width =</span> <span class="dv">9</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="visualización-de-resultados" class="level2" data-number="E.4">
+<h2 data-number="E.4" class="anchored" data-anchor-id="visualización-de-resultados"><span class="header-section-number">E.4</span> Visualización de resultados</h2>
+<div id="fig-elephants" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://cit.uai.cl"><img src="images/logo_goblab.JPG" class="img-fluid figure-img" width="250"></a></p>
+<p><img src="data/graficos/ALGARROBO.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Densidad Algarrobo</figcaption>
 </figure>
 </div>
-<p><br></p>
-<section id="prefacio" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Prefacio</h1>
-<section id="introducción" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">1.1</span> Introducción</h2>
-<p>En este curso aprenderá a crear y modificar cada elemento de un archivo R Markdown, incluyendo código, texto, y metadatos. Manipulará y analizará información usando los paquetes tidyr y dplyr, creará visualizaciones con ggplot2, y combinará todas estas acciones en reportes reproducibles en formato Word utilizando el entorno RStudio. Esto se realizará a través de ejemplos prácticos de escritura de código y creación de documentos buscando también generar una lógica para organizar eficientemente sus reportes. Al final de este curso será capaz de abordar sus propios proyectos de generación y automatización de reportes.</p>
-</section>
-<section id="objetivos" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="objetivos"><span class="header-section-number">1.2</span> Objetivos</h2>
-<ul>
-<li>Profundizar en el uso de técnicas de programación en R para el manejo y visualización de datos en el contexto de crear reportes</li>
-<li>Conocer los distintos componentes de un documento reproducible usando R Markdown y cómo combinar estos para la generación de documentos</li>
-<li>Aprender a utilizar la parametrización de documentos para automatizar la generación de estos</li>
-<li>Conocer las opciones de personalización que R y Markdown ofrecen y cómo incluir estas en sus reportes</li>
-</ul>
-</section>
-<section id="contenidos" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="contenidos"><span class="header-section-number">1.3</span> Contenidos</h2>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/all_diagrama.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="data/graficos/CARTAGENA.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Densidad Cartagena</figcaption>
 </figure>
 </div>
-<ol type="a">
-<li>Introducción a R y RStudio, conceptimos básicos del lenguajes programación, declaración, de variables, funciones, estructuras de control y bubles, necesarios para realizar operaciones y análsis.<br>
-</li>
-<li>Análisis, manejo de datos, y visualizaciones (6 horas): profundizar en el uso de paquetes pertenecientes al denominado tidyverse (<a href="https://dplyr.tidyverse.org">dplyr</a>, <a href="https://tidyr.tidyverse.org">tidyr</a> , y <a href="https://ggplot2.tidyverse.org/">ggplot2</a>, entre otros) con foco en la manipulación de datos para la generación de gráficos y tablas a incluir en reportes.</li>
-<li>Introducción a R Markdown (3 horas): aprender sobre los tres componentes de un archivo R Markdown (código, texto, y metadatos) y cómo agregar/modificar estos a la hora de generar un reporte.</li>
-<li>Automatizando reportes (3 horas): conocer el uso de parámetros en R Markdown y cómo incluirlos a la hora de generar un reporte. Utilizar funciones e iteraciones para generar distintos reportes de forma simple.</li>
-<li>Mejorando los reportes (3 horas): explorar las opciones de personalización que R y R Markdown ofrecen con el fin de adaptar los reportes a las necesidades (visuales) de la organización. Se hará especial énfasis en el uso del paquete flextable para la creación de tablas personalizadas.</li>
-</ol>
-</section>
-<section id="profesor-var-profesor.name" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="profesor-var-profesor.name">Profesor: <a href="https://cit.uai.cl/denis-berroeta/">Denis Berroeta</a></h2>
-<p>Coordinador de Investigación, Centro de Inteligencia Territorial - UAI, email: <a href="mailto:denis.berroeta@uai.cl" class="email">denis.berroeta@uai.cl</a></p>
-<p>Magíster en Inteligencia Artificial, Doctorado y Master en Data Science (cursando), Ingeniero en Prevención de Riesgos y Topógrafo. Tiene experiencia en modelamiento y análisis de datos espaciales, trabajando en diferentes proyectos de investigación públicos y privados en el Centro de Inteligencia Territorial de la Universidad Adolfo Ibáñez, donde se desempeña como coordinador de investigación, diseñando y gestionando la implementación de metodologías de análisis de datos territoriales. Posee experiencia como profesor en Geoestadísticas; Análisis Criminal, Análisis de imágenes satelitales para el monitoreo ambiental y gestión de desastres naturales; y Data Science. Tema de Tesis Detección de Cambios en Imágenes Radar con técnicas de deep learning.</p>
-<p>Profesor de cursos y postgrados de la Escuela de Gobierno y de Diseño en UAI, CIAE de Universidad de Chile.</p>
-</section>
-<section id="ayudante-var-ayudante.name" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="ayudante-var-ayudante.name">Ayudante: Lynn Richards</h2>
-<p>Ayudante del Curso email: <a href="mailto:lrichards@alumnos.uai.cl" class="email">lrichards@alumnos.uai.cl</a></p>
-</section>
-<section id="metodología" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="metodología"><span class="header-section-number">1.4</span> Metodología</h2>
-<p>Clases a distancia (vía Zoom) combinando componentes expositivos y prácticos. Durante el curso se realizarán distintos ejercicios en clase y demostraciones prácticas en R que requerirán que cada estudiante interactúe con un computador personal.</p>
-<p>Sumado a las clases lectivas, el curso tendrá 6 horas de ayudantía, donde los estudiantes podrán responder dudas de manera personalizada durante su desarrollo. Estas sesiones no son obligatorias y no tendrán -a priori- contenidos a ser cubiertos sino que se ajustarán a las consultas que los asistentes tengan o -idealmente- envíen con anticipación al ayudante.</p>
-</section>
-<section id="evaluación" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="evaluación"><span class="header-section-number">1.5</span> Evaluación</h2>
-<p>Se realizarán 3 evaluaciones, las 2 primeras con una ponderación de 20% cada una. Finalmente se realizará una evaluación final del curso con una ponderación de 60%. Todas las evaluaciones deberán ser entregada en línea. No hay entregas fuera de plazo.</p>
-</section>
-<section id="normas" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="normas"><span class="header-section-number">1.6</span> Normas</h2>
-<dl>
-<dt>Presencia Activa:</dt>
-<dd>
-Este curso, por su metodología experiencial, requiere de una participación activa de los participantes. Es importante descubrir las fuentes de distracción y evitarlas. Las más usuales son lectura o escritura de e-mails, navegar por internet o utilizar redes sociales. Esto distrae a quien lo hace y restringe al resto del curso de su participación activa.
-</dd>
-<dt>Puntualidad y Asistencia:</dt>
-<dd>
-Será necesario ingresar a clases en forma puntual y permanecer en la misma sin salir, a menos que haya una urgencia. Se requerirá como mínimo un 75% de asistencia. Es importante que quien tuviera problemas para estar a tiempo o para asistir, se ponga en contacto lo antes posible con la coordinadora del curso. Los alumnos que lleguen más de 15 minutos tarde serán considerados ausentes de la sesión.
-</dd>
-<dt>Responsabilidad en los grupos (si aplica):</dt>
-<dd>
-Todos los miembros del grupo han de contribuir al esfuerzo del equipo. Si surgen problemas con algún miembro del equipo, es responsabilidad de cada grupo tratar de resolverlo.
-</dd>
-<dt>Grabación de clases:</dt>
-<dd>
-La clase se grabará para apoyar a aquellos estudiantes que hayan tenido problemas de conectividad durante la sesión. Se disponibilizará por 60 días en la plataforma online del curso, para visualizar sin opción de descarga. Después de 60 días y por políticas de la Universidad para cursos sincrónicos, la clase se borra del servidor.
-</dd>
-</dl>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data/graficos/EL_QUISCO.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Densidad El Quisco</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data/graficos/EL_TABO.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Densidad El Tabo</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data/graficos/SAN_ANTONIO.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Densidad San Antonio</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data/graficos/SANTO_DOMINGO.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Densidad Santo Domingo</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;E.1: Mapas generados de forma iterativa</figcaption><p></p>
+</figure>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -600,11 +651,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./tablas.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Tablas en Markdown</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro_r.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introducción a R Project</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
