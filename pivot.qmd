@@ -1,0 +1,110 @@
+---
+title: "Pivot Tablas"
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, warning = FALSE,  
+                      fig.align='center', fig.height=3.5)
+options(kableExtra.latex.load_packages = FALSE) # tener todas posbilidades
+library(kableExtra)
+library(dplyr)
+library(datos)
+library(tidyr)
+
+```
+
+
+## Introducción
+
+Los principios sobre datos ordenados parecen tan obvios que te podrías preguntar si alguna vez encontrarás un dataset que no esté ordenado. Desafortunadamente, gran parte de los datos que vas a encontrar están desordenados. Existen dos principales razones para esto:
+
+La mayoría de las personas no están familiarizadas con los principios de datos ordenados y es difícil derivarlos por cuenta propia a menos que pases mucho tiempo trabajando con datos.
+
+Los datos a menudo están organizados para facilitar tareas distintas del análisis. Por ejemplo, los datos se organizan para que su registro sea lo más sencillo posible.
+
+Esto significa que para la mayoría de los análisis necesitarás hacer algún tipo de orden. El primer paso es entender siempre cuáles son las variables y las observaciones. Esto a veces es fácil; otras veces deberás consultar con quienes crearon el dataset. El segundo paso es resolver uno de los siguientes problemas frecuentes:
+
+Una variable se extiende por varias columnas
+
+Una observación está dispersa entre múltiples filas.
+
+Típicamente, un set de datos tiene uno de estos problemas. Si contiene ambos ¡significa que tienes muy mala suerte! Para solucionar estos problemas necesitarás las dos funciones más importantes de tidyr: `gather()` (reunir) y `spread()` (esparcir/extender).
+
+
+## Datos Largos
+
+Un problema común es cuando en un dataset los nombres de las columnas no representan nombres de variables, sino que representan los valores de una variable. Tomando el caso de la tabla4a: los nombres de las columnas 1999 y 2000 representan los valores de la variable año, los valores en las columnas 1999 y 2000 representan valores de la variable casos y cada fila representa dos observaciones en lugar de una.
+
+
+
+```{r}
+tabla4a
+```
+
+Para ordenar un dataset como este necesitamos pivotar las columnas que no cumplen en un nuevo par de variables. Para describir dicha operación necesitamos tres parámetros:
+
+* El conjunto de columnas cuyos nombres son valores y no variables. En este ejemplo son las columnas 1999 y 2000.
+
+* El nombre de la variable cuyos valores forman los nombres de las columnas. Llamaremos a esto key (clave) y en este caso corresponde a anio.
+
+* El nombre de la variable cuyos valores están repartidos por las celdas. Llamaremos a esto value (valor) y en este caso corresponde al número de casos.
+
+Con estos parámetros podemos utilizar la función pivot_longer() (pivotar a lo largo):
+
+
+
+```{r}
+library(tidyr)
+tabla4a %>%
+  pivot_longer(cols = c(`1999`, `2000`), 
+               names_to = "anio", values_to = "casos")
+
+```
+
+
+
+Las columnas a girar quedan seleccionadas siguiendo el estilo de notación de `dplyr::select()`. En este caso hay solo dos columnas, por lo que las listamos individualmente. Ten en consideración que "1999" y "2000" son nombres no-sintáxicos (debido a que no comienzan con una letra) por lo que los rodeamos con acentos graves (o_backticks_). Para refrescar tu memoria respecto de la selección de columnas, consulta la sección sobre select. Las variables anio y casos no existen todavía en la tabla4a, por lo que tenemos que poner sus nombres entre comillas.
+
+
+![Pivotar la tabla4 para un formato "largo" y ordenado.](images/pivot_longer.svg){fig-align="center" width="600"}
+
+
+
+
+## Datos Anchos
+
+`pivot_wider()` (pivotar a lo ancho) es lo opuesto de `pivot_longer()`. Se usa cuando una observación aparece en múltiples filas. Por ejemplo, considera la tabla2: una observación es un país en un año, pero cada observación aparece en dos filas.
+
+
+```{r}
+tabla2
+```
+
+Para ordenar esto, primero analizamos la representación de un modo similar a cómo se haría con pivot_longer(). Esta vez, sin embargo, necesitamos únicamente dos parámetros:
+
+* La columna desde la que obtener los nombres de las variables. En este caso corresponde a tipo.
+
+* La columna desde la que obtener los valores. En este caso corresponde a cuenta.
+
+Una vez resuelto esto, podemos usar `pivot_wider()`, como se muestra programáticamente abajo y visualmente en la Figura.
+
+
+```{r}
+tabla2 %>%
+  pivot_wider(names_from = tipo, values_from = cuenta)
+
+```
+
+
+
+![Pivotar la tabla2 para un formato "ancho" y ordenado](images/pivot_wider.svg){fig-align="center" width="600"}
+
+Como te habrás dado cuenta a partir de sus nombres, las funciones `pivot_longer()` y `pivot_wider()` son complementarias. `pivot_longer()` genera tablas angostas y largas, `pivot_wider()` genera tablas anchas y cortas.
+
+
+## Referencias
+
+- [Pivotear](https://es.r4ds.hadley.nz/datos-ordenados.html)

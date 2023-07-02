@@ -1,0 +1,138 @@
+---
+title: "Uniones de Tablas"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, warning = FALSE,  
+                      fig.align='center', fig.height=3.5)
+options(kableExtra.latex.load_packages = FALSE) # tener todas posbilidades
+library(kableExtra)
+library(dplyr)
+library(datos)
+
+```
+
+## Introducción
+
+En el mundo del análisis de datos, es muy común encontrarnos con situaciones en las que debemos trabajar con tablas provenientes de diferentes fuentes de información. Estas fuentes pueden ser bases de datos, archivos CSV, hojas de cálculo o incluso APIs externas. Cada una de estas fuentes puede tener su propia estructura y formato de datos, lo que dificulta la combinación de la información contenida en ellas.
+
+Afortunadamente, el lenguaje de programación R ofrece una solución poderosa y eficiente para abordar este desafío la librería {{< var library.dplyr >}} proporciona una serie de funciones y operadores que nos permiten realizar uniones de tablas de manera sencilla y flexible, sin importar la fuente de datos o la complejidad de las estructuras. A continuación se presentará una serie de ejemplos prácticos para relacionar tablas.
+
+## Esquema de relaciones
+
+Contar con un esquema de relaciones de datos sólido es de vital importancia en el ámbito del análisis y la gestión de datos. Un esquema de relaciones nos permite comprender la estructura y las interconexiones entre las diferentes tablas de nuestra base de datos, estableciendo las relaciones clave que existen entre ellas. Esto nos brinda una base sólida para realizar consultas complejas, análisis avanzados y la generación de informes precisos.
+
+Para los ejemplos que se abordarán se utilizará el siguiente esquema de relaciones des de datos:
+
+![Referencia: <https://es.r4ds.hadley.nz/datos-relacionales.html>](images/relational_nycflights.svg){fig-align="center" width="600"}
+
+
+## Llaves o Claves **(keys)**
+
+Las claves o llaves en una base de datos son elementos fundamentales para establecer relaciones entre tablas y garantizar la integridad de los datos. Una clave es un atributo o conjunto de atributos que identifica de manera única cada registro en una tabla.
+
+
+Clave Primaria:
+: Es una llave especial que se elige para identificar de forma única cada registro en una tabla. Se utiliza para garantizar la unicidad y la integridad de los datos en la tabla. La clave primaria también puede actuar como una referencia en otras tablas, estableciendo así relaciones entre ellas. Es decir, cuando una clave primaria de una tabla se utiliza en otra tabla como clave foránea, se establece una relación entre ambas tablas.  Por ejemplo, `aviones$codigo_cola` es una clave primaria, ya que identifica de manera única cada avión en la tabla aviones.
+
+
+
+Clave Forárea:
+: Es una columna o conjunto de columnas en una tabla que hace referencia a la clave primaria de otra tabla. Esta referencia crea una relación entre las dos tablas, permitiendo que los registros estén vinculados entre sí. La clave foránea facilita la conexión y la integración de datos entre diferentes tablas, ya que nos permite relacionar la información de una tabla con la de otra. Por ejemplo, `vuelos$codigo_cola` es una clave foránea, ya que aparece en la tabla vuelos, en la que une cada vuelo con un único avión.
+
+
+La diferencia clave entre la clave primaria y la clave foránea radica en su función y ubicación. La clave primaria se define en la tabla principal para identificar de forma única los registros, mientras que la clave foránea se encuentra en una tabla secundaria y establece una relación con la clave primaria de la tabla principal. Ambas claves son esenciales para establecer conexiones y mantener la integridad de los datos en una base de datos, permitiendo consultas y análisis más avanzados.
+
+
+## Cargar Tablas
+
+El paquete "datos" contiene cinco tibbles que utilizaremos para este propósito: `aerolineas`, `aeropuertos`, `aviones` y `clima`, que se relacionan con la tabla `vuelos`.
+
+```{r eval=FALSE}
+library(dplyr)
+library(datos)
+aerolineas
+aviones
+vuelos
+```
+
+
+
+## Ejemplo 1
+
+Nos solicitan conocer la cantidad aviones que tiene cada aerolinea y cual es el año promedio de fabricación de cada avión por cada aerolinea. 
+
+
+
+![](images/relational_nycflights.svg){fig-align="center" width="600"}
+
+Revisando el esquema debemos obtener información de la tabla  `aerolineas` y `aviones` pero no existen relaciones directas entre estas dos tablas, por lo cual debemos hacer la conexión a través de la tabla `vuelos`.
+
+`aerolineas <-> vuelos <-> aviones`
+
+
+Entonces lo primero que haremos es construir una tabla desde vuelos que llamaremos `base` que contenga las colunas `aerolineas` y`codigo_cola`
+
+
+```{r}
+ # head(vuelos)
+
+base <- vuelos %>% 
+  select(aerolinea, codigo_cola) %>% 
+  distinct(codigo_cola, .keep_all = T)
+
+head(base)
+```
+
+Al agregar el nombre de cada aerolinea debemos hacer el primer `left_join`, debemos tener clara nuestra "key" ya que buscaremos conectarla con la tabla de `aerolineas`
+
+
+![](images/left_join.png){fig-align="center" width="400"}
+
+
+
+```{r}
+# head(aerolineas)
+base <-  base %>% 
+  left_join(aerolineas, by = "aerolinea")
+
+head(base )
+
+```
+
+
+
+Posteriormente debemos unir nuestra base recién creada con la información de los `aviones`, donde esta la variable anio (nuestro requerimiento).
+
+```{r}
+base <-  base %>% 
+  left_join(aviones, by = "codigo_cola")
+
+head(base)
+```
+
+
+Finalmente como nos solicitan conocer la cantidad aviones tiene cada aerolinea y cual es el año promedio de fabricación de cada avión por cada aerolinea, podemos hacerlo de la siguiente forma:
+
+```{r}
+resultados <-  base %>% 
+  group_by(aerolinea, nombre) %>% 
+  summarise(Cant_Aviones = n(),
+            Prom_fab = mean(anio, na.rm=T),
+            .groups = "keep") %>% 
+  arrange(desc(Cant_Aviones))
+
+resultados %>% head()
+```
+
+## Actividad:
+
+Indique la aerolinea que el mayor ratio de asientos por cantidad de aviones.
+
+
+
+## Referencias:
+
+
+- [Datos relacionales](https://es.r4ds.hadley.nz/datos-relacionales.html)

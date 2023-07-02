@@ -20,16 +20,20 @@ book:
     - reporte.qmd
     - first_report.qmd
     - workflow.qmd
+    - control.qmd
     - references.qmd
     - part: "Tareas"
       chapters:
         - tarea_1.qmd
         - tarea_2.qmd
+        - inf_final.qmd
   appendices:
     - recursos.qmd
     - espacial_R.qmd
     - times.qmd
     - tablas.qmd
+    - joins.qmd
+    - pivot.qmd
     - iter_graph.qmd
 
 bibliography: references.bib

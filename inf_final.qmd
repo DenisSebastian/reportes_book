@@ -1,0 +1,36 @@
+# Informe Final {.unnumbered}
+
+
+
+```{r setup, include=FALSE, eval = FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, warning = FALSE, eval = FALSE,  fig.align='center')
+library(knitr)
+suppressPackageStartupMessages(library(dplyr))
+```
+
+## Enunciado General
+
+**Integrantes**: 1 (Individual).   
+**Fecha de Entrega**: 16 de Julio, 23:59 horas.
+
+
+## Requerimiento
+
+Individualmente generar un reporte utilizando Rmarkdown, replicando algún informe de referencia o de creación propia, en el formato que ustedes decidan (PDF, HTML, word, ppt, etc.), aplicando los conocimientos del curso u otros recursos estimen necesario que enriquezca el reporte (Debe comunicar análisis o contar una historia.)
+
+
+**Requerimientos Mínimos**
+
+- Itere por alguna variable de una base de datos
+- Gráficos
+- Tabla de contenidos
+- Imágenes
+- Links
+
+
+## Entregable
+
+- Reporte en el formato que estimen (PDF, html, word, presentación)
+- Archivo .Rmd usado para generar informe
+- Archivos .R (solo si los utiliza)
+- Bases para replicar informe (solo si no compromete la confidencialidad)

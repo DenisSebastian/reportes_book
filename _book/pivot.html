@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Denis Berroeta (denis.berroeta@uai.cl)">
-<meta name="dcterms.date" content="2023-05-27">
 
-<title>Reportes Automáticos</title>
+<title>Reportes Automáticos - Appendix F — Pivot Tablas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro_r.html" rel="next">
+<link href="./iter_graph.html" rel="next">
+<link href="./joins.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -67,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -76,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Prefacio</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./recursos.html">Appendices</a></li><li class="breadcrumb-item"><a href="./pivot.html"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Pivot Tablas</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -103,7 +136,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Prefacio</span></span></a>
   </div>
 </li>
@@ -182,6 +215,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Tarea 2</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inf_final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Informe Final</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -225,8 +264,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./pivot.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Pivot Tablas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./iter_graph.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Gráficos Interativos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Gráficos Interativos</span></span></a>
   </div>
 </li>
       </ul>
@@ -241,46 +286,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio"><span class="header-section-number">1</span> Prefacio</a>
-  <ul class="collapse">
-  <li><a href="#introducción" id="toc-introducción" class="nav-link" data-scroll-target="#introducción"><span class="header-section-number">1.1</span> Introducción</a></li>
-  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos"><span class="header-section-number">1.2</span> Objetivos</a></li>
-  <li><a href="#contenidos" id="toc-contenidos" class="nav-link" data-scroll-target="#contenidos"><span class="header-section-number">1.3</span> Contenidos</a></li>
-  <li><a href="#profesor-var-profesor.name" id="toc-profesor-var-profesor.name" class="nav-link" data-scroll-target="#profesor-var-profesor.name">Profesor: Denis Berroeta</a></li>
-  <li><a href="#ayudante-var-ayudante.name" id="toc-ayudante-var-ayudante.name" class="nav-link" data-scroll-target="#ayudante-var-ayudante.name">Ayudante: Lynn Richards</a></li>
-  <li><a href="#metodología" id="toc-metodología" class="nav-link" data-scroll-target="#metodología"><span class="header-section-number">1.4</span> Metodología</a></li>
-  <li><a href="#evaluación" id="toc-evaluación" class="nav-link" data-scroll-target="#evaluación"><span class="header-section-number">1.5</span> Evaluación</a></li>
-  <li><a href="#normas" id="toc-normas" class="nav-link" data-scroll-target="#normas"><span class="header-section-number">1.6</span> Normas</a></li>
-  </ul></li>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">F.1</span> Introducción</a></li>
+  <li><a href="#datos-largos" id="toc-datos-largos" class="nav-link" data-scroll-target="#datos-largos"><span class="header-section-number">F.2</span> Datos Largos</a></li>
+  <li><a href="#datos-anchos" id="toc-datos-anchos" class="nav-link" data-scroll-target="#datos-anchos"><span class="header-section-number">F.3</span> Datos Anchos</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">F.4</span> Referencias</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Reportes Automáticos</h1>
-<p class="subtitle lead">Escuela de Gobierno - Universidad Adolfo Ibáñez. Chile</p>
+<h1 class="title">Appendix F — Pivot Tablas</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Denis Berroeta (<a href="mailto:denis.berroeta@uai.cl" class="email">denis.berroeta@uai.cl</a>) </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 27, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -288,86 +313,121 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p><br></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="https://cit.uai.cl"><img src="images/logo_goblab.JPG" class="img-fluid figure-img" width="250"></a></p>
-</figure>
-</div>
-<p><br></p>
-<section id="prefacio" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Prefacio</h1>
-<section id="introducción" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">1.1</span> Introducción</h2>
-<p>En este curso aprenderá a crear y modificar cada elemento de un archivo R Markdown, incluyendo código, texto, y metadatos. Manipulará y analizará información usando los paquetes tidyr y dplyr, creará visualizaciones con ggplot2, y combinará todas estas acciones en reportes reproducibles en formato Word utilizando el entorno RStudio. Esto se realizará a través de ejemplos prácticos de escritura de código y creación de documentos buscando también generar una lógica para organizar eficientemente sus reportes. Al final de este curso será capaz de abordar sus propios proyectos de generación y automatización de reportes.</p>
+<section id="introducción" class="level2" data-number="F.1">
+<h2 data-number="F.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">F.1</span> Introducción</h2>
+<p>Los principios sobre datos ordenados parecen tan obvios que te podrías preguntar si alguna vez encontrarás un dataset que no esté ordenado. Desafortunadamente, gran parte de los datos que vas a encontrar están desordenados. Existen dos principales razones para esto:</p>
+<p>La mayoría de las personas no están familiarizadas con los principios de datos ordenados y es difícil derivarlos por cuenta propia a menos que pases mucho tiempo trabajando con datos.</p>
+<p>Los datos a menudo están organizados para facilitar tareas distintas del análisis. Por ejemplo, los datos se organizan para que su registro sea lo más sencillo posible.</p>
+<p>Esto significa que para la mayoría de los análisis necesitarás hacer algún tipo de orden. El primer paso es entender siempre cuáles son las variables y las observaciones. Esto a veces es fácil; otras veces deberás consultar con quienes crearon el dataset. El segundo paso es resolver uno de los siguientes problemas frecuentes:</p>
+<p>Una variable se extiende por varias columnas</p>
+<p>Una observación está dispersa entre múltiples filas.</p>
+<p>Típicamente, un set de datos tiene uno de estos problemas. Si contiene ambos ¡significa que tienes muy mala suerte! Para solucionar estos problemas necesitarás las dos funciones más importantes de tidyr: <code>gather()</code> (reunir) y <code>spread()</code> (esparcir/extender).</p>
 </section>
-<section id="objetivos" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="objetivos"><span class="header-section-number">1.2</span> Objetivos</h2>
+<section id="datos-largos" class="level2 page-columns page-full" data-number="F.2">
+<h2 data-number="F.2" class="anchored" data-anchor-id="datos-largos"><span class="header-section-number">F.2</span> Datos Largos</h2>
+<p>Un problema común es cuando en un dataset los nombres de las columnas no representan nombres de variables, sino que representan los valores de una variable. Tomando el caso de la tabla4a: los nombres de las columnas 1999 y 2000 representan los valores de la variable año, los valores en las columnas 1999 y 2000 representan valores de la variable casos y cada fila representa dos observaciones en lugar de una.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tabla4a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  pais       `1999` `2000`
+  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;
+1 Afganistán    745   2666
+2 Brasil      37737  80488
+3 China      212258 213766</code></pre>
+</div>
+</div>
+<p>Para ordenar un dataset como este necesitamos pivotar las columnas que no cumplen en un nuevo par de variables. Para describir dicha operación necesitamos tres parámetros:</p>
 <ul>
-<li>Profundizar en el uso de técnicas de programación en R para el manejo y visualización de datos en el contexto de crear reportes</li>
-<li>Conocer los distintos componentes de un documento reproducible usando R Markdown y cómo combinar estos para la generación de documentos</li>
-<li>Aprender a utilizar la parametrización de documentos para automatizar la generación de estos</li>
-<li>Conocer las opciones de personalización que R y Markdown ofrecen y cómo incluir estas en sus reportes</li>
+<li><p>El conjunto de columnas cuyos nombres son valores y no variables. En este ejemplo son las columnas 1999 y 2000.</p></li>
+<li><p>El nombre de la variable cuyos valores forman los nombres de las columnas. Llamaremos a esto key (clave) y en este caso corresponde a anio.</p></li>
+<li><p>El nombre de la variable cuyos valores están repartidos por las celdas. Llamaremos a esto value (valor) y en este caso corresponde al número de casos.</p></li>
 </ul>
-</section>
-<section id="contenidos" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="contenidos"><span class="header-section-number">1.3</span> Contenidos</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/all_diagrama.png" class="img-fluid figure-img" width="1000"></p>
+<p>Con estos parámetros podemos utilizar la función pivot_longer() (pivotar a lo largo):</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tabla4a <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">1999</span><span class="st">`</span>, <span class="st">`</span><span class="at">2000</span><span class="st">`</span>), </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"anio"</span>, <span class="at">values_to =</span> <span class="st">"casos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  pais       anio   casos
+  &lt;chr&gt;      &lt;chr&gt;  &lt;dbl&gt;
+1 Afganistán 1999     745
+2 Afganistán 2000    2666
+3 Brasil     1999   37737
+4 Brasil     2000   80488
+5 China      1999  212258
+6 China      2000  213766</code></pre>
+</div>
+</div>
+<p>Las columnas a girar quedan seleccionadas siguiendo el estilo de notación de <code>dplyr::select()</code>. En este caso hay solo dos columnas, por lo que las listamos individualmente. Ten en consideración que “1999” y “2000” son nombres no-sintáxicos (debido a que no comienzan con una letra) por lo que los rodeamos con acentos graves (o_backticks_). Para refrescar tu memoria respecto de la selección de columnas, consulta la sección sobre select. Las variables anio y casos no existen todavía en la tabla4a, por lo que tenemos que poner sus nombres entre comillas.</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="images/pivot_longer.svg" class="img-fluid figure-img" width="600"></p>
+<figcaption class="figure-caption margin-caption">Pivotar la tabla4 para un formato “largo” y ordenado.</figcaption>
 </figure>
 </div>
-<ol type="a">
-<li>Introducción a R y RStudio, conceptimos básicos del lenguajes programación, declaración, de variables, funciones, estructuras de control y bubles, necesarios para realizar operaciones y análsis.<br>
-</li>
-<li>Análisis, manejo de datos, y visualizaciones (6 horas): profundizar en el uso de paquetes pertenecientes al denominado tidyverse (<a href="https://dplyr.tidyverse.org">dplyr</a>, <a href="https://tidyr.tidyverse.org">tidyr</a> , y <a href="https://ggplot2.tidyverse.org/">ggplot2</a>, entre otros) con foco en la manipulación de datos para la generación de gráficos y tablas a incluir en reportes.</li>
-<li>Introducción a R Markdown (3 horas): aprender sobre los tres componentes de un archivo R Markdown (código, texto, y metadatos) y cómo agregar/modificar estos a la hora de generar un reporte.</li>
-<li>Automatizando reportes (3 horas): conocer el uso de parámetros en R Markdown y cómo incluirlos a la hora de generar un reporte. Utilizar funciones e iteraciones para generar distintos reportes de forma simple.</li>
-<li>Mejorando los reportes (3 horas): explorar las opciones de personalización que R y R Markdown ofrecen con el fin de adaptar los reportes a las necesidades (visuales) de la organización. Se hará especial énfasis en el uso del paquete flextable para la creación de tablas personalizadas.</li>
-</ol>
 </section>
-<section id="profesor-var-profesor.name" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="profesor-var-profesor.name">Profesor: <a href="https://cit.uai.cl/denis-berroeta/">Denis Berroeta</a></h2>
-<p>Coordinador de Investigación, Centro de Inteligencia Territorial - UAI, email: <a href="mailto:denis.berroeta@uai.cl" class="email">denis.berroeta@uai.cl</a></p>
-<p>Magíster en Inteligencia Artificial, Doctorado y Master en Data Science (cursando), Ingeniero en Prevención de Riesgos y Topógrafo. Tiene experiencia en modelamiento y análisis de datos espaciales, trabajando en diferentes proyectos de investigación públicos y privados en el Centro de Inteligencia Territorial de la Universidad Adolfo Ibáñez, donde se desempeña como coordinador de investigación, diseñando y gestionando la implementación de metodologías de análisis de datos territoriales. Posee experiencia como profesor en Geoestadísticas; Análisis Criminal, Análisis de imágenes satelitales para el monitoreo ambiental y gestión de desastres naturales; y Data Science. Tema de Tesis Detección de Cambios en Imágenes Radar con técnicas de deep learning.</p>
-<p>Profesor de cursos y postgrados de la Escuela de Gobierno y de Diseño en UAI, CIAE de Universidad de Chile.</p>
+<section id="datos-anchos" class="level2 page-columns page-full" data-number="F.3">
+<h2 data-number="F.3" class="anchored" data-anchor-id="datos-anchos"><span class="header-section-number">F.3</span> Datos Anchos</h2>
+<p><code>pivot_wider()</code> (pivotar a lo ancho) es lo opuesto de <code>pivot_longer()</code>. Se usa cuando una observación aparece en múltiples filas. Por ejemplo, considera la tabla2: una observación es un país en un año, pero cada observación aparece en dos filas.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tabla2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 4
+   pais        anio tipo          cuenta
+   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;
+ 1 Afganistán  1999 casos            745
+ 2 Afganistán  1999 población   19987071
+ 3 Afganistán  2000 casos           2666
+ 4 Afganistán  2000 población   20595360
+ 5 Brasil      1999 casos          37737
+ 6 Brasil      1999 población  172006362
+ 7 Brasil      2000 casos          80488
+ 8 Brasil      2000 población  174504898
+ 9 China       1999 casos         212258
+10 China       1999 población 1272915272
+11 China       2000 casos         213766
+12 China       2000 población 1280428583</code></pre>
+</div>
+</div>
+<p>Para ordenar esto, primero analizamos la representación de un modo similar a cómo se haría con pivot_longer(). Esta vez, sin embargo, necesitamos únicamente dos parámetros:</p>
+<ul>
+<li><p>La columna desde la que obtener los nombres de las variables. En este caso corresponde a tipo.</p></li>
+<li><p>La columna desde la que obtener los valores. En este caso corresponde a cuenta.</p></li>
+</ul>
+<p>Una vez resuelto esto, podemos usar <code>pivot_wider()</code>, como se muestra programáticamente abajo y visualmente en la Figura.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tabla2 <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> tipo, <span class="at">values_from =</span> cuenta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  pais        anio  casos  población
+  &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+1 Afganistán  1999    745   19987071
+2 Afganistán  2000   2666   20595360
+3 Brasil      1999  37737  172006362
+4 Brasil      2000  80488  174504898
+5 China       1999 212258 1272915272
+6 China       2000 213766 1280428583</code></pre>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="images/pivot_wider.svg" class="img-fluid figure-img" width="600"></p>
+<figcaption class="figure-caption margin-caption">Pivotar la tabla2 para un formato “ancho” y ordenado</figcaption>
+</figure>
+</div>
+<p>Como te habrás dado cuenta a partir de sus nombres, las funciones <code>pivot_longer()</code> y <code>pivot_wider()</code> son complementarias. <code>pivot_longer()</code> genera tablas angostas y largas, <code>pivot_wider()</code> genera tablas anchas y cortas.</p>
 </section>
-<section id="ayudante-var-ayudante.name" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="ayudante-var-ayudante.name">Ayudante: Lynn Richards</h2>
-<p>Ayudante del Curso email: <a href="mailto:lrichards@alumnos.uai.cl" class="email">lrichards@alumnos.uai.cl</a></p>
-</section>
-<section id="metodología" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="metodología"><span class="header-section-number">1.4</span> Metodología</h2>
-<p>Clases a distancia (vía Zoom) combinando componentes expositivos y prácticos. Durante el curso se realizarán distintos ejercicios en clase y demostraciones prácticas en R que requerirán que cada estudiante interactúe con un computador personal.</p>
-<p>Sumado a las clases lectivas, el curso tendrá 6 horas de ayudantía, donde los estudiantes podrán responder dudas de manera personalizada durante su desarrollo. Estas sesiones no son obligatorias y no tendrán -a priori- contenidos a ser cubiertos sino que se ajustarán a las consultas que los asistentes tengan o -idealmente- envíen con anticipación al ayudante.</p>
-</section>
-<section id="evaluación" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="evaluación"><span class="header-section-number">1.5</span> Evaluación</h2>
-<p>Se realizarán 3 evaluaciones, las 2 primeras con una ponderación de 20% cada una. Finalmente se realizará una evaluación final del curso con una ponderación de 60%. Todas las evaluaciones deberán ser entregada en línea. No hay entregas fuera de plazo.</p>
-</section>
-<section id="normas" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="normas"><span class="header-section-number">1.6</span> Normas</h2>
-<dl>
-<dt>Presencia Activa:</dt>
-<dd>
-Este curso, por su metodología experiencial, requiere de una participación activa de los participantes. Es importante descubrir las fuentes de distracción y evitarlas. Las más usuales son lectura o escritura de e-mails, navegar por internet o utilizar redes sociales. Esto distrae a quien lo hace y restringe al resto del curso de su participación activa.
-</dd>
-<dt>Puntualidad y Asistencia:</dt>
-<dd>
-Será necesario ingresar a clases en forma puntual y permanecer en la misma sin salir, a menos que haya una urgencia. Se requerirá como mínimo un 75% de asistencia. Es importante que quien tuviera problemas para estar a tiempo o para asistir, se ponga en contacto lo antes posible con la coordinadora del curso. Los alumnos que lleguen más de 15 minutos tarde serán considerados ausentes de la sesión.
-</dd>
-<dt>Responsabilidad en los grupos (si aplica):</dt>
-<dd>
-Todos los miembros del grupo han de contribuir al esfuerzo del equipo. Si surgen problemas con algún miembro del equipo, es responsabilidad de cada grupo tratar de resolverlo.
-</dd>
-<dt>Grabación de clases:</dt>
-<dd>
-La clase se grabará para apoyar a aquellos estudiantes que hayan tenido problemas de conectividad durante la sesión. Se disponibilizará por 60 días en la plataforma online del curso, para visualizar sin opción de descarga. Después de 60 días y por políticas de la Universidad para cursos sincrónicos, la clase se borra del servidor.
-</dd>
-</dl>
+<section id="referencias" class="level2" data-number="F.4">
+<h2 data-number="F.4" class="anchored" data-anchor-id="referencias"><span class="header-section-number">F.4</span> Referencias</h2>
+<ul>
+<li><a href="https://es.r4ds.hadley.nz/datos-ordenados.html">Pivotear</a></li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -606,10 +666,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./joins.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Uniones de Tablas</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro_r.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introducción a R Project</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./iter_graph.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Gráficos Interativos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
