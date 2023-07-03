@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Reportes Automáticos - Appendix A — Instalación de Recursos</title>
+<title>Reportes Automáticos - Appendix E — Uniones de Tablas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./espacial_R.html" rel="next">
-<link href="./inf_final.html" rel="prev">
+<link href="./pivot.html" rel="next">
+<link href="./tablas.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -66,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -75,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./recursos.html">Appendices</a></li><li class="breadcrumb-item"><a href="./recursos.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Instalación de Recursos</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./recursos.html">Appendices</a></li><li class="breadcrumb-item"><a href="./joins.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Uniones de Tablas</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -206,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./recursos.html" class="sidebar-item-text sidebar-link active">
+  <a href="./recursos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Instalación de Recursos</span></span></a>
   </div>
 </li>
@@ -230,7 +264,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./joins.html" class="sidebar-item-text sidebar-link">
+  <a href="./joins.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Uniones de Tablas</span></span></a>
   </div>
 </li>
@@ -258,21 +292,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-installR" id="toc-sec-installR" class="nav-link active" data-scroll-target="#sec-installR"><span class="header-section-number">A.1</span> Instalación de R Project</a></li>
-  <li><a href="#sec-installRStudio" id="toc-sec-installRStudio" class="nav-link" data-scroll-target="#sec-installRStudio"><span class="header-section-number">A.2</span> Instalación de RStudio</a>
-  <ul class="collapse">
-  <li><a href="#rstudio-cloud" id="toc-rstudio-cloud" class="nav-link" data-scroll-target="#rstudio-cloud"><span class="header-section-number">A.2.1</span> RStudio Cloud</a></li>
-  </ul></li>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">E.1</span> Introducción</a></li>
+  <li><a href="#esquema-de-relaciones" id="toc-esquema-de-relaciones" class="nav-link" data-scroll-target="#esquema-de-relaciones"><span class="header-section-number">E.2</span> Esquema de relaciones</a></li>
+  <li><a href="#llaves-o-claves-keys" id="toc-llaves-o-claves-keys" class="nav-link" data-scroll-target="#llaves-o-claves-keys"><span class="header-section-number">E.3</span> Llaves o Claves <strong>(keys)</strong></a></li>
+  <li><a href="#cargar-tablas" id="toc-cargar-tablas" class="nav-link" data-scroll-target="#cargar-tablas"><span class="header-section-number">E.4</span> Cargar Tablas</a></li>
+  <li><a href="#ejemplo-1" id="toc-ejemplo-1" class="nav-link" data-scroll-target="#ejemplo-1"><span class="header-section-number">E.5</span> Ejemplo 1</a></li>
+  <li><a href="#actividad" id="toc-actividad" class="nav-link" data-scroll-target="#actividad"><span class="header-section-number">E.6</span> Actividad:</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">E.7</span> Referencias:</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Appendix A — Instalación de Recursos</h1>
-<p class="subtitle lead">Introducción al Lenguaje de Programación</p>
+<h1 class="title">Appendix E — Uniones de Tablas</h1>
 </div>
 
 
@@ -287,80 +322,157 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="sec-installR" class="level2" data-number="A.1">
-<h2 data-number="A.1" class="anchored" data-anchor-id="sec-installR"><span class="header-section-number">A.1</span> Instalación de R Project</h2>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="images/R_logo.png" class="img-fluid figure-img" width="100"></p>
-</figure>
-</div>
-<p>Primero se debe instalar R Project desde su sitio oficial <a href="https://cran.r-project.org/index.html">https://cran.r-project.org/index.html</a>, se ejecuta el instalador que se descarga dependiendo del sistema operativo del PC, como se muestra en las siguientes figuras:</p>
-<p><img src="images/install_r.png" class="img-fluid"></p>
-<p><br></p>
-<p><strong>Instalación de <a href="https://cran.r-project.org/bin/windows/">R para Windows</a></strong></p>
-<center>
-<img src="images/install_r_w.gif" class="img-fluid" style="width:90.0%">
-</center>
-<p><br></p>
-<p><strong>Instalar <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a> (solo Sistema Operativo Windows)</strong></p>
-<center>
-<img src="images/w_rtools.png" class="img-fluid" style="width:60.0%">
-</center>
-<center>
-<img src="images/install_rtools.png" class="img-fluid" style="width:60.0%">
-</center>
-<p><br></p>
-<p><strong>Instalación de <a href="https://cran.r-project.org/bin/macosx/">R para Mac</a></strong></p>
-<center>
-<img src="images/install_r_mac.gif" class="img-fluid" style="width:90.0%">
-</center>
-<p><br></p>
-<p><strong>R Project Ejecutándose</strong></p>
-<p><img src="images/r_project.png" class="img-fluid"></p>
+<section id="introducción" class="level2" data-number="E.1">
+<h2 data-number="E.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">E.1</span> Introducción</h2>
+<p>En el mundo del análisis de datos, es muy común encontrarnos con situaciones en las que debemos trabajar con tablas provenientes de diferentes fuentes de información. Estas fuentes pueden ser bases de datos, archivos CSV, hojas de cálculo o incluso APIs externas. Cada una de estas fuentes puede tener su propia estructura y formato de datos, lo que dificulta la combinación de la información contenida en ellas.</p>
+<p>Afortunadamente, el lenguaje de programación R ofrece una solución poderosa y eficiente para abordar este desafío la librería <a href="https://dplyr.tidyverse.org">dplyr</a> proporciona una serie de funciones y operadores que nos permiten realizar uniones de tablas de manera sencilla y flexible, sin importar la fuente de datos o la complejidad de las estructuras. A continuación se presentará una serie de ejemplos prácticos para relacionar tablas.</p>
 </section>
-<section id="sec-installRStudio" class="level2" data-number="A.2">
-<h2 data-number="A.2" class="anchored" data-anchor-id="sec-installRStudio"><span class="header-section-number">A.2</span> Instalación de RStudio</h2>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="images/Logo-RStudio.png" class="img-fluid figure-img" width="100"></p>
+<section id="esquema-de-relaciones" class="level2 page-columns page-full" data-number="E.2">
+<h2 data-number="E.2" class="anchored" data-anchor-id="esquema-de-relaciones"><span class="header-section-number">E.2</span> Esquema de relaciones</h2>
+<p>Contar con un esquema de relaciones de datos sólido es de vital importancia en el ámbito del análisis y la gestión de datos. Un esquema de relaciones nos permite comprender la estructura y las interconexiones entre las diferentes tablas de nuestra base de datos, estableciendo las relaciones clave que existen entre ellas. Esto nos brinda una base sólida para realizar consultas complejas, análisis avanzados y la generación de informes precisos.</p>
+<p>Para los ejemplos que se abordarán se utilizará el siguiente esquema de relaciones des de datos:</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="images/relational_nycflights.svg" class="img-fluid figure-img" width="600"></p>
+<figcaption class="figure-caption margin-caption">Referencia: <a href="https://es.r4ds.hadley.nz/datos-relacionales.html" class="uri">https://es.r4ds.hadley.nz/datos-relacionales.html</a></figcaption>
 </figure>
 </div>
-<p>Se recomienta instalar <a href="https://posit.co/products/open-source/rstudio/">RStudio</a> desde el siguiente <a href="https://posit.co/download/rstudio-desktop/">link</a>, que es Interfaz de Usuario de R Project, desde su sitio web oficial, el cual permite acceder con mayor facilidad a sus funciones y potencialidades de R.</p>
-<center>
-<img src="images/instaladores_rstudio.png" class="img-fluid" style="width:60.0%">
-</center>
-<p><img src="images/Install_RStudio.png" class="img-fluid"></p>
-<p><img src="images/rstudio.png" class="img-fluid"></p>
-<center>
-<img src="images/rstudio-editor.svg" class="img-fluid" style="width:90.0%">
-</center>
-<section id="rstudio-cloud" class="level3" data-number="A.2.1">
-<h3 data-number="A.2.1" class="anchored" data-anchor-id="rstudio-cloud"><span class="header-section-number">A.2.1</span> RStudio Cloud</h3>
-<p><a href="https://rstudio.cloud">RStudio Cloud</a> es una versión ligera del IDE RStudio alojada en la la nube que permite a cualquiera hacer, compartir, enseñar y aprender Ciencias de Datos Online. Tiene una versión gratuita limitada.</p>
-<section id="características" class="level4" data-number="A.2.1.1">
-<h4 data-number="A.2.1.1" class="anchored" data-anchor-id="características"><span class="header-section-number">A.2.1.1</span> Características:</h4>
+</section>
+<section id="llaves-o-claves-keys" class="level2" data-number="E.3">
+<h2 data-number="E.3" class="anchored" data-anchor-id="llaves-o-claves-keys"><span class="header-section-number">E.3</span> Llaves o Claves <strong>(keys)</strong></h2>
+<p>Las claves o llaves en una base de datos son elementos fundamentales para establecer relaciones entre tablas y garantizar la integridad de los datos. Una clave es un atributo o conjunto de atributos que identifica de manera única cada registro en una tabla.</p>
+<dl>
+<dt>Clave Primaria:</dt>
+<dd>
+Es una llave especial que se elige para identificar de forma única cada registro en una tabla. Se utiliza para garantizar la unicidad y la integridad de los datos en la tabla. La clave primaria también puede actuar como una referencia en otras tablas, estableciendo así relaciones entre ellas. Es decir, cuando una clave primaria de una tabla se utiliza en otra tabla como clave foránea, se establece una relación entre ambas tablas. Por ejemplo, <code>aviones$codigo_cola</code> es una clave primaria, ya que identifica de manera única cada avión en la tabla aviones.
+</dd>
+<dt>Clave Forárea:</dt>
+<dd>
+Es una columna o conjunto de columnas en una tabla que hace referencia a la clave primaria de otra tabla. Esta referencia crea una relación entre las dos tablas, permitiendo que los registros estén vinculados entre sí. La clave foránea facilita la conexión y la integración de datos entre diferentes tablas, ya que nos permite relacionar la información de una tabla con la de otra. Por ejemplo, <code>vuelos$codigo_cola</code> es una clave foránea, ya que aparece en la tabla vuelos, en la que une cada vuelo con un único avión.
+</dd>
+</dl>
+<p>La diferencia clave entre la clave primaria y la clave foránea radica en su función y ubicación. La clave primaria se define en la tabla principal para identificar de forma única los registros, mientras que la clave foránea se encuentra en una tabla secundaria y establece una relación con la clave primaria de la tabla principal. Ambas claves son esenciales para establecer conexiones y mantener la integridad de los datos en una base de datos, permitiendo consultas y análisis más avanzados.</p>
+</section>
+<section id="cargar-tablas" class="level2" data-number="E.4">
+<h2 data-number="E.4" class="anchored" data-anchor-id="cargar-tablas"><span class="header-section-number">E.4</span> Cargar Tablas</h2>
+<p>El paquete “datos” contiene cinco tibbles que utilizaremos para este propósito: <code>aerolineas</code>, <code>aeropuertos</code>, <code>aviones</code> y <code>clima</code>, que se relacionan con la tabla <code>vuelos</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datos)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>aerolineas</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>aviones</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>vuelos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ejemplo-1" class="level2" data-number="E.5">
+<h2 data-number="E.5" class="anchored" data-anchor-id="ejemplo-1"><span class="header-section-number">E.5</span> Ejemplo 1</h2>
+<p>Nos solicitan conocer la cantidad aviones que tiene cada aerolinea y cual es el año promedio de fabricación de cada avión por cada aerolinea.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/relational_nycflights.svg" class="img-fluid figure-img" width="600"></p>
+</figure>
+</div>
+<p>Revisando el esquema debemos obtener información de la tabla <code>aerolineas</code> y <code>aviones</code> pero no existen relaciones directas entre estas dos tablas, por lo cual debemos hacer la conexión a través de la tabla <code>vuelos</code>.</p>
+<p><code>aerolineas &lt;-&gt; vuelos &lt;-&gt; aviones</code></p>
+<p>Entonces lo primero que haremos es construir una tabla desde vuelos que llamaremos <code>base</code> que contenga las colunas <code>aerolineas</code> y<code>codigo_cola</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># head(vuelos)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(aerolinea, codigo_cola) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(codigo_cola, <span class="at">.keep_all =</span> T)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  aerolinea codigo_cola
+  &lt;chr&gt;     &lt;chr&gt;      
+1 UA        N14228     
+2 UA        N24211     
+3 AA        N619AA     
+4 B6        N804JB     
+5 DL        N668DN     
+6 UA        N39463     </code></pre>
+</div>
+</div>
+<p>Al agregar el nombre de cada aerolinea debemos hacer el primer <code>left_join</code>, debemos tener clara nuestra “key” ya que buscaremos conectarla con la tabla de <code>aerolineas</code></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/left_join.png" class="img-fluid figure-img" width="400"></p>
+</figure>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># head(aerolineas)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span>  base <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(aerolineas, <span class="at">by =</span> <span class="st">"aerolinea"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  aerolinea codigo_cola nombre                
+  &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;                 
+1 UA        N14228      United Air Lines Inc. 
+2 UA        N24211      United Air Lines Inc. 
+3 AA        N619AA      American Airlines Inc.
+4 B6        N804JB      JetBlue Airways       
+5 DL        N668DN      Delta Air Lines Inc.  
+6 UA        N39463      United Air Lines Inc. </code></pre>
+</div>
+</div>
+<p>Posteriormente debemos unir nuestra base recién creada con la información de los <code>aviones</code>, donde esta la variable anio (nuestro requerimiento).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span>  base <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(aviones, <span class="at">by =</span> <span class="st">"codigo_cola"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 11
+  aerolinea codigo_cola nombre     anio tipo  fabricante modelo motores asientos
+  &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;     &lt;int&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;int&gt;    &lt;int&gt;
+1 UA        N14228      United A…  1999 Ala … BOEING     737-8…       2      149
+2 UA        N24211      United A…  1998 Ala … BOEING     737-8…       2      149
+3 AA        N619AA      American…  1990 Ala … BOEING     757-2…       2      178
+4 B6        N804JB      JetBlue …  2012 Ala … AIRBUS     A320-…       2      200
+5 DL        N668DN      Delta Ai…  1991 Ala … BOEING     757-2…       2      178
+6 UA        N39463      United A…  2012 Ala … BOEING     737-9…       2      191
+# ℹ 2 more variables: velocidad &lt;int&gt;, tipo_motor &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>Finalmente como nos solicitan conocer la cantidad aviones tiene cada aerolinea y cual es el año promedio de fabricación de cada avión por cada aerolinea, podemos hacerlo de la siguiente forma:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>resultados <span class="ot">&lt;-</span>  base <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(aerolinea, nombre) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Cant_Aviones =</span> <span class="fu">n</span>(),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Prom_fab =</span> <span class="fu">mean</span>(anio, <span class="at">na.rm=</span>T),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"keep"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Cant_Aviones))</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>resultados <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+# Groups:   aerolinea, nombre [6]
+  aerolinea nombre                   Cant_Aviones Prom_fab
+  &lt;chr&gt;     &lt;chr&gt;                           &lt;int&gt;    &lt;dbl&gt;
+1 DL        Delta Air Lines Inc.              620    1995.
+2 UA        United Air Lines Inc.             620    2000.
+3 AA        American Airlines Inc.            601    1988.
+4 WN        Southwest Airlines Co.            582    2002.
+5 EV        ExpressJet Airlines Inc.          308    2002.
+6 US        US Airways Inc.                   289    2002.</code></pre>
+</div>
+</div>
+</section>
+<section id="actividad" class="level2" data-number="E.6">
+<h2 data-number="E.6" class="anchored" data-anchor-id="actividad"><span class="header-section-number">E.6</span> Actividad:</h2>
+<p>Indique la aerolinea que el mayor ratio de asientos por cantidad de aviones.</p>
+</section>
+<section id="referencias" class="level2" data-number="E.7">
+<h2 data-number="E.7" class="anchored" data-anchor-id="referencias"><span class="header-section-number">E.7</span> Referencias:</h2>
 <ul>
-<li>Analyze your data using the RStudio IDE, directly from your browser.</li>
-<li>Share projects with your team, class, workshop or the world.</li>
-<li>Teach data science with R to your students or colleagues.</li>
-<li>Learn data science in an instructor-led environment or with interactive tutorials.</li>
+<li><a href="https://es.r4ds.hadley.nz/datos-relacionales.html">Datos relacionales</a></li>
 </ul>
-<center>
-<img src="images/Rstudio_cloud_page.png" class="img-fluid" style="width:90.0%">
-</center>
-<center>
-<img src="images/rstudio_logging.png" class="img-fluid" style="width:90.0%">
-</center>
-<center>
-<img src="images/rstudio_workspace.png" class="img-fluid" style="width:90.0%">
-</center>
-<center>
-<img src="images/rstudio_cloud.png" class="img-fluid" style="width:90.0%">
-</center>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -599,13 +711,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./inf_final.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Informe Final</span>
+      <a href="./tablas.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Tablas en Markdown</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./espacial_R.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Datos Espaciales</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./pivot.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Pivot Tablas</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

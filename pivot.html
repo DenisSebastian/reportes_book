@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Reportes Automáticos - Appendix A — Instalación de Recursos</title>
+<title>Reportes Automáticos - Appendix F — Pivot Tablas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./espacial_R.html" rel="next">
-<link href="./inf_final.html" rel="prev">
+<link href="./iter_graph.html" rel="next">
+<link href="./joins.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -66,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -75,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./recursos.html">Appendices</a></li><li class="breadcrumb-item"><a href="./recursos.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Instalación de Recursos</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./recursos.html">Appendices</a></li><li class="breadcrumb-item"><a href="./pivot.html"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Pivot Tablas</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -206,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./recursos.html" class="sidebar-item-text sidebar-link active">
+  <a href="./recursos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Instalación de Recursos</span></span></a>
   </div>
 </li>
@@ -236,7 +270,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pivot.html" class="sidebar-item-text sidebar-link">
+  <a href="./pivot.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Pivot Tablas</span></span></a>
   </div>
 </li>
@@ -258,21 +292,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-installR" id="toc-sec-installR" class="nav-link active" data-scroll-target="#sec-installR"><span class="header-section-number">A.1</span> Instalación de R Project</a></li>
-  <li><a href="#sec-installRStudio" id="toc-sec-installRStudio" class="nav-link" data-scroll-target="#sec-installRStudio"><span class="header-section-number">A.2</span> Instalación de RStudio</a>
-  <ul class="collapse">
-  <li><a href="#rstudio-cloud" id="toc-rstudio-cloud" class="nav-link" data-scroll-target="#rstudio-cloud"><span class="header-section-number">A.2.1</span> RStudio Cloud</a></li>
-  </ul></li>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">F.1</span> Introducción</a></li>
+  <li><a href="#datos-largos" id="toc-datos-largos" class="nav-link" data-scroll-target="#datos-largos"><span class="header-section-number">F.2</span> Datos Largos</a></li>
+  <li><a href="#datos-anchos" id="toc-datos-anchos" class="nav-link" data-scroll-target="#datos-anchos"><span class="header-section-number">F.3</span> Datos Anchos</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">F.4</span> Referencias</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Appendix A — Instalación de Recursos</h1>
-<p class="subtitle lead">Introducción al Lenguaje de Programación</p>
+<h1 class="title">Appendix F — Pivot Tablas</h1>
 </div>
 
 
@@ -287,80 +319,121 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="sec-installR" class="level2" data-number="A.1">
-<h2 data-number="A.1" class="anchored" data-anchor-id="sec-installR"><span class="header-section-number">A.1</span> Instalación de R Project</h2>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="images/R_logo.png" class="img-fluid figure-img" width="100"></p>
-</figure>
-</div>
-<p>Primero se debe instalar R Project desde su sitio oficial <a href="https://cran.r-project.org/index.html">https://cran.r-project.org/index.html</a>, se ejecuta el instalador que se descarga dependiendo del sistema operativo del PC, como se muestra en las siguientes figuras:</p>
-<p><img src="images/install_r.png" class="img-fluid"></p>
-<p><br></p>
-<p><strong>Instalación de <a href="https://cran.r-project.org/bin/windows/">R para Windows</a></strong></p>
-<center>
-<img src="images/install_r_w.gif" class="img-fluid" style="width:90.0%">
-</center>
-<p><br></p>
-<p><strong>Instalar <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a> (solo Sistema Operativo Windows)</strong></p>
-<center>
-<img src="images/w_rtools.png" class="img-fluid" style="width:60.0%">
-</center>
-<center>
-<img src="images/install_rtools.png" class="img-fluid" style="width:60.0%">
-</center>
-<p><br></p>
-<p><strong>Instalación de <a href="https://cran.r-project.org/bin/macosx/">R para Mac</a></strong></p>
-<center>
-<img src="images/install_r_mac.gif" class="img-fluid" style="width:90.0%">
-</center>
-<p><br></p>
-<p><strong>R Project Ejecutándose</strong></p>
-<p><img src="images/r_project.png" class="img-fluid"></p>
+<section id="introducción" class="level2" data-number="F.1">
+<h2 data-number="F.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">F.1</span> Introducción</h2>
+<p>Los principios sobre datos ordenados parecen tan obvios que te podrías preguntar si alguna vez encontrarás un dataset que no esté ordenado. Desafortunadamente, gran parte de los datos que vas a encontrar están desordenados. Existen dos principales razones para esto:</p>
+<p>La mayoría de las personas no están familiarizadas con los principios de datos ordenados y es difícil derivarlos por cuenta propia a menos que pases mucho tiempo trabajando con datos.</p>
+<p>Los datos a menudo están organizados para facilitar tareas distintas del análisis. Por ejemplo, los datos se organizan para que su registro sea lo más sencillo posible.</p>
+<p>Esto significa que para la mayoría de los análisis necesitarás hacer algún tipo de orden. El primer paso es entender siempre cuáles son las variables y las observaciones. Esto a veces es fácil; otras veces deberás consultar con quienes crearon el dataset. El segundo paso es resolver uno de los siguientes problemas frecuentes:</p>
+<p>Una variable se extiende por varias columnas</p>
+<p>Una observación está dispersa entre múltiples filas.</p>
+<p>Típicamente, un set de datos tiene uno de estos problemas. Si contiene ambos ¡significa que tienes muy mala suerte! Para solucionar estos problemas necesitarás las dos funciones más importantes de tidyr: <code>gather()</code> (reunir) y <code>spread()</code> (esparcir/extender).</p>
 </section>
-<section id="sec-installRStudio" class="level2" data-number="A.2">
-<h2 data-number="A.2" class="anchored" data-anchor-id="sec-installRStudio"><span class="header-section-number">A.2</span> Instalación de RStudio</h2>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="images/Logo-RStudio.png" class="img-fluid figure-img" width="100"></p>
-</figure>
+<section id="datos-largos" class="level2 page-columns page-full" data-number="F.2">
+<h2 data-number="F.2" class="anchored" data-anchor-id="datos-largos"><span class="header-section-number">F.2</span> Datos Largos</h2>
+<p>Un problema común es cuando en un dataset los nombres de las columnas no representan nombres de variables, sino que representan los valores de una variable. Tomando el caso de la tabla4a: los nombres de las columnas 1999 y 2000 representan los valores de la variable año, los valores en las columnas 1999 y 2000 representan valores de la variable casos y cada fila representa dos observaciones en lugar de una.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tabla4a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  pais       `1999` `2000`
+  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;
+1 Afganistán    745   2666
+2 Brasil      37737  80488
+3 China      212258 213766</code></pre>
 </div>
-<p>Se recomienta instalar <a href="https://posit.co/products/open-source/rstudio/">RStudio</a> desde el siguiente <a href="https://posit.co/download/rstudio-desktop/">link</a>, que es Interfaz de Usuario de R Project, desde su sitio web oficial, el cual permite acceder con mayor facilidad a sus funciones y potencialidades de R.</p>
-<center>
-<img src="images/instaladores_rstudio.png" class="img-fluid" style="width:60.0%">
-</center>
-<p><img src="images/Install_RStudio.png" class="img-fluid"></p>
-<p><img src="images/rstudio.png" class="img-fluid"></p>
-<center>
-<img src="images/rstudio-editor.svg" class="img-fluid" style="width:90.0%">
-</center>
-<section id="rstudio-cloud" class="level3" data-number="A.2.1">
-<h3 data-number="A.2.1" class="anchored" data-anchor-id="rstudio-cloud"><span class="header-section-number">A.2.1</span> RStudio Cloud</h3>
-<p><a href="https://rstudio.cloud">RStudio Cloud</a> es una versión ligera del IDE RStudio alojada en la la nube que permite a cualquiera hacer, compartir, enseñar y aprender Ciencias de Datos Online. Tiene una versión gratuita limitada.</p>
-<section id="características" class="level4" data-number="A.2.1.1">
-<h4 data-number="A.2.1.1" class="anchored" data-anchor-id="características"><span class="header-section-number">A.2.1.1</span> Características:</h4>
+</div>
+<p>Para ordenar un dataset como este necesitamos pivotar las columnas que no cumplen en un nuevo par de variables. Para describir dicha operación necesitamos tres parámetros:</p>
 <ul>
-<li>Analyze your data using the RStudio IDE, directly from your browser.</li>
-<li>Share projects with your team, class, workshop or the world.</li>
-<li>Teach data science with R to your students or colleagues.</li>
-<li>Learn data science in an instructor-led environment or with interactive tutorials.</li>
+<li><p>El conjunto de columnas cuyos nombres son valores y no variables. En este ejemplo son las columnas 1999 y 2000.</p></li>
+<li><p>El nombre de la variable cuyos valores forman los nombres de las columnas. Llamaremos a esto key (clave) y en este caso corresponde a anio.</p></li>
+<li><p>El nombre de la variable cuyos valores están repartidos por las celdas. Llamaremos a esto value (valor) y en este caso corresponde al número de casos.</p></li>
 </ul>
-<center>
-<img src="images/Rstudio_cloud_page.png" class="img-fluid" style="width:90.0%">
-</center>
-<center>
-<img src="images/rstudio_logging.png" class="img-fluid" style="width:90.0%">
-</center>
-<center>
-<img src="images/rstudio_workspace.png" class="img-fluid" style="width:90.0%">
-</center>
-<center>
-<img src="images/rstudio_cloud.png" class="img-fluid" style="width:90.0%">
-</center>
+<p>Con estos parámetros podemos utilizar la función pivot_longer() (pivotar a lo largo):</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tabla4a <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">1999</span><span class="st">`</span>, <span class="st">`</span><span class="at">2000</span><span class="st">`</span>), </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"anio"</span>, <span class="at">values_to =</span> <span class="st">"casos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  pais       anio   casos
+  &lt;chr&gt;      &lt;chr&gt;  &lt;dbl&gt;
+1 Afganistán 1999     745
+2 Afganistán 2000    2666
+3 Brasil     1999   37737
+4 Brasil     2000   80488
+5 China      1999  212258
+6 China      2000  213766</code></pre>
+</div>
+</div>
+<p>Las columnas a girar quedan seleccionadas siguiendo el estilo de notación de <code>dplyr::select()</code>. En este caso hay solo dos columnas, por lo que las listamos individualmente. Ten en consideración que “1999” y “2000” son nombres no-sintáxicos (debido a que no comienzan con una letra) por lo que los rodeamos con acentos graves (o_backticks_). Para refrescar tu memoria respecto de la selección de columnas, consulta la sección sobre select. Las variables anio y casos no existen todavía en la tabla4a, por lo que tenemos que poner sus nombres entre comillas.</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="images/pivot_longer.svg" class="img-fluid figure-img" width="600"></p>
+<figcaption class="figure-caption margin-caption">Pivotar la tabla4 para un formato “largo” y ordenado.</figcaption>
+</figure>
+</div>
+</section>
+<section id="datos-anchos" class="level2 page-columns page-full" data-number="F.3">
+<h2 data-number="F.3" class="anchored" data-anchor-id="datos-anchos"><span class="header-section-number">F.3</span> Datos Anchos</h2>
+<p><code>pivot_wider()</code> (pivotar a lo ancho) es lo opuesto de <code>pivot_longer()</code>. Se usa cuando una observación aparece en múltiples filas. Por ejemplo, considera la tabla2: una observación es un país en un año, pero cada observación aparece en dos filas.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tabla2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 4
+   pais        anio tipo          cuenta
+   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;
+ 1 Afganistán  1999 casos            745
+ 2 Afganistán  1999 población   19987071
+ 3 Afganistán  2000 casos           2666
+ 4 Afganistán  2000 población   20595360
+ 5 Brasil      1999 casos          37737
+ 6 Brasil      1999 población  172006362
+ 7 Brasil      2000 casos          80488
+ 8 Brasil      2000 población  174504898
+ 9 China       1999 casos         212258
+10 China       1999 población 1272915272
+11 China       2000 casos         213766
+12 China       2000 población 1280428583</code></pre>
+</div>
+</div>
+<p>Para ordenar esto, primero analizamos la representación de un modo similar a cómo se haría con pivot_longer(). Esta vez, sin embargo, necesitamos únicamente dos parámetros:</p>
+<ul>
+<li><p>La columna desde la que obtener los nombres de las variables. En este caso corresponde a tipo.</p></li>
+<li><p>La columna desde la que obtener los valores. En este caso corresponde a cuenta.</p></li>
+</ul>
+<p>Una vez resuelto esto, podemos usar <code>pivot_wider()</code>, como se muestra programáticamente abajo y visualmente en la Figura.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tabla2 <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> tipo, <span class="at">values_from =</span> cuenta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  pais        anio  casos  población
+  &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+1 Afganistán  1999    745   19987071
+2 Afganistán  2000   2666   20595360
+3 Brasil      1999  37737  172006362
+4 Brasil      2000  80488  174504898
+5 China       1999 212258 1272915272
+6 China       2000 213766 1280428583</code></pre>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="images/pivot_wider.svg" class="img-fluid figure-img" width="600"></p>
+<figcaption class="figure-caption margin-caption">Pivotar la tabla2 para un formato “ancho” y ordenado</figcaption>
+</figure>
+</div>
+<p>Como te habrás dado cuenta a partir de sus nombres, las funciones <code>pivot_longer()</code> y <code>pivot_wider()</code> son complementarias. <code>pivot_longer()</code> genera tablas angostas y largas, <code>pivot_wider()</code> genera tablas anchas y cortas.</p>
+</section>
+<section id="referencias" class="level2" data-number="F.4">
+<h2 data-number="F.4" class="anchored" data-anchor-id="referencias"><span class="header-section-number">F.4</span> Referencias</h2>
+<ul>
+<li><a href="https://es.r4ds.hadley.nz/datos-ordenados.html">Pivotear</a></li>
+</ul>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -599,13 +672,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./inf_final.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Informe Final</span>
+      <a href="./joins.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Uniones de Tablas</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./espacial_R.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Datos Espaciales</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./iter_graph.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Gráficos Interativos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

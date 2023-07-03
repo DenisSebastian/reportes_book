@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Reportes Automáticos - Appendix A — Instalación de Recursos</title>
+<title>Reportes Automáticos - 10&nbsp; Control de Iteración</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./espacial_R.html" rel="next">
-<link href="./inf_final.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./workflow.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -75,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./recursos.html">Appendices</a></li><li class="breadcrumb-item"><a href="./recursos.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Instalación de Recursos</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./control.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Control de Iteración</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -156,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./control.html" class="sidebar-item-text sidebar-link">
+  <a href="./control.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Control de Iteración</span></span></a>
   </div>
 </li>
@@ -206,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./recursos.html" class="sidebar-item-text sidebar-link active">
+  <a href="./recursos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Instalación de Recursos</span></span></a>
   </div>
 </li>
@@ -258,10 +292,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-installR" id="toc-sec-installR" class="nav-link active" data-scroll-target="#sec-installR"><span class="header-section-number">A.1</span> Instalación de R Project</a></li>
-  <li><a href="#sec-installRStudio" id="toc-sec-installRStudio" class="nav-link" data-scroll-target="#sec-installRStudio"><span class="header-section-number">A.2</span> Instalación de RStudio</a>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">10.1</span> Introducción</a></li>
+  <li><a href="#esquema-para-reporte-iterativo" id="toc-esquema-para-reporte-iterativo" class="nav-link" data-scroll-target="#esquema-para-reporte-iterativo"><span class="header-section-number">10.2</span> Esquema para Reporte Iterativo</a></li>
+  <li><a href="#creación-de-un-proyecto" id="toc-creación-de-un-proyecto" class="nav-link" data-scroll-target="#creación-de-un-proyecto"><span class="header-section-number">10.3</span> Creación de un proyecto</a></li>
+  <li><a href="#reporte-agnóstico" id="toc-reporte-agnóstico" class="nav-link" data-scroll-target="#reporte-agnóstico"><span class="header-section-number">10.4</span> Reporte Agnóstico</a></li>
+  <li><a href="#orquestador" id="toc-orquestador" class="nav-link" data-scroll-target="#orquestador"><span class="header-section-number">10.5</span> Orquestador</a>
   <ul class="collapse">
-  <li><a href="#rstudio-cloud" id="toc-rstudio-cloud" class="nav-link" data-scroll-target="#rstudio-cloud"><span class="header-section-number">A.2.1</span> RStudio Cloud</a></li>
+  <li><a href="#vector-que-contiene-los-elementos-que-se-iterará" id="toc-vector-que-contiene-los-elementos-que-se-iterará" class="nav-link" data-scroll-target="#vector-que-contiene-los-elementos-que-se-iterará"><span class="header-section-number">10.5.1</span> Vector que contiene los elementos que se iterará</a></li>
+  <li><a href="#redenrizado-iterativo" id="toc-redenrizado-iterativo" class="nav-link" data-scroll-target="#redenrizado-iterativo"><span class="header-section-number">10.5.2</span> Redenrizado Iterativo</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -271,8 +309,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Appendix A — Instalación de Recursos</h1>
-<p class="subtitle lead">Introducción al Lenguaje de Programación</p>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Control de Iteración</span></h1>
 </div>
 
 
@@ -287,79 +324,86 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="sec-installR" class="level2" data-number="A.1">
-<h2 data-number="A.1" class="anchored" data-anchor-id="sec-installR"><span class="header-section-number">A.1</span> Instalación de R Project</h2>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="images/R_logo.png" class="img-fluid figure-img" width="100"></p>
-</figure>
-</div>
-<p>Primero se debe instalar R Project desde su sitio oficial <a href="https://cran.r-project.org/index.html">https://cran.r-project.org/index.html</a>, se ejecuta el instalador que se descarga dependiendo del sistema operativo del PC, como se muestra en las siguientes figuras:</p>
-<p><img src="images/install_r.png" class="img-fluid"></p>
-<p><br></p>
-<p><strong>Instalación de <a href="https://cran.r-project.org/bin/windows/">R para Windows</a></strong></p>
-<center>
-<img src="images/install_r_w.gif" class="img-fluid" style="width:90.0%">
-</center>
-<p><br></p>
-<p><strong>Instalar <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a> (solo Sistema Operativo Windows)</strong></p>
-<center>
-<img src="images/w_rtools.png" class="img-fluid" style="width:60.0%">
-</center>
-<center>
-<img src="images/install_rtools.png" class="img-fluid" style="width:60.0%">
-</center>
-<p><br></p>
-<p><strong>Instalación de <a href="https://cran.r-project.org/bin/macosx/">R para Mac</a></strong></p>
-<center>
-<img src="images/install_r_mac.gif" class="img-fluid" style="width:90.0%">
-</center>
-<p><br></p>
-<p><strong>R Project Ejecutándose</strong></p>
-<p><img src="images/r_project.png" class="img-fluid"></p>
+<section id="introducción" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">10.1</span> Introducción</h2>
+<p>En le capítulo de flujo de trabajo <a href="workflow.html"><span>Chapter&nbsp;9</span></a> se describe de manera general las fiferetes etapas que ocurren para dentro del proceso de análisis que finaliza en un reporte.</p>
 </section>
-<section id="sec-installRStudio" class="level2" data-number="A.2">
-<h2 data-number="A.2" class="anchored" data-anchor-id="sec-installRStudio"><span class="header-section-number">A.2</span> Instalación de RStudio</h2>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="images/Logo-RStudio.png" class="img-fluid figure-img" width="100"></p>
-</figure>
+<section id="esquema-para-reporte-iterativo" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="esquema-para-reporte-iterativo"><span class="header-section-number">10.2</span> Esquema para Reporte Iterativo</h2>
+<p>El esquema iterátivo es más avanzado y está orientado para realizar múltiples reportes similares pero con diferentes unidades de análisis (personas, meses, comunas, sucursales, etc.). Este flujo de trabajo consta de dos elementos escenciales primero un <strong>reporte agnóstico</strong> o estandar que permita hacer el resultado variable de acuerdo a los datos de entrada pero manteniendo la estructura similar. El segundo elemento es una script en R que llamaremos orquestador o <em>main.R</em> el que será el encargado de orquestar la ejecución de los reportes de forma iterativa.</p>
+<p><img src="images/f_iterativo_1.png" class="img-fluid"></p>
+</section>
+<section id="creación-de-un-proyecto" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="creación-de-un-proyecto"><span class="header-section-number">10.3</span> Creación de un proyecto</h2>
+<p>Tenido claro el esquema en que se trabajará se procede a crear un proyecto de acuerdo a lo visto en <a href="first_report.html#sec-ProyRStudio"><span>Section&nbsp;8.2</span></a> con todas las carpetas y subcarpetas que necesitará nuestro proyecto.</p>
+</section>
+<section id="reporte-agnóstico" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="reporte-agnóstico"><span class="header-section-number">10.4</span> Reporte Agnóstico</h2>
+<p>Una vez ya creado el proyescto procederemos a crear nuestro reporte agnóstico el cual solo necesitará conocer la variable relevante por la cual se iterará por cada una de ellas.</p>
+<p>Este reporte debe poder conectarse con el iterador para poder recibir la variable por la cual va iterar, lo cual realizará a través de un argumento en el encabezado llamado <code>params</code>, y a continuación dispone de un esjemplo:</p>
+<pre><code>---
+title: "Primer Reporte"
+author: "Denis Berroeta"
+date: '2023-06-03'
+params: 
+  base_com: base_com
+  personas_media: personas_media
+output:
+  pdf_document:
+    toc: yes
+    toc_depth: '4'
+  html_document: default
+subtitle: Curso de Automatización de Reportes con R
+editor_options: 
+  chunk_output_type: console
+---</code></pre>
+<p>Mayores referencias de estos parámetros en el capítulo llamado <a href="https://rmarkdown.rstudio.com/lesson-6.html">Parameters</a> del libro de Rmarkdown.</p>
+</section>
+<section id="orquestador" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="orquestador"><span class="header-section-number">10.5</span> Orquestador</h2>
+<p>Se define como <strong>orquestador</strong> al un script que se encargará de iterar por la variable diferenciadora de cada reporte y ordenará el renderizado del archivo .Rmd (reporte agnóstico) por todas las variables que itere.</p>
+<p>Para realizar esto desbemos tener muy claro porque variable iterará nuestro reporte y también debemos tener listo nuestro archivo .Rmd que solo necesitará una variable para poder ejecutarse.</p>
+<p>A continuación se creará este orquestador que llamaremos <code>main.R</code> y contará de dos etapas principales:</p>
+<section id="vector-que-contiene-los-elementos-que-se-iterará" class="level3" data-number="10.5.1">
+<h3 data-number="10.5.1" class="anchored" data-anchor-id="vector-que-contiene-los-elementos-que-se-iterará"><span class="header-section-number">10.5.1</span> Vector que contiene los elementos que se iterará</h3>
+<p>Como ejemplo se iterará por la comunas de una provincia cualquiera de Chile, entonces nustro archivo <code>main.R</code> debe contener Lectura de base y filtro por área de estudio</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lectura de Insumos ------------------------------------------------------</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>zonas <span class="ot">&lt;-</span>  <span class="fu">readRDS</span>(<span class="st">"data/censo/zonas_urb_consolidadas.rds"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar provincia -------------------------------------------------------</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># unique(zonas$NOM_PROVIN)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>provincia  <span class="ot">&lt;-</span> <span class="st">"SAN ANTONIO"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>base_provincial <span class="ot">&lt;-</span>  zonas <span class="sc">%&gt;%</span> </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NOM_PROVIN <span class="sc">==</span> provincia)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>comunas <span class="ot">&lt;-</span> <span class="fu">unique</span>(base_provincial<span class="sc">$</span>NOM_COMUNA)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>comunas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Se recomienta instalar <a href="https://posit.co/products/open-source/rstudio/">RStudio</a> desde el siguiente <a href="https://posit.co/download/rstudio-desktop/">link</a>, que es Interfaz de Usuario de R Project, desde su sitio web oficial, el cual permite acceder con mayor facilidad a sus funciones y potencialidades de R.</p>
-<center>
-<img src="images/instaladores_rstudio.png" class="img-fluid" style="width:60.0%">
-</center>
-<p><img src="images/Install_RStudio.png" class="img-fluid"></p>
-<p><img src="images/rstudio.png" class="img-fluid"></p>
-<center>
-<img src="images/rstudio-editor.svg" class="img-fluid" style="width:90.0%">
-</center>
-<section id="rstudio-cloud" class="level3" data-number="A.2.1">
-<h3 data-number="A.2.1" class="anchored" data-anchor-id="rstudio-cloud"><span class="header-section-number">A.2.1</span> RStudio Cloud</h3>
-<p><a href="https://rstudio.cloud">RStudio Cloud</a> es una versión ligera del IDE RStudio alojada en la la nube que permite a cualquiera hacer, compartir, enseñar y aprender Ciencias de Datos Online. Tiene una versión gratuita limitada.</p>
-<section id="características" class="level4" data-number="A.2.1.1">
-<h4 data-number="A.2.1.1" class="anchored" data-anchor-id="características"><span class="header-section-number">A.2.1.1</span> Características:</h4>
-<ul>
-<li>Analyze your data using the RStudio IDE, directly from your browser.</li>
-<li>Share projects with your team, class, workshop or the world.</li>
-<li>Teach data science with R to your students or colleagues.</li>
-<li>Learn data science in an instructor-led environment or with interactive tutorials.</li>
-</ul>
-<center>
-<img src="images/Rstudio_cloud_page.png" class="img-fluid" style="width:90.0%">
-</center>
-<center>
-<img src="images/rstudio_logging.png" class="img-fluid" style="width:90.0%">
-</center>
-<center>
-<img src="images/rstudio_workspace.png" class="img-fluid" style="width:90.0%">
-</center>
-<center>
-<img src="images/rstudio_cloud.png" class="img-fluid" style="width:90.0%">
-</center>
+<p>Entonces orqustador iterará por por todas estas comunas, entonce se le debe traspasar a la comuna como parámetro al archivo .Rmd agnóstico</p>
+</section>
+<section id="redenrizado-iterativo" class="level3" data-number="10.5.2">
+<h3 data-number="10.5.2" class="anchored" data-anchor-id="redenrizado-iterativo"><span class="header-section-number">10.5.2</span> Redenrizado Iterativo</h3>
+<p>En esta etapa corresponde a la iteración de la variable y la orden de renderizar (knit) a través de la función <code>render</code>, que recibirá como argumentos (<code>params</code>) las variables que se enviarán al reporte agnóstico para que ejecute.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterador ----------------------------------------------------------------</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(comuna <span class="cf">in</span> comunas){</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"Operando sobre la comuna: "</span>, comuna))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filtrar base provincial</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  base_comunal <span class="ot">&lt;-</span> base_provincial <span class="sc">%&gt;%</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(NOM_COMUNA <span class="sc">==</span> comuna)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  file_name <span class="ot">&lt;-</span>  <span class="fu">gsub</span>(<span class="st">" "</span>, <span class="st">"_"</span>, comuna)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">"reporte_base/reporte_inicial.Rmd"</span>,  </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">output_file =</span> <span class="fu">paste0</span>(file_name, <span class="st">".pdf"</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">output_dir =</span> <span class="st">"reportes_salida"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">encoding=</span><span class="st">"UTF-8"</span>, <span class="at">clean =</span> T, <span class="at">output_format =</span> <span class="st">"pdf_document"</span>, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">params =</span> <span class="fu">list</span>(<span class="at">base_com =</span> base_comunal, </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                       <span class="at">personas_media =</span> pers_mean)) <span class="co"># parametros hacia .Rmd</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
-</section>
 </section>
 </section>
 
@@ -599,13 +643,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./inf_final.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Informe Final</span>
+      <a href="./workflow.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Flujos de Trabajo</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./espacial_R.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Datos Espaciales</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
